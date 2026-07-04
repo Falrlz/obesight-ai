@@ -11,12 +11,12 @@ ENV/
 **/.pytest_cache/
 .ipynb_checkpoints/
 
-# Local Environment Configurations (Sifatnya rahasia/lokal)
+# Local Environment Configurations
 .env
 .env.local
 .env.*.local
 
-# Machine Learning / MLflow tracking (Besar & dinamis)
+# Machine Learning / MLflow tracking
 **/mlruns/
 
 # IDE & OS files
@@ -25,12 +25,13 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Frontend dependencies & build output (Untuk jaga-jaga)
+# Frontend dependencies & build output
 **/node_modules/
 **/dist/
 
 # =========================================================================
-# SEMENTARA: Abaikan folder frontend agar hanya ml dan backend yang masuk git
-# HAPUS baris di bawah ini jika Anda nanti sudah siap melakukan push untuk frontend!
+# On process
 # =========================================================================
 frontend/
+docs/
+
