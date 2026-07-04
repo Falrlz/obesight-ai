@@ -1,0 +1,36 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Python Cache, Compiled & Testing
+**/__pycache__/
+*.py[cod]
+*$py.class
+**/.pytest_cache/
+.ipynb_checkpoints/
+
+# Local Environment Configurations (Sifatnya rahasia/lokal)
+.env
+.env.local
+.env.*.local
+
+# Machine Learning / MLflow tracking (Besar & dinamis)
+**/mlruns/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Frontend dependencies & build output (Untuk jaga-jaga)
+**/node_modules/
+**/dist/
+
+# =========================================================================
+# SEMENTARA: Abaikan folder frontend agar hanya ml dan backend yang masuk git
+# HAPUS baris di bawah ini jika Anda nanti sudah siap melakukan push untuk frontend!
+# =========================================================================
+frontend/
