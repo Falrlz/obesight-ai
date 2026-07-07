@@ -79,7 +79,7 @@ export const Features: React.FC = () => {
         tl.fromTo(
           cards,
           {
-            y: (index, target) => {
+            y: (_, target) => {
               const direction = target.getAttribute('data-from') === 'bottom' ? 1 : -1;
               return direction * (window.innerHeight * 1.15);
             },
@@ -144,15 +144,8 @@ export const Features: React.FC = () => {
         {/* Title Group */}
         <div className="title-group" id="titleGroup" ref={titleGroupRef}>
           <h2>
-            <span className="reveal-text" ref={revealRef1}>Solusi Cerdas</span>
-            <br />
-            <span className="reveal-text" ref={revealRef2}>untuk Anda</span>
+            <span className="reveal-text" ref={revealRef1}>Solusi Cerdas Untuk Anda</span>
           </h2>
-          <p>
-            <span className="reveal-text" ref={revealRef3}>
-              Sistem analisis kesehatan berbasis kecerdasan buatan untuk hasil yang komprehensif.
-            </span>
-          </p>
         </div>
 
         {/* Bento Cards Grid */}
@@ -166,11 +159,7 @@ export const Features: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
-            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col">
-              <svg className="icon mb-4" viewBox="0 0 600 600" fill="none">
-                <circle cx="300" cy="300" r="200" stroke="#fff" strokeOpacity="0.85" strokeWidth="14" />
-                <polyline points="150,320 230,320 270,180 330,440 370,300 450,300" fill="none" stroke="#fff" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-center">
               <h3>Skrining Gaya Hidup</h3>
               <p>
                 Kuesioner cepat 4 langkah yang ramah pengguna untuk memetakan kebiasaan harian Anda secara akurat.
@@ -187,15 +176,7 @@ export const Features: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
-            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col">
-              <svg className="icon mb-4" viewBox="0 0 600 600" fill="none">
-                <rect x="140" y="110" width="320" height="380" rx="24" stroke="#fff" strokeOpacity="0.85" strokeWidth="14" />
-                <line x1="190" y1="200" x2="410" y2="200" stroke="#fff" strokeOpacity="0.7" strokeWidth="10" strokeLinecap="round" />
-                <line x1="190" y1="270" x2="410" y2="270" stroke="#fff" strokeOpacity="0.7" strokeWidth="10" strokeLinecap="round" />
-                <line x1="190" y1="340" x2="410" y2="340" stroke="#fff" strokeOpacity="0.7" strokeWidth="10" strokeLinecap="round" />
-                <line x1="190" y1="410" x2="410" y2="410" stroke="#fff" strokeOpacity="0.7" strokeWidth="10" strokeLinecap="round" />
-                <polygon points="430,120 480,170 360,290 310,240" fill="#fff" fillOpacity="0.9" />
-              </svg>
+            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-center">
               <h3>Prediksi Akurat AI</h3>
               <p>
                 Menggunakan model klasifikasi LightGBM/XGBoost terlatih untuk mendeteksi tingkat risiko obesitas.
@@ -212,13 +193,7 @@ export const Features: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
-            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col">
-              <svg className="icon mb-4" viewBox="0 0 600 600" fill="none">
-                <circle cx="300" cy="300" r="220" stroke="#fff" strokeOpacity="0.45" strokeWidth="12" />
-                <circle cx="300" cy="300" r="170" stroke="#fff" strokeOpacity="0.6" strokeWidth="12" />
-                <circle cx="300" cy="300" r="120" stroke="#fff" strokeOpacity="0.78" strokeWidth="12" />
-                <circle cx="300" cy="300" r="70" stroke="#fff" strokeOpacity="1" strokeWidth="12" />
-              </svg>
+            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-center">
               <h3>Insight Tindakan Personal</h3>
               <p>
                 Menerima rekomendasi bilingual berbasis aturan klinis yang langsung menyasar poin kekurangan hidrasi atau nutrisi Anda.

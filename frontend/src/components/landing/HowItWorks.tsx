@@ -40,40 +40,48 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-section-gap px-page-margin-desktop relative overflow-hidden">
-      <div className="max-w-container-max mx-auto relative z-10">
-        <h2 className="font-headline-lg text-headline-lg font-bold mb-20 text-center text-on-surface">
+    <section className="min-h-screen w-full flex flex-col justify-center py-20 px-4 md:px-page-margin-desktop relative overflow-hidden bg-background">
+      <div className="max-w-container-max mx-auto relative z-10 w-full">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-16 md:mb-20 text-center text-on-surface tracking-tight">
           Mulai dengan 3 Langkah Mudah
         </h2>
         <div className="relative">
           {/* Vertical Path Line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-outline-variant/30 -translate-x-1/2 hidden md:block"></div>
-          <div className="space-y-24 relative">
+          <div className="space-y-16 md:space-y-24 relative">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
-                <div key={idx} className="flex flex-col md:flex-row items-center gap-8 md:gap-0">
-                  {/* Left Side */}
-                  <div className={`md:w-1/2 ${isEven ? '' : 'md:pr-20 text-center md:text-right'}`}>
+                <div key={idx} className="flex flex-col md:flex-row items-center gap-4 md:gap-0">
+                  {/* Left Side (Desktop-only for odd) */}
+                  <div className={`hidden md:block md:w-1/2 ${isEven ? '' : 'md:pr-20 text-right'}`}>
                     {!isEven && (
                       <>
-                        <h3 className="font-headline-md text-2xl font-bold mb-2 text-on-surface">{step.title}</h3>
+                        <h3 className="text-2xl font-bold mb-2 text-on-surface">{step.title}</h3>
                         <p className="text-on-surface-variant font-body-md leading-relaxed">{step.description}</p>
                       </>
                     )}
                   </div>
+                  
                   {/* Circle Badge */}
                   <div className={`relative z-20 w-12 h-12 rounded-full ${step.bgClass} flex items-center justify-center font-bold text-xl shrink-0 shadow-lg`}>
                     {step.number}
                   </div>
-                  {/* Right Side */}
-                  <div className={`md:w-1/2 ${isEven ? 'md:pl-20 text-center md:text-left' : ''}`}>
+                  
+                  {/* Right Side (Desktop-only for even) */}
+                  <div className={`hidden md:block md:w-1/2 ${isEven ? 'md:pl-20 text-left' : ''}`}>
                     {isEven && (
                       <>
-                        <h3 className="font-headline-md text-2xl font-bold mb-2 text-on-surface">{step.title}</h3>
+                        <h3 className="text-2xl font-bold mb-2 text-on-surface">{step.title}</h3>
                         <p className="text-on-surface-variant font-body-md leading-relaxed">{step.description}</p>
                       </>
                     )}
+                  </div>
+
+                  {/* Mobile-only Content (hidden on desktop) */}
+                  <div className="block md:hidden text-center px-4 space-y-1">
+                    <h3 className="text-xl font-bold text-on-surface">{step.title}</h3>
+                    <p className="text-on-surface-variant text-sm leading-relaxed max-w-sm mx-auto">{step.description}</p>
                   </div>
                 </div>
               );
@@ -93,4 +101,5 @@ export const HowItWorks: React.FC = () => {
     </section>
   );
 };
+
 export default HowItWorks;
