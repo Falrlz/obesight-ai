@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CODESIGN — preview</title>
+<style>
+  :root{
+    --hero:#573FEF;
+    --hero-2:#7B67F2;
+    --pink:#FF29AE;
+    --blue:#2E74FF;
+    --green:#7AC743;
+    --ink:#131313;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  section{position:relative;}
+
+  /* ---------- HERO ---------- */
+  .hero-wrap{padding:12px;}
+  .hero{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    border-radius:32px;
+    background:var(--hero);
+    min-height:88vh;
+    display:flex;
+    flex-direction:column;
+    padding:40px 24px;
+  }
+  .hero svg.bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .hero-nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;}
+  .hero-nav .brand{font-weight:800;color:#fff;font-size:18px;letter-spacing:-0.01em;}
+  .hero-nav .pill{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;font-weight:800;font-size:14px;
+    padding:9px 18px;border-radius:999px;
+    transition:background .2s;
+  }
+  .hero-nav .pill:hover{background:rgba(255,255,255,0.22);}
+  .hero-content{position:relative;z-index:2;margin-top:auto;padding-top:60px;max-width:640px;}
+  .hero-content h1{
+    font-weight:800;color:#fff;letter-spacing:-0.02em;
+    font-size:clamp(34px,7vw,72px);line-height:1.04;margin:0;
+  }
+  .hero-content p{
+    color:rgba(255,255,255,0.8);margin:18px 0 0;
+    font-size:clamp(15px,2vw,18px);max-width:420px;
+  }
+  .hero-content .cta{
+    display:inline-flex;margin-top:30px;
+    background:#fff;color:var(--hero);
+    font-weight:800;font-size:14px;
+    padding:13px 26px;border-radius:999px;
+    transition:opacity .2s;
+  }
+  .hero-content .cta:hover{opacity:.9;}
+  .hero-reveal{opacity:0;display:inline-block;will-change:transform,opacity;}
+
+  /* ---------- FEATURES ---------- */
+  .features-pin{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow:hidden;
+    padding:9vh 20px 0;
+  }
+  .title-group{text-align:center;}
+  .title-group h2{
+    font-weight:800;letter-spacing:-0.02em;
+    font-size:clamp(30px,4.4vw,52px);line-height:1.1;margin:0;
+  }
+  .title-group p{
+    margin:18px 0 0;color:#737373;
+    font-size:clamp(14px,1.4vw,16px);
+  }
+  .reveal-text{opacity:0;display:inline-block;will-change:transform,opacity;}
+
+  .cards-row{
+    margin-top:5vh;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+    width:100%;
+    max-width:1240px;
+  }
+  @media(min-width:768px){
+    .cards-row{grid-template-columns:1fr 1fr 1fr;}
+  }
+  .feature-card{
+    opacity:0;
+    transform-style:preserve-3d;
+    will-change:transform,opacity;
+    border-radius:28px;
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    color:#fff;
+    min-height:320px;
+  }
+  .feature-card.bg-pink{background:var(--pink);}
+  .feature-card.bg-blue{background:var(--blue);}
+  .feature-card.bg-green{background:var(--green);}
+  .feature-card svg.icon{width:100%;height:170px;display:block;}
+  .feature-card h3{
+    margin:22px 0 0;font-weight:800;letter-spacing:-0.02em;
+    font-size:clamp(21px,2.4vw,28px);line-height:1.12;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer{background:var(--ink);color:#fff;}
+  .footer-inner{max-width:1240px;margin:0 auto;padding:80px 24px 0;}
+  .footer-top{
+    display:flex;flex-direction:column;gap:44px;
+    padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  @media(min-width:768px){
+    .footer-top{flex-direction:row;justify-content:space-between;align-items:flex-start;}
+  }
+  .footer-top .lead{max-width:380px;}
+  .footer-top .lead p{font-weight:800;font-size:26px;line-height:1.2;margin:0;letter-spacing:-0.01em;}
+  .footer-top .lead .cta{
+    display:inline-flex;margin-top:22px;background:#fff;color:var(--ink);
+    font-weight:800;font-size:14px;padding:13px 26px;border-radius:999px;
+  }
+  .footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media(min-width:640px){.footer-cols{grid-template-columns:1fr 1fr 1fr;gap:56px;}}
+  .footer-cols h4{
+    margin:0;font-size:11px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(255,255,255,0.5);
+  }
+  .footer-cols ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .footer-cols a{font-size:14px;color:rgba(255,255,255,0.8);transition:color .2s;}
+  .footer-cols a:hover{color:#fff;}
+  .wordmark{
+    text-align:center;font-weight:800;letter-spacing:-0.02em;line-height:.8;
+    font-size:clamp(3rem,19vw,22rem);
+    margin:0;padding:24px 0 16px;
+    user-select:none;
+  }
+  .footer-bottom{
+    display:flex;flex-direction:column;gap:12px;justify-content:space-between;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding:24px 0;font-size:12px;color:rgba(255,255,255,0.5);
+  }
+  @media(min-width:640px){.footer-bottom{flex-direction:row;align-items:center;}}
+  .footer-bottom .links{display:flex;gap:24px;}
+  .footer-bottom a:hover{color:#fff;}
+
+  @media (prefers-reduced-motion: reduce){
+    .feature-card,.reveal-text,.hero-reveal{opacity:1 !important;transform:none !important;}
+  }
+
+  .cdn-note{
+    position:fixed;bottom:10px;left:10px;z-index:50;
+    background:rgba(0,0,0,.75);color:#fff;font-size:11px;
+    padding:6px 10px;border-radius:8px;font-family:monospace;
+    opacity:0;transition:opacity .3s;pointer-events:none;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero-wrap">
+  <div class="hero">
+    <svg class="bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+      <path id="heroPath"
+        d="M -50 620 C 150 500, 300 700, 480 560 S 780 380, 950 520 S 1150 300, 1300 380"
+        stroke="#7B67F2" stroke-width="220" stroke-linecap="round" />
+    </svg>
+    <div class="hero-nav">
+      <span class="hero-reveal brand" data-hero>CODESIGN</span>
+      <a href="#features" class="hero-reveal pill" data-hero>Explore</a>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-reveal" data-hero>Feel better, one day at a time.</h1>
+      <p class="hero-reveal" data-hero>CODESIGN is a calm, judgment-free space to track your mood, write things down, and remember to breathe.</p>
+      <div class="hero-reveal" data-hero style="margin-top:0;">
+        <a href="#features" class="cta">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="features-pin" id="pin">
+    <div class="title-group" id="titleGroup">
+      <h2>
+        <span class="reveal-text" data-reveal>Everything you need,</span><br/>
+        <span class="reveal-text" data-reveal>in one place.</span>
+      </h2>
+      <p><span class="reveal-text" data-reveal>Simple tools to help you feel better, one day at a time.</span></p>
+    </div>
+    <div class="cards-row">
+      <article class="feature-card bg-pink" data-card data-from="top">
+        <svg class="icon" viewBox="0 0 600 600" fill="none">
+          <circle cx="300" cy="300" r="200" stroke="#fff" stroke-opacity="0.85" stroke-width="14"/>
+          <polyline points="150,320 230,320 270,180 330,440 370,300 450,300" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Track How<br/>You Feel</h3>
+      </article>
+      <article class="feature-card bg-blue" data-card data-from="bottom">
+        <svg class="icon" viewBox="0 0 600 600" fill="none">
+          <rect x="140" y="110" width="320" height="380" rx="24" stroke="#fff" stroke-opacity="0.85" stroke-width="14"/>
+          <line x1="190" y1="200" x2="410" y2="200" stroke="#fff" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+          <line x1="190" y1="270" x2="410" y2="270" stroke="#fff" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+          <line x1="190" y1="340" x2="410" y2="340" stroke="#fff" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+          <line x1="190" y1="410" x2="410" y2="410" stroke="#fff" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+          <polygon points="430,120 480,170 360,290 310,240" fill="#fff" fill-opacity="0.9"/>
+        </svg>
+        <h3>Write Without<br/>Judgment</h3>
+      </article>
+      <article class="feature-card bg-green" data-card data-from="top">
+        <svg class="icon" viewBox="0 0 600 600" fill="none">
+          <circle cx="300" cy="300" r="220" stroke="#fff" stroke-opacity="0.45" stroke-width="12"/>
+          <circle cx="300" cy="300" r="170" stroke="#fff" stroke-opacity="0.6" stroke-width="12"/>
+          <circle cx="300" cy="300" r="120" stroke="#fff" stroke-opacity="0.78" stroke-width="12"/>
+          <circle cx="300" cy="300" r="70" stroke="#fff" stroke-opacity="1" stroke-width="12"/>
+        </svg>
+        <h3>Pause and<br/>Breathe</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="lead">
+        <p>Feel better, one day at a time.</p>
+        <a href="#" class="cta">Get started</a>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Mood tracker</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Breathing sessions</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Help center</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <h2 class="wordmark">CODESIGN</h2>
+    <div class="footer-bottom">
+      <p>© 2026 CODESIGN. All rights reserved.</p>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cdn-note" id="cdnNote">Using CSS fallback (CDN unreachable)</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var DRAW_DURATION = 1.5;
+  var STAGGER = 0.15;
+  var CARD_OFFSET = 1.15;
+  var TILT_MAX = 10;
+  var EASE = "power3.out";
+  var PIN_SCROLL = "+=2200";
+
+  function fallbackReveal(){
+    document.querySelectorAll('.hero-reveal,.reveal-text,.feature-card').forEach(function(el){
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    var note = document.getElementById('cdnNote');
+    if(note){ note.style.opacity = '1'; setTimeout(function(){note.style.opacity='0';}, 3500); }
+  }
+
+  var fallbackTimer = setTimeout(function(){
+    if(!window.gsap || !window.ScrollTrigger){ fallbackReveal(); }
+  }, 4000);
+
+  function init(){
+    if(!window.gsap || !window.ScrollTrigger){ fallbackReveal(); return; }
+    clearTimeout(fallbackTimer);
+    var gsap = window.gsap;
+    gsap.registerPlugin(window.ScrollTrigger);
+
+    /* ---- HERO: path draw then text reveal ---- */
+    var path = document.getElementById('heroPath');
+    var heroItems = Array.prototype.slice.call(document.querySelectorAll('[data-hero]'));
+    var len = path.getTotalLength();
+    gsap.set(path, {strokeDasharray:len, strokeDashoffset:len});
+    gsap.set(heroItems, {yPercent:60, opacity:0});
+
+    var heroTl = gsap.timeline({delay:0.15});
+    heroTl.to(path, {strokeDashoffset:0, duration:DRAW_DURATION, ease:EASE})
+      .to(heroItems, {opacity:1, yPercent:0, duration:0.9, ease:EASE, stagger:0.12}, ">-0.1");
+
+    /* ---- FEATURES ---- */
+    var section = document.getElementById('features');
+    var pin = document.getElementById('pin');
+    var titleGroup = document.getElementById('titleGroup');
+    var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('[data-card]'));
+
+    gsap.fromTo(reveals,
+      {yPercent:70, opacity:0},
+      {yPercent:0, opacity:1, duration:0.9, ease:EASE, stagger:0.12,
+        scrollTrigger:{trigger:section, start:"top 70%", once:true}});
+
+    var mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", function(){
+      gsap.set(cards, {opacity:1});
+      var tl = gsap.timeline({
+        scrollTrigger:{
+          trigger:section, start:"top top", end:PIN_SCROLL,
+          scrub:1, pin:pin, anticipatePin:1, invalidateOnRefresh:true
+        }
+      });
+      tl.fromTo(titleGroup,
+        {y:function(){ return pin.clientHeight/2 - (titleGroup.offsetTop + titleGroup.offsetHeight/2); }},
+        {y:0, ease:"none"}, 0);
+      tl.fromTo(cards,
+        {y:function(i){ return (cards[i].dataset.from === "bottom" ? 1 : -1) * (window.innerHeight * CARD_OFFSET); }},
+        {y:0, ease:EASE, duration:1, stagger:STAGGER}, 0);
+
+      return function(){ if(tl.scrollTrigger) tl.scrollTrigger.kill(); tl.kill(); };
+    });
+
+    mm.add("(max-width: 767px)", function(){
+      gsap.fromTo(cards,
+        {y:60, opacity:0},
+        {y:0, opacity:1, duration:1, ease:EASE, stagger:STAGGER,
+          scrollTrigger:{trigger:pin, start:"top 75%"}});
+    });
+
+    /* ---- 3D tilt on hover ---- */
+    cards.forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width;
+        var py = (e.clientY - r.top) / r.height;
+        gsap.to(card, {
+          rotateY:(px-0.5)*TILT_MAX*2,
+          rotateX:(0.5-py)*TILT_MAX*2,
+          duration:0.4, ease:EASE,
+          transformPerspective:800, transformOrigin:"center"
+        });
+      });
+      card.addEventListener('mouseleave', function(){
+        gsap.to(card, {rotateX:0, rotateY:0, duration:0.6, ease:EASE});
+      });
+    });
+  }
+
+  var checkInterval = setInterval(function(){
+    if(window.gsap && window.ScrollTrigger){
+      clearInterval(checkInterval);
+      init();
+    }
+  }, 50);
+})();
+</script>
+</body>
+</html>
