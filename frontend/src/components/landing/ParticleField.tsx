@@ -1,5 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 
+/**
+ * ParticleField Component.
+ * Renders an interactive 2D HTML5 canvas particle background.
+ *
+ * Optimization Details:
+ * 1. Animation states (particles, mouse positions, dimensions) are stored in React `useRef`s 
+ *    instead of React state. This prevents React re-render cycles, ensuring stable 60 FPS performance.
+ * 2. Canvas mouse event tracking is bound to the parent `<section>` (Hero section) 
+ *    instead of the canvas itself. Combined with `pointer-events: none`, this guarantees 
+ *    the background will not intercept mouse click events on layout buttons.
+ * 3. Opacity formatting inside the O(N^2) connection lines drawing loop avoids slow 
+ *    `.toFixed(3)` string parsing, which significantly reduces CPU scripting garbage collection.
+ */
 export const ParticleField: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
