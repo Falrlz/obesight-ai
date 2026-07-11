@@ -77,6 +77,11 @@ header.floating-nav {
   @apply bg-background;
 }
 
+/* Ensure pinned element has lower z-index so HowItWorks can overlap it */
+.pin-spacer, #pin {
+  z-index: 10 !important;
+}
+
 @media (min-width: 768px) {
   .features-pin {
     padding: 120px 40px 0;
@@ -163,7 +168,7 @@ header.floating-nav {
 @media(min-width: 768px) {
   .feature-card-animated {
     width: 100%;
-    min-height: 340px;
+    min-height: 280px;
   }
 }
 

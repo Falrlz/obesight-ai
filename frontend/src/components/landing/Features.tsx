@@ -57,13 +57,16 @@ export const Features: React.FC = () => {
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: '+=2200',
+            end: () => `+=${2200 + window.innerHeight}`,
             scrub: 1,
             pin: pin,
+            pinSpacing: false,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
+
+        const cardDuration = 2.2;
 
         tl.fromTo(
           titleGroup,
@@ -72,7 +75,7 @@ export const Features: React.FC = () => {
               return pin.clientHeight / 2 - (titleGroup.offsetTop + titleGroup.offsetHeight / 2);
             },
           },
-          { y: 0, ease: 'none' },
+          { y: 0, ease: 'none', duration: cardDuration - 0.2 },
           0
         );
 
@@ -84,9 +87,14 @@ export const Features: React.FC = () => {
               return direction * (window.innerHeight * 1.15);
             },
           },
-          { y: 0, ease: 'power3.out', duration: 1, stagger: 0.15 },
+          { y: 0, ease: 'power3.out', duration: 1.5, stagger: 0.35 },
           0
         );
+
+        // Overlap phase: empty tween to keep the bento container pinned as HowItWorks scrolls up
+        tl.to({}, {
+          duration: () => cardDuration * (window.innerHeight / 2200)
+        });
       });
 
       // Mobile layout: simple stagger fade-in
@@ -143,7 +151,7 @@ export const Features: React.FC = () => {
       <div className="features-pin w-full" id="pin" ref={pinRef}>
         {/* Title Group */}
         <div className="title-group" id="titleGroup" ref={titleGroupRef}>
-          <h2>
+          <h2 className="!font-medium">
             <span className="reveal-text" ref={revealRef1}>Solusi Cerdas Untuk Anda</span>
           </h2>
         </div>
