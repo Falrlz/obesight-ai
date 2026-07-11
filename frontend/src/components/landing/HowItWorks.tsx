@@ -40,13 +40,13 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="min-h-screen w-full flex flex-col justify-center pt-[12vh] pb-[12vh] md:pt-[34vh] md:pb-[24vh] px-4 md:px-page-margin-desktop relative z-30 overflow-hidden bg-black rounded-t-[28px] md:rounded-t-[44px]">
+    <section id="how-it-works" className="min-h-0 py-[10vh] md:min-h-screen w-full flex flex-col justify-center md:pt-[34vh] md:pb-[24vh] px-4 md:px-page-margin-desktop relative z-30 overflow-hidden bg-black rounded-t-[28px] md:rounded-t-[44px]">
       <div className="max-w-container-max mx-auto relative z-10 w-full">
         <h2 className="text-3xl md:text-5xl font-normal mb-[6vh] md:mb-[10vh] text-center text-white tracking-tight">
           Mulai dengan 3 Langkah Mudah
         </h2>
         <div className="relative">
-          <div className="space-y-[4vh] relative">
+          <div className="space-y-[4vh] 2xl:space-y-[12vh] relative">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (

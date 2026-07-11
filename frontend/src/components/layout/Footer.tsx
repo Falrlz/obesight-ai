@@ -12,8 +12,8 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenAbout,
 }) => {
   return (
-    <footer className="w-full flex flex-col justify-between bg-black pt-24 relative z-30 print:hidden">
-      <div className="max-w-container-max mx-auto px-4 md:px-page-margin-desktop w-full">
+    <footer className="w-full flex flex-col justify-between bg-black pt-24 -mt-px relative z-30 print:hidden">
+      <div className="max-w-none px-4 md:px-page-margin-desktop lg:px-[6vw] w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Logo & Info */}
           <div className="flex flex-col gap-6 items-center md:items-start">
@@ -67,8 +67,8 @@ export const Footer: React.FC<FooterProps> = ({
       </div>
 
       {/* Gigantic Brand Name */}
-      <div className="mt-auto overflow-hidden pointer-events-none select-none w-full relative h-[10.5vw] md:h-[14vw]">
-        <h2 className="absolute top-0 left-0 w-full text-[15vw] md:text-[20vw] font-bold text-secondary/15 leading-none text-center uppercase tracking-tighter">
+      <div className="mt-auto overflow-hidden pointer-events-none select-none w-full relative h-[10.5vw] md:h-[14vw] xl:h-[180px]">
+        <h2 className="absolute top-0 left-0 w-full text-[15vw] md:text-[20vw] xl:text-[256px] font-bold text-secondary/15 leading-none text-center uppercase tracking-tighter">
           OBESIGHT
         </h2>
       </div>

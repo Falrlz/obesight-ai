@@ -167,7 +167,14 @@ export const Features: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
-            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-center">
+            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-start h-full">
+              <div className="w-10 h-10 md:w-12 md:h-12 2xl:w-14 2xl:h-14 rounded-xl md:rounded-2xl flex items-center justify-center bg-white/[0.04] border border-white/[0.08]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-6 md:h-6 2xl:w-7 2xl:h-7 text-secondary">
+                  <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                  <path d="m9 14 2 2 4-4"/>
+                </svg>
+              </div>
               <h3>Skrining Gaya Hidup</h3>
               <p>
                 Kuesioner cepat 4 langkah yang ramah pengguna untuk memetakan kebiasaan harian Anda secara akurat.
@@ -184,7 +191,13 @@ export const Features: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
-            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-center">
+            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-start h-full">
+              <div className="w-10 h-10 md:w-12 md:h-12 2xl:w-14 2xl:h-14 rounded-xl md:rounded-2xl flex items-center justify-center bg-white/[0.04] border border-white/[0.08]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-6 md:h-6 2xl:w-7 2xl:h-7 text-secondary">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z"/>
+                  <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z"/>
+                </svg>
+              </div>
               <h3>Prediksi Akurat AI</h3>
               <p>
                 Menggunakan model klasifikasi LightGBM/XGBoost terlatih untuk mendeteksi tingkat risiko obesitas.
@@ -201,7 +214,14 @@ export const Features: React.FC = () => {
             onMouseLeave={handleMouseLeave}
             style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
           >
-            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-center">
+            <div style={{ transform: 'translateZ(30px)' }} className="flex-grow flex flex-col justify-start h-full">
+              <div className="w-10 h-10 md:w-12 md:h-12 2xl:w-14 2xl:h-14 rounded-xl md:rounded-2xl flex items-center justify-center bg-white/[0.04] border border-white/[0.08]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-6 md:h-6 2xl:w-7 2xl:h-7 text-secondary">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/>
+                  <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5Z"/>
+                  <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z"/>
+                </svg>
+              </div>
               <h3>Insight Tindakan Personal</h3>
               <p>
                 Menerima rekomendasi bilingual berbasis aturan klinis yang langsung menyasar poin kekurangan hidrasi atau nutrisi Anda.
