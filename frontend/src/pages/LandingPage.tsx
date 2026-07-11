@@ -28,6 +28,8 @@ export const LandingPage: React.FC = () => {
       <Hero onStartAnalysis={handleStartAnalysis} />
       <Mission />
       <Features />
+      {/* Spacer untuk mensimulasikan pinSpacing secara manual agar overlap lancar tanpa page jumps */}
+      <div className="hidden md:block h-[2200px] w-full pointer-events-none" />
       <HowItWorks />
     </div>
   );

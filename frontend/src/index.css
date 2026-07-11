@@ -67,18 +67,24 @@ header.floating-nav {
 /* ---------- ANIMATED FEATURES SECTION ---------- */
 .features-pin {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 80px 16px 40px;
+  padding: 80px 16px 60px;
   @apply bg-background;
+}
+
+/* Ensure pinned element has lower z-index so HowItWorks can overlap it */
+.pin-spacer, #pin {
+  z-index: 10 !important;
 }
 
 @media (min-width: 768px) {
   .features-pin {
+    min-height: 100vh;
     padding: 120px 40px 0;
   }
 }
@@ -113,25 +119,13 @@ header.floating-nav {
 }
 
 .cards-row {
-  margin-top: 2vh;
+  margin-top: 3vh;
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  flex-direction: column;
   gap: 20px;
   width: 100%;
   max-width: 1240px;
-  padding: 10px 4px 24px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE/Edge */
-}
-
-.cards-row::-webkit-scrollbar {
-  display: none;
-  /* Chrome/Safari/Opera */
+  padding: 10px 4px;
 }
 
 @media(min-width: 768px) {
@@ -153,17 +147,26 @@ header.floating-nav {
   display: flex;
   flex-direction: column;
   color: #ffffff;
-  min-height: 280px;
-  scroll-snap-align: center;
-  width: 85%;
-  flex-shrink: 0;
+  min-height: 220px;
+  width: 100%;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 @media(min-width: 768px) {
   .feature-card-animated {
     width: 100%;
-    min-height: 340px;
+    min-height: 280px;
+  }
+}
+
+@media(min-width: 1536px) {
+  .cards-row {
+    gap: 32px;
+    margin-top: 6vh;
+  }
+  .feature-card-animated {
+    min-height: 360px;
+    padding: 36px;
   }
 }
 
@@ -212,6 +215,7 @@ header.floating-nav {
   letter-spacing: -0.02em;
   font-size: clamp(20px, 2.2vw, 26px);
   line-height: 1.15;
+  min-height: 2.3em;
 }
 
 .feature-card-animated p {

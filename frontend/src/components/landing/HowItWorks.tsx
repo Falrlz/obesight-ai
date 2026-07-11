@@ -23,65 +23,67 @@ export const HowItWorks: React.FC = () => {
       number: 1,
       title: 'Isi Kuesioner',
       description: '1 menit untuk menjawab pertanyaan dasar mengenai gaya hidup dan profil fisik Anda.',
-      bgClass: 'bg-primary text-on-primary',
+      bgClass: 'bg-secondary text-on-primary',
     },
     {
       number: 2,
       title: 'Analisis AI',
-      description: 'Sistem kami memproses data Anda secara instan menggunakan model machine learning tercanggih.',
+      description: 'Kami memproses data Anda secara instan menggunakan model machine learning.',
       bgClass: 'bg-secondary text-on-primary',
     },
     {
       number: 3,
       title: 'Terima Hasil',
       description: 'Dapatkan laporan risiko yang komprehensif dan saran tindakan yang dipersonalisasi segera.',
-      bgClass: 'bg-spectral-green text-on-primary',
+      bgClass: 'bg-secondary text-on-primary',
     },
   ];
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center py-20 px-4 md:px-page-margin-desktop relative overflow-hidden bg-background">
+    <section id="how-it-works" className="min-h-0 py-[10vh] md:min-h-screen w-full flex flex-col justify-center md:pt-[34vh] md:pb-[24vh] px-4 md:px-page-margin-desktop relative z-30 overflow-hidden bg-black rounded-t-[28px] md:rounded-t-[44px]">
       <div className="max-w-container-max mx-auto relative z-10 w-full">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-16 md:mb-20 text-center text-on-surface tracking-tight">
+        <h2 className="text-3xl md:text-5xl font-normal mb-[6vh] md:mb-[10vh] text-center text-white tracking-tight">
           Mulai dengan 3 Langkah Mudah
         </h2>
         <div className="relative">
-          {/* Vertical Path Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-outline-variant/30 -translate-x-1/2 hidden md:block"></div>
-          <div className="space-y-16 md:space-y-24 relative">
+          <div className="space-y-[2vh] 2xl:space-y-[12vh] relative">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
-                <div key={idx} className="flex flex-col md:flex-row items-center gap-4 md:gap-0">
-                  {/* Left Side (Desktop-only for odd) */}
-                  <div className={`hidden md:block md:w-1/2 ${isEven ? '' : 'md:pr-20 text-right'}`}>
-                    {!isEven && (
-                      <>
-                        <h3 className="text-2xl font-bold mb-2 text-on-surface">{step.title}</h3>
-                        <p className="text-on-surface-variant font-body-md leading-relaxed">{step.description}</p>
-                      </>
+                <div key={idx} className="flex flex-col md:grid md:grid-cols-[1fr_48px_1fr] md:gap-x-16 items-center gap-4 md:gap-0">
+                  {/* Left Side (Desktop-only for odd steps) */}
+                  <div className="hidden md:block">
+                    {!isEven ? (
+                      <div className="text-right">
+                        <h3 className="text-2xl font-bold mb-2 text-white">{step.title}</h3>
+                        <p className="text-zinc-400 font-body-md leading-relaxed">{step.description}</p>
+                      </div>
+                    ) : (
+                      <div />
                     )}
                   </div>
-                  
+
                   {/* Circle Badge */}
-                  <div className={`relative z-20 w-12 h-12 rounded-full ${step.bgClass} flex items-center justify-center font-bold text-xl shrink-0 shadow-lg`}>
+                  <div className={`relative z-20 w-12 h-12 rounded-full ${step.bgClass} flex items-center justify-center font-bold text-xl shrink-0 shadow-lg mx-auto`}>
                     {step.number}
                   </div>
-                  
-                  {/* Right Side (Desktop-only for even) */}
-                  <div className={`hidden md:block md:w-1/2 ${isEven ? 'md:pl-20 text-left' : ''}`}>
-                    {isEven && (
-                      <>
-                        <h3 className="text-2xl font-bold mb-2 text-on-surface">{step.title}</h3>
-                        <p className="text-on-surface-variant font-body-md leading-relaxed">{step.description}</p>
-                      </>
+
+                  {/* Right Side (Desktop-only for even steps) */}
+                  <div className="hidden md:block">
+                    {isEven ? (
+                      <div className="text-left">
+                        <h3 className="text-2xl font-bold mb-2 text-white">{step.title}</h3>
+                        <p className="text-zinc-400 font-body-md leading-relaxed">{step.description}</p>
+                      </div>
+                    ) : (
+                      <div />
                     )}
                   </div>
 
                   {/* Mobile-only Content (hidden on desktop) */}
                   <div className="block md:hidden text-center px-4 space-y-1">
-                    <h3 className="text-xl font-bold text-on-surface">{step.title}</h3>
-                    <p className="text-on-surface-variant text-sm leading-relaxed max-w-sm mx-auto">{step.description}</p>
+                    <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                    <p className="text-zinc-400 text-sm leading-relaxed max-w-sm mx-auto">{step.description}</p>
                   </div>
                 </div>
               );
