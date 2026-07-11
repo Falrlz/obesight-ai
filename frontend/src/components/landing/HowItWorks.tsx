@@ -50,29 +50,33 @@ export const HowItWorks: React.FC = () => {
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
-                <div key={idx} className="flex flex-col md:flex-row items-center gap-4 md:gap-0">
-                  {/* Left Side (Desktop-only for odd) */}
-                  <div className={`hidden md:block md:flex-1 ${isEven ? '' : 'md:pr-20 text-right'}`}>
-                    {!isEven && (
-                      <>
+                <div key={idx} className="flex flex-col md:grid md:grid-cols-[1fr_48px_1fr] md:gap-x-16 items-center gap-4 md:gap-0">
+                  {/* Left Side (Desktop-only for odd steps) */}
+                  <div className="hidden md:block">
+                    {!isEven ? (
+                      <div className="text-right">
                         <h3 className="text-2xl font-bold mb-2 text-white">{step.title}</h3>
                         <p className="text-zinc-400 font-body-md leading-relaxed">{step.description}</p>
-                      </>
+                      </div>
+                    ) : (
+                      <div />
                     )}
                   </div>
 
                   {/* Circle Badge */}
-                  <div className={`relative z-20 w-12 h-12 rounded-full ${step.bgClass} flex items-center justify-center font-bold text-xl shrink-0 shadow-lg`}>
+                  <div className={`relative z-20 w-12 h-12 rounded-full ${step.bgClass} flex items-center justify-center font-bold text-xl shrink-0 shadow-lg mx-auto`}>
                     {step.number}
                   </div>
 
-                  {/* Right Side (Desktop-only for even) */}
-                  <div className={`hidden md:block md:flex-1 ${isEven ? 'md:pl-20 text-left' : ''}`}>
-                    {isEven && (
-                      <>
+                  {/* Right Side (Desktop-only for even steps) */}
+                  <div className="hidden md:block">
+                    {isEven ? (
+                      <div className="text-left">
                         <h3 className="text-2xl font-bold mb-2 text-white">{step.title}</h3>
                         <p className="text-zinc-400 font-body-md leading-relaxed">{step.description}</p>
-                      </>
+                      </div>
+                    ) : (
+                      <div />
                     )}
                   </div>
 
