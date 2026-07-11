@@ -1,4 +1,5 @@
 import React from 'react';
+import ParticleField from './ParticleField';
 
 interface HeroProps {
   onStartAnalysis: () => void;
@@ -7,6 +8,11 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onStartAnalysis }) => {
   return (
     <section className="min-h-screen w-full flex flex-col items-center justify-center text-center px-4 md:px-page-margin-desktop bg-white relative overflow-hidden">
+      {/* Background Particle Field */}
+      <div className="absolute inset-0 z-0">
+        <ParticleField />
+      </div>
+
       <div className="max-w-4xl z-10 px-4 flex flex-col items-center justify-center space-y-8 animate-fadeIn">
 
         {/* Badge Logo & Nama Brand Sementara */}
