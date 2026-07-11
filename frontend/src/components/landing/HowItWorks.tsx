@@ -46,7 +46,7 @@ export const HowItWorks: React.FC = () => {
           Mulai dengan 3 Langkah Mudah
         </h2>
         <div className="relative">
-          <div className="space-y-[4vh] 2xl:space-y-[12vh] relative">
+          <div className="space-y-[2vh] 2xl:space-y-[12vh] relative">
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 1;
               return (
