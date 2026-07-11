@@ -27,26 +27,26 @@ export const Features: React.FC = () => {
     const reveals = [revealRef1.current, revealRef2.current, revealRef3.current].filter(Boolean) as HTMLElement[];
     const cards = [cardRef1.current, cardRef2.current, cardRef3.current].filter(Boolean) as HTMLElement[];
 
-    // 1. Text reveals
-    const revealTween = gsap.fromTo(
-      reveals,
-      { yPercent: 70, opacity: 0 },
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: 'power3.out',
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 70%',
-          once: true,
-        },
-      }
-    );
-
-    // 2. Responsive ScrollTrigger
+    // Responsive ScrollTrigger & Text reveals
     const ctx = gsap.context(() => {
+      // 1. Text reveals
+      gsap.fromTo(
+        reveals,
+        { yPercent: 70, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 70%',
+            once: true,
+          },
+        }
+      );
+
       const mm = gsap.matchMedia();
 
       // Desktop layout: pin and scrub
@@ -58,7 +58,7 @@ export const Features: React.FC = () => {
             trigger: section,
             start: 'top top',
             end: () => `+=${2200 + window.innerHeight}`,
-            scrub: 1,
+            scrub: 1.8, // Increased scrub duration for a buttery smooth parallax inertia effect
             pin: pin,
             pinSpacing: false,
             anticipatePin: 1,
@@ -87,7 +87,7 @@ export const Features: React.FC = () => {
               return direction * (window.innerHeight * 1.15);
             },
           },
-          { y: 0, ease: 'power3.out', duration: 1.5, stagger: 0.35 },
+          { y: 0, ease: 'power2.out', duration: 1.5, stagger: 0.35 }, // Softened ease from power3 to power2 for gentler entry
           0
         );
 
@@ -119,7 +119,6 @@ export const Features: React.FC = () => {
 
     return () => {
       ctx.revert();
-      revealTween.kill();
     };
   }, []);
 
@@ -237,7 +236,7 @@ export const Features: React.FC = () => {
               </div>
               <h3>Insight Tindakan Personal</h3>
               <p>
-                Menerima rekomendasi bilingual berbasis aturan klinis yang langsung menyasar poin kekurangan hidrasi atau nutrisi Anda.
+                Dapatkan rekomendasi yang dipersonalisasi untuk memperbaiki pola makan, hidrasi, dan aktivitas harian Anda secara terarah.
               </p>
             </div>
           </article>

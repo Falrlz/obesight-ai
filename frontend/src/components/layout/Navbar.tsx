@@ -18,11 +18,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      const scrolled = window.scrollY > 50;
+      // Optimize by only triggering a state update if the scroll threshold state actually changes,
+      // avoiding redundant React renders on every single scroll event.
+      setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -52,8 +51,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <div
           onClick={() => handleMobileNav(onNavigateHome)}
-          className="flex items-center gap-2 cursor-pointer transition-transform active:scale-95 z-50"
+          className="flex items-center gap-2.5 cursor-pointer transition-transform active:scale-95 z-50"
         >
+          {/* Ikon Timbangan Cerdas (Smart Scale) */}
+          <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="4" />
+            <rect x="9" y="6" width="6" height="3" rx="1" strokeWidth="1.5" />
+            <path d="M6 10v6a2 2 0 0 0 2 2h1" />
+            <path d="M18 10v6a2 2 0 0 1-2 2h-1" />
+          </svg>
           <span className="text-xl font-bold tracking-tight text-on-surface">
             OBESIGHT
           </span>

@@ -12,7 +12,7 @@ export const LandingPage: React.FC = () => {
   const { resetForm } = useFormContext();
 
   useIntersectionObserver(
-    'section:not(#features) > div',
+    'section:not(#features):not(#how-it-works) > div',
     ['opacity-0', 'translate-y-10'],
     ['opacity-100', 'translate-y-0'],
     'landing'

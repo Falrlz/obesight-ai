@@ -1,11 +1,23 @@
 import { useEffect } from 'react';
 
+/**
+ * Custom React hook to trigger CSS animations when elements enter the viewport.
+ * 
+ * Optimization Details:
+ * To prevent the IntersectionObserver from tearing down and recreating itself 
+ * on every single page render (caused by React array literal reference inequality 
+ * like `['opacity-0']` in parent dependencies), `initialClasses` and `visibleClasses` 
+ * are serialized into strings (`.join(',')`) for the `useEffect` dependency checks.
+ */
 export const useIntersectionObserver = (
   selector: string,
   initialClasses: string[],
   visibleClasses: string[],
   trigger?: any
 ) => {
+  const initialClassesKey = initialClasses.join(',');
+  const visibleClassesKey = visibleClasses.join(',');
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -33,6 +45,6 @@ export const useIntersectionObserver = (
         observer.unobserve(el);
       });
     };
-  }, [selector, initialClasses, visibleClasses, trigger]);
+  }, [selector, initialClassesKey, visibleClassesKey, trigger]);
 };
 
