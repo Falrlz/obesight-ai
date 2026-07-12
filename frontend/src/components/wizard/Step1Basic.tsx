@@ -2,6 +2,32 @@ import React from 'react';
 import { useFormContext } from '../../context/FormContext';
 import { Slider } from '@mui/material';
 
+const sliderSx = {
+  color: '#065f46',
+  height: 6,
+  '& .MuiSlider-thumb': {
+    width: 20,
+    height: 20,
+    backgroundColor: '#fff',
+    border: '2px solid #065f46',
+    transition: 'box-shadow 0.15s ease-in-out',
+    '&:hover, &.Mui-focusVisible': {
+      boxShadow: '0px 0px 0px 8px rgba(6, 95, 70, 0.16)',
+    },
+    '&.Mui-active': {
+      boxShadow: '0px 0px 0px 14px rgba(6, 95, 70, 0.24)',
+    },
+  },
+  '& .MuiSlider-track': {
+    border: 'none',
+    backgroundColor: '#065f46',
+  },
+  '& .MuiSlider-rail': {
+    opacity: 0.18,
+    backgroundColor: '#065f46',
+  },
+};
+
 export const Step1Basic: React.FC = () => {
   const { formData, setFormData } = useFormContext();
 
@@ -23,69 +49,56 @@ export const Step1Basic: React.FC = () => {
   const isNameEmpty = formData.name.trim() === '';
 
   return (
-    <div className="space-y-6 animate-fadeIn">
-      <div>
-        <h2 className="text-xl font-bold text-slate-800">1. Data Dasar & Fisik</h2>
-        <p className="text-sm text-slate-500 mt-1">
-          Masukkan informasi profil dasar dan ukuran antropometri tubuh Anda.
-        </p>
-      </div>
-
+    <div className="space-y-7 sm:space-y-8 animate-slideIn">
       {/* Name Input */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">Nama Panggilan</label>
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">Nama Panggilan</label>
         <input
           type="text"
           placeholder="Masukkan nama Anda..."
           value={formData.name}
           onChange={handleNameChange}
-          className={`w-full px-4 py-3 rounded-2xl bg-slate-50/50 border transition-all duration-200 focus:bg-white focus:outline-none ${
-            isNameEmpty
-              ? 'border-slate-200 focus:border-teal-500'
-              : 'border-slate-200 focus:border-teal-500'
-          }`}
+          className="w-full px-5 py-3.5 rounded-2xl bg-slate-50/50 border border-outline-variant focus:border-secondary focus:bg-white focus:outline-none transition-all duration-200 text-text-secondary text-lg"
         />
         {isNameEmpty && (
-          <p className="text-xs text-rose-500 font-medium">Nama wajib diisi</p>
+          <p className="text-sm font-medium text-rose-500">Nama wajib diisi</p>
         )}
       </div>
 
       {/* Gender Selection */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">Jenis Kelamin</label>
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">Jenis Kelamin</label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => handleGenderSelect('Male')}
-            className={`p-4 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex flex-col items-center justify-center gap-2 ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer ${
               formData.Gender === 'Male'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 shadow-sm ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-3xl">👨</span>
-            <span className="text-sm font-bold">Laki-laki</span>
+            <span className="text-sm font-medium">Laki-laki</span>
           </button>
           <button
             type="button"
             onClick={() => handleGenderSelect('Female')}
-            className={`p-4 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex flex-col items-center justify-center gap-2 ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer ${
               formData.Gender === 'Female'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 shadow-sm ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-3xl">👩</span>
-            <span className="text-sm font-bold">Perempuan</span>
+            <span className="text-sm font-medium">Perempuan</span>
           </button>
         </div>
       </div>
 
       {/* Age Input */}
-      <div className="space-y-2 pt-2">
+      <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-semibold text-slate-700">Umur</label>
-          <span className="text-sm font-bold text-teal-600 px-3 py-1 rounded-full bg-teal-50">
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">Umur</label>
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Age} Tahun
           </span>
         </div>
@@ -94,16 +107,16 @@ export const Step1Basic: React.FC = () => {
           min={1}
           max={100}
           onChange={handleSliderChange('Age')}
-          color="primary"
+          sx={sliderSx}
           className="py-4"
         />
       </div>
 
       {/* Height Slider */}
-      <div className="space-y-2 pt-2">
+      <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-semibold text-slate-700">Tinggi Badan</label>
-          <span className="text-sm font-bold text-teal-600 px-3 py-1 rounded-full bg-teal-50">
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">Tinggi Badan</label>
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Height} cm
           </span>
         </div>
@@ -112,25 +125,25 @@ export const Step1Basic: React.FC = () => {
           min={100}
           max={220}
           onChange={handleSliderChange('Height')}
-          color="primary"
+          sx={sliderSx}
           className="py-4"
         />
       </div>
 
       {/* Weight Slider */}
-      <div className="space-y-2 pt-2">
+      <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-semibold text-slate-700">Berat Badan</label>
-          <span className="text-sm font-bold text-teal-600 px-3 py-1 rounded-full bg-teal-50">
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">Berat Badan</label>
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Weight} kg
           </span>
         </div>
         <Slider
           value={formData.Weight}
           min={30}
-          max={200}
+          max={180}
           onChange={handleSliderChange('Weight')}
-          color="primary"
+          sx={sliderSx}
           className="py-4"
         />
       </div>

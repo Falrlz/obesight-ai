@@ -9,27 +9,20 @@ export const Step2Diet: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn">
-      <div>
-        <h2 className="text-xl font-bold text-slate-800">2. Pola Makan & Genetik</h2>
-        <p className="text-sm text-slate-500 mt-1">
-          Pertanyaan mengenai riwayat keluarga dan perilaku konsumsi makanan harian Anda.
-        </p>
-      </div>
-
+    <div className="space-y-7 sm:space-y-8 animate-slideIn">
       {/* Riwayat Obesitas Keluarga */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Apakah ada anggota keluarga sedarah yang memiliki riwayat obesitas?
         </label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => updateField('family_history', 'yes')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.family_history === 'yes'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
             Ya
@@ -37,10 +30,10 @@ export const Step2Diet: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('family_history', 'no')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.family_history === 'no'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
             Tidak
@@ -49,18 +42,18 @@ export const Step2Diet: React.FC = () => {
       </div>
 
       {/* FAVC - Makanan Berkalori Tinggi */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Apakah Anda sering mengonsumsi makanan berkalori tinggi? (gorengan, fast food, minuman manis)
         </label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => updateField('FAVC', 'yes')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.FAVC === 'yes'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
             Ya, Sering
@@ -68,10 +61,10 @@ export const Step2Diet: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('FAVC', 'no')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.FAVC === 'no'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
             Jarang / Tidak Pernah
@@ -80,36 +73,35 @@ export const Step2Diet: React.FC = () => {
       </div>
 
       {/* FCVC - Frekuensi Sayuran */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Seberapa sering Anda mengonsumsi sayuran dalam makan utama Anda?
         </label>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 1, label: 'Jarang', emoji: '🥗' },
-            { value: 2, label: 'Kadang-kadang', emoji: '🥗🥗' },
-            { value: 3, label: 'Selalu', emoji: '🥗🥗🥗' },
+            { value: 1, label: 'Jarang' },
+            { value: 2, label: 'Kadang-kadang' },
+            { value: 3, label: 'Selalu' },
           ].map((item) => (
             <button
               key={item.value}
               type="button"
               onClick={() => updateField('FCVC', item.value)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center gap-1 ${
+              className={`p-4 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer ${
                 formData.FCVC === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
-              <span className="text-lg">{item.emoji}</span>
-              <span className="text-xs font-semibold">{item.label}</span>
+              <span className="text-sm font-medium">{item.label}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* NCP - Jumlah Makan Utama */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Berapa kali Anda makan makanan utama dalam sehari?
         </label>
         <div className="grid grid-cols-4 gap-2">
@@ -118,10 +110,10 @@ export const Step2Diet: React.FC = () => {
               key={num}
               type="button"
               onClick={() => updateField('NCP', num)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-bold ${
+              className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
                 formData.NCP === num
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
               {num}x
@@ -131,8 +123,8 @@ export const Step2Diet: React.FC = () => {
       </div>
 
       {/* CAEC - Ngemil */}
-      <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Seberapa sering Anda makan camilan/makanan di antara jam makan utama?
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -146,10 +138,10 @@ export const Step2Diet: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('CAEC', item.value)}
-              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-xs font-semibold ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
                 formData.CAEC === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
               {item.label}

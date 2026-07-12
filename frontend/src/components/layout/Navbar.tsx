@@ -19,8 +19,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 50;
-      // Optimize by only triggering a state update if the scroll threshold state actually changes,
-      // avoiding redundant React renders on every single scroll event.
       setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
     };
 
@@ -29,25 +27,26 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when navigating
   const handleMobileNav = (action: () => void) => {
     setIsMobileMenuOpen(false);
     action();
   };
 
+  const navLinks = [
+    { label: 'Beranda', mobileLabel: 'Beranda', onClick: onNavigateHome, isActive: !isWizardActive },
+    { label: 'Skrining', mobileLabel: 'Skrining Mandiri', onClick: onNavigateWizard, isActive: isWizardActive },
+    { label: 'Tentang', mobileLabel: 'Tentang AI', onClick: onOpenAbout, isActive: false },
+  ];
+
+  const headerClass = `fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full py-4 transition-all duration-500 floating-nav ${isScrolled || isMobileMenuOpen ? 'navbar-scrolled' : 'bg-transparent'
+    }`;
+
+  const containerClass = `max-w-container-max 2xl:max-w-[1600px] mx-auto flex justify-between items-center transition-all duration-500 ${isScrolled ? 'px-0' : 'px-4 md:px-8 lg:px-[80px] 2xl:px-0'
+    }`;
+
   return (
-    <header
-      id="top-nav"
-      className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full py-4 transition-all duration-500 floating-nav ${
-        isScrolled || isMobileMenuOpen ? 'navbar-scrolled' : 'bg-transparent'
-      }`}
-    >
-      <div
-        id="nav-container"
-        className={`max-w-container-max mx-auto flex justify-between items-center transition-all duration-500 px-4 md:px-8 ${
-          isScrolled ? 'md:px-6' : 'md:px-page-margin-desktop'
-        }`}
-      >
+    <header id="top-nav" className={headerClass}>
+      <div id="nav-container" className={containerClass}>
         {/* Brand Logo */}
         <div
           onClick={() => handleMobileNav(onNavigateHome)}
@@ -66,39 +65,25 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Navigation Items (Desktop) */}
-        <div className="hidden md:flex gap-8 items-center">
-          <button
-            onClick={onNavigateHome}
-            className={`font-medium pt-1 pb-1 border-y-2 border-x-0 font-body-md transition-colors cursor-pointer border-t-transparent ${
-              !isWizardActive
-                ? 'text-secondary border-b-secondary'
-                : 'text-on-surface-variant hover:text-secondary border-b-transparent'
-            }`}
-          >
-            Beranda
-          </button>
-          <button
-            onClick={onNavigateWizard}
-            className={`font-medium pt-1 pb-1 border-y-2 border-x-0 font-body-md transition-colors cursor-pointer border-t-transparent ${
-              isWizardActive
-                ? 'text-secondary border-b-secondary'
-                : 'text-on-surface-variant hover:text-secondary border-b-transparent'
-            }`}
-          >
-            Skrining
-          </button>
-          <button
-            onClick={onOpenAbout}
-            className="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md cursor-pointer border-y-2 border-x-0 border-t-transparent border-b-transparent pt-1 pb-1 font-medium"
-          >
-            Tentang
-          </button>
+        <div className="hidden lg:flex gap-8 items-center">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={link.onClick}
+              className={`font-medium pt-1 pb-1 border-y-2 border-x-0 font-body-md transition-colors cursor-pointer border-t-transparent ${link.isActive
+                  ? 'text-secondary border-b-secondary'
+                  : 'text-on-surface-variant hover:text-secondary border-b-transparent'
+                }`}
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
 
         {/* Mobile Menu Button (Hamburger) */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="flex md:hidden p-2 text-on-surface hover:text-secondary transition-colors z-50 focus:outline-none"
+          className="flex lg:hidden p-2 text-on-surface hover:text-secondary transition-colors z-50 focus:outline-none"
           aria-label="Toggle Menu"
         >
           {isMobileMenuOpen ? (
@@ -115,29 +100,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[60px] bg-background/95 backdrop-blur-md z-40 flex flex-col p-6 space-y-6 transition-all duration-300">
-          <button
-            onClick={() => handleMobileNav(onNavigateHome)}
-            className={`text-left text-xl font-bold py-3 border-b border-outline-variant/20 transition-colors ${
-              !isWizardActive ? 'text-secondary' : 'text-on-surface-variant'
-            }`}
-          >
-            Beranda
-          </button>
-          <button
-            onClick={() => handleMobileNav(onNavigateWizard)}
-            className={`text-left text-xl font-bold py-3 border-b border-outline-variant/20 transition-colors ${
-              isWizardActive ? 'text-secondary' : 'text-on-surface-variant'
-            }`}
-          >
-            Skrining Mandiri
-          </button>
-          <button
-            onClick={() => handleMobileNav(onOpenAbout)}
-            className="text-left text-xl font-bold py-3 border-b border-outline-variant/20 text-on-surface-variant transition-colors"
-          >
-            Tentang AI
-          </button>
+        <div className="lg:hidden fixed inset-0 top-[60px] bg-background/95 backdrop-blur-md z-40 flex flex-col p-6 space-y-6 transition-all duration-300">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => handleMobileNav(link.onClick)}
+              className={`text-left text-xl font-bold py-3 border-b border-outline-variant/20 transition-colors ${link.isActive ? 'text-secondary' : 'text-on-surface-variant'
+                }`}
+            >
+              {link.mobileLabel}
+            </button>
+          ))}
         </div>
       )}
     </header>
