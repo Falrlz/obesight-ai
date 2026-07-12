@@ -16,24 +16,6 @@ const LOADING_STEPS = [
   'Menyusun rekomendasi kesehatan personal bilingual...',
 ];
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useFormContext } from '../context/FormContext';
-import { predictObesity } from '../services/api';
-import StepIndicator from '../components/wizard/StepIndicator';
-import Step1Basic from '../components/wizard/Step1Basic';
-import Step2Diet from '../components/wizard/Step2Diet';
-import Step3Activity from '../components/wizard/Step3Activity';
-import Step4Habits from '../components/wizard/Step4Habits';
-
-const LOADING_STEPS = [
-  'Membangun koneksi ke ObeSight API...',
-  'Menghitung Indeks Massa Tubuh (BMI)...',
-  'Mengevaluasi variabel genetik & antropometri...',
-  'Mengeksekusi model kecerdasan buatan (LightGBM/XGBoost)...',
-  'Menyusun rekomendasi kesehatan personal bilingual...',
-];
-
 export const WizardPage: React.FC = () => {
   const navigate = useNavigate();
   const [loadingTextIdx, setLoadingTextIdx] = useState(0);
