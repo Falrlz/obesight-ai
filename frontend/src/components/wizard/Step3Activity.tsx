@@ -9,10 +9,10 @@ export const Step3Activity: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-slideIn">
       <div>
-        <h2 className="text-xl font-bold text-slate-800">3. Kebiasaan Hidrasi & Aktivitas</h2>
-        <p className="text-sm text-slate-500 mt-1">
+        <h2 className="text-xl font-bold text-on-surface">3. Kebiasaan Hidrasi & Aktivitas</h2>
+        <p className="text-sm text-text-secondary mt-1">
           Pertanyaan mengenai tingkat olahraga, hidrasi harian, serta kepedulian kalori Anda.
         </p>
       </div>
@@ -24,18 +24,18 @@ export const Step3Activity: React.FC = () => {
         </label>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 1, label: '1 - 2 Liter', desc: '(Sekitar 4-8 gelas)', emoji: '💧' },
-            { value: 2, label: '2 Liter', desc: '(Sekitar 8 gelas)', emoji: '💧💧' },
-            { value: 3, label: 'Lebih dari 2 L', desc: '(> 8 gelas)', emoji: '💧💧💧' },
+            { value: 1, label: '1 - 2 Liter', desc: '(Sekitar 4-8 Gelas)', emoji: '💧' },
+            { value: 2, label: '2 Liter', desc: '(Sekitar 8 Gelas)', emoji: '💧💧' },
+            { value: 3, label: 'Lebih dari 2 L', desc: '(> 8 Gelas)', emoji: '💧💧💧' },
           ].map((item) => (
             <button
               key={item.value}
               type="button"
               onClick={() => updateField('CH2O', item.value)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center gap-1 ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center gap-1 cursor-pointer ${
                 formData.CH2O === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-500 hover:border-slate-300'
               }`}
             >
               <span className="text-xl">{item.emoji}</span>
@@ -62,10 +62,10 @@ export const Step3Activity: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('FAF', item.value)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center cursor-pointer ${
                 formData.FAF === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
               }`}
             >
               <span className="text-xs font-bold">{item.label}</span>
@@ -84,10 +84,10 @@ export const Step3Activity: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('SCC', 'yes')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.SCC === 'yes'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Ya, Saya Catat
@@ -95,10 +95,10 @@ export const Step3Activity: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('SCC', 'no')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.SCC === 'no'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Tidak Pernah
@@ -115,10 +115,10 @@ export const Step3Activity: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('SMOKE', 'yes')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.SMOKE === 'yes'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Ya
@@ -126,10 +126,10 @@ export const Step3Activity: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('SMOKE', 'no')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.SMOKE === 'no'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Tidak

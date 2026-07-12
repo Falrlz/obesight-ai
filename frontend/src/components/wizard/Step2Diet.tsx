@@ -9,10 +9,10 @@ export const Step2Diet: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-slideIn">
       <div>
-        <h2 className="text-xl font-bold text-slate-800">2. Pola Makan & Genetik</h2>
-        <p className="text-sm text-slate-500 mt-1">
+        <h2 className="text-xl font-bold text-on-surface">2. Pola Makan & Genetik</h2>
+        <p className="text-sm text-text-secondary mt-1">
           Pertanyaan mengenai riwayat keluarga dan perilaku konsumsi makanan harian Anda.
         </p>
       </div>
@@ -26,10 +26,10 @@ export const Step2Diet: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('family_history', 'yes')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.family_history === 'yes'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Ya
@@ -37,10 +37,10 @@ export const Step2Diet: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('family_history', 'no')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.family_history === 'no'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Tidak
@@ -57,10 +57,10 @@ export const Step2Diet: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('FAVC', 'yes')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.FAVC === 'yes'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Ya, Sering
@@ -68,10 +68,10 @@ export const Step2Diet: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('FAVC', 'no')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
               formData.FAVC === 'no'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             Jarang / Tidak Pernah
@@ -94,10 +94,10 @@ export const Step2Diet: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('FCVC', item.value)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center gap-1 ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center gap-1 cursor-pointer ${
                 formData.FCVC === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-500 hover:border-slate-300'
               }`}
             >
               <span className="text-lg">{item.emoji}</span>
@@ -118,10 +118,10 @@ export const Step2Diet: React.FC = () => {
               key={num}
               type="button"
               onClick={() => updateField('NCP', num)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-bold ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-bold cursor-pointer ${
                 formData.NCP === num
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
               }`}
             >
               {num}x
@@ -146,10 +146,10 @@ export const Step2Diet: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('CAEC', item.value)}
-              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-xs font-semibold ${
+              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-xs font-semibold cursor-pointer ${
                 formData.CAEC === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
               }`}
             >
               {item.label}

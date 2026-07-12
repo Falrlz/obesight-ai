@@ -9,10 +9,10 @@ export const Step4Habits: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-slideIn">
       <div>
-        <h2 className="text-xl font-bold text-slate-800">4. Gaya Hidup & Setelan</h2>
-        <p className="text-sm text-slate-500 mt-1">
+        <h2 className="text-xl font-bold text-on-surface">4. Gaya Hidup & Setelan</h2>
+        <p className="text-sm text-text-secondary mt-1">
           Langkah akhir mengenai screen-time harian, transportasi, dan preferensi bahasa Anda.
         </p>
       </div>
@@ -32,10 +32,10 @@ export const Step4Habits: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('TUE', item.value)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center gap-1 ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center gap-1 cursor-pointer ${
                 formData.TUE === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-500 hover:border-slate-300'
               }`}
             >
               <span className="text-xl">{item.emoji}</span>
@@ -62,10 +62,10 @@ export const Step4Habits: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('CALC', item.value)}
-              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-xs font-semibold ${
+              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-xs font-semibold cursor-pointer ${
                 formData.CALC === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
               }`}
             >
               {item.label}
@@ -91,10 +91,10 @@ export const Step4Habits: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('MTRANS', item.value)}
-              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 text-xs font-semibold ${
+              className={`p-2.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 text-xs font-semibold cursor-pointer ${
                 formData.MTRANS === item.value
-                  ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
               }`}
             >
               <span>{item.emoji}</span>
@@ -113,10 +113,10 @@ export const Step4Habits: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('language', 'id')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold flex items-center justify-center gap-2 ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer ${
               formData.language === 'id'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             <span>🇮🇩</span> Bahasa Indonesia
@@ -124,10 +124,10 @@ export const Step4Habits: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('language', 'en')}
-            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold flex items-center justify-center gap-2 ${
+            className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer ${
               formData.language === 'en'
-                ? 'border-teal-500 bg-teal-50/40 text-teal-700 ring-1 ring-teal-500'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                : 'border-outline-variant bg-white text-slate-600 hover:border-slate-300'
             }`}
           >
             <span>🇬🇧</span> English
