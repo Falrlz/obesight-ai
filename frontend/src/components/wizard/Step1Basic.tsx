@@ -6,8 +6,8 @@ const sliderSx = {
   color: '#065f46',
   height: 6,
   '& .MuiSlider-thumb': {
-    width: 18,
-    height: 18,
+    width: 20,
+    height: 20,
     backgroundColor: '#fff',
     border: '2px solid #065f46',
     transition: 'box-shadow 0.15s ease-in-out',
@@ -50,22 +50,15 @@ export const Step1Basic: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-slideIn">
-      <div>
-        <h2 className="text-xl font-bold text-on-surface">1. Data Dasar & Fisik</h2>
-        <p className="text-sm text-text-secondary mt-1">
-          Masukkan informasi profil dasar dan ukuran antropometri tubuh Anda.
-        </p>
-      </div>
-
       {/* Name Input */}
       <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">Nama Panggilan</label>
+        <label className="text-base font-semibold text-text-secondary block">Nama Panggilan</label>
         <input
           type="text"
           placeholder="Masukkan nama Anda..."
           value={formData.name}
           onChange={handleNameChange}
-          className="w-full px-4 py-3 rounded-2xl bg-slate-50/50 border border-outline-variant focus:border-secondary focus:bg-white focus:outline-none transition-all duration-200"
+          className="w-full px-5 py-3.5 rounded-2xl bg-slate-50/50 border border-outline-variant focus:border-secondary focus:bg-white focus:outline-none transition-all duration-200 text-text-secondary text-lg"
         />
         {isNameEmpty && (
           <p className="text-xs text-rose-500 font-medium">Nama wajib diisi</p>
@@ -74,31 +67,29 @@ export const Step1Basic: React.FC = () => {
 
       {/* Gender Selection */}
       <div className="space-y-2">
-        <label className="text-sm font-semibold text-slate-700 block">Jenis Kelamin</label>
+        <label className="text-base font-semibold text-text-secondary block">Jenis Kelamin</label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => handleGenderSelect('Male')}
-            className={`p-4 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex flex-col items-center justify-center gap-2 cursor-pointer ${
+            className={`p-4.5 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex items-center justify-center cursor-pointer ${
               formData.Gender === 'Male'
                 ? 'border-secondary bg-secondary/5 text-secondary shadow-md ring-1 ring-secondary'
-                : 'border-outline-variant bg-white text-slate-500 hover:border-slate-300'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-3xl">👨</span>
-            <span className="text-sm font-bold">Laki-laki</span>
+            <span className="text-base font-bold">Laki-laki</span>
           </button>
           <button
             type="button"
             onClick={() => handleGenderSelect('Female')}
-            className={`p-4 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex flex-col items-center justify-center gap-2 cursor-pointer ${
+            className={`p-4.5 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex items-center justify-center cursor-pointer ${
               formData.Gender === 'Female'
                 ? 'border-secondary bg-secondary/5 text-secondary shadow-md ring-1 ring-secondary'
-                : 'border-outline-variant bg-white text-slate-500 hover:border-slate-300'
+                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-3xl">👩</span>
-            <span className="text-sm font-bold">Perempuan</span>
+            <span className="text-base font-bold">Perempuan</span>
           </button>
         </div>
       </div>
@@ -106,8 +97,8 @@ export const Step1Basic: React.FC = () => {
       {/* Age Input */}
       <div className="space-y-2 pt-2">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-semibold text-slate-700">Umur</label>
-          <span className="text-sm font-bold text-secondary px-3 py-1 rounded-full bg-secondary/10">
+          <label className="text-base font-semibold text-text-secondary">Umur</label>
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Age} Tahun
           </span>
         </div>
@@ -124,8 +115,8 @@ export const Step1Basic: React.FC = () => {
       {/* Height Slider */}
       <div className="space-y-2 pt-2">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-semibold text-slate-700">Tinggi Badan</label>
-          <span className="text-sm font-bold text-secondary px-3 py-1 rounded-full bg-secondary/10">
+          <label className="text-base font-semibold text-text-secondary">Tinggi Badan</label>
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Height} cm
           </span>
         </div>
@@ -142,15 +133,15 @@ export const Step1Basic: React.FC = () => {
       {/* Weight Slider */}
       <div className="space-y-2 pt-2">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-semibold text-slate-700">Berat Badan</label>
-          <span className="text-sm font-bold text-secondary px-3 py-1 rounded-full bg-secondary/10">
+          <label className="text-base font-semibold text-text-secondary">Berat Badan</label>
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Weight} kg
           </span>
         </div>
         <Slider
           value={formData.Weight}
           min={30}
-          max={200}
+          max={180}
           onChange={handleSliderChange('Weight')}
           sx={sliderSx}
           className="py-4"

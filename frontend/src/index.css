@@ -52,11 +52,19 @@ header.floating-nav {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(118, 119, 123, 0.1);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
+  .navbar-scrolled {
+    max-width: 60%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (max-width: 1023px) {
   .navbar-scrolled {
     max-width: 95%;
     padding-left: 1rem;
@@ -78,7 +86,8 @@ header.floating-nav {
 }
 
 /* Ensure pinned element has lower z-index so HowItWorks can overlap it */
-.pin-spacer, #pin {
+.pin-spacer,
+#pin {
   z-index: 10 !important;
 }
 
@@ -164,6 +173,7 @@ header.floating-nav {
     gap: 32px;
     margin-top: 6vh;
   }
+
   .feature-card-animated {
     min-height: 360px;
     padding: 36px;
@@ -231,6 +241,7 @@ header.floating-nav {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -258,6 +269,7 @@ header.floating-nav {
     opacity: 0;
     transform: translateX(16px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -270,10 +282,13 @@ header.floating-nav {
 
 /* AI diagnostics scanning animation */
 @keyframes scan {
-  0%, 100% {
+
+  0%,
+  100% {
     top: 0%;
     opacity: 0.15;
   }
+
   50% {
     top: 100%;
     opacity: 0.85;
@@ -282,4 +297,37 @@ header.floating-nav {
 
 .scanner-line {
   animation: scan 2.5s ease-in-out infinite;
-}
+}
+
+/* ---------- CUSTOM ANIMATIONS FOR AI STEP VISUALIZER ---------- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 16s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
