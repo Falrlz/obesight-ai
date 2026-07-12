@@ -9,10 +9,10 @@ export const Step4Habits: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-slideIn">
+    <div className="space-y-7 sm:space-y-8 animate-slideIn">
       {/* TUE - Waktu Layar/Gadget */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Berapa jam Anda menghabiskan waktu di depan layar (gadget, komputer, TV) setiap hari?
         </label>
         <div className="grid grid-cols-3 gap-3">
@@ -27,20 +27,20 @@ export const Step4Habits: React.FC = () => {
               onClick={() => updateField('TUE', item.value)}
               className={`p-4 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center gap-1 cursor-pointer ${
                 formData.TUE === item.value
-                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                   : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
-              <span className="text-sm font-bold">{item.label}</span>
-              <span className="text-xs text-text-secondary/70 font-medium">{item.desc}</span>
+              <span className="text-sm font-medium">{item.label}</span>
+              <span className="text-xs font-normal text-text-secondary/70">{item.desc}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* CALC - Kebiasaan Alkohol */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Seberapa sering Anda mengonsumsi minuman beralkohol?
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -54,9 +54,9 @@ export const Step4Habits: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('CALC', item.value)}
-              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-semibold cursor-pointer ${
+              className={`p-3 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
                 formData.CALC === item.value
-                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                   : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
@@ -67,8 +67,8 @@ export const Step4Habits: React.FC = () => {
       </div>
 
       {/* MTRANS - Alat Transportasi */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Apa transportasi utama yang Anda gunakan untuk beraktivitas sehari-hari?
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -83,46 +83,15 @@ export const Step4Habits: React.FC = () => {
               key={item.value}
               type="button"
               onClick={() => updateField('MTRANS', item.value)}
-              className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 text-sm font-semibold cursor-pointer ${
+              className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 text-sm font-medium cursor-pointer ${
                 formData.MTRANS === item.value
-                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                   : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
               <span>{item.label}</span>
             </button>
           ))}
-        </div>
-      </div>
-
-      {/* Language Preferensi */}
-      <div className="space-y-2 pt-2">
-        <label className="text-base font-semibold text-text-secondary block">
-          Bahasa untuk Hasil & Saran Kesehatan
-        </label>
-        <div className="grid grid-cols-2 gap-4">
-          <button
-            type="button"
-            onClick={() => updateField('language', 'id')}
-            className={`p-4 rounded-xl border text-center transition-all duration-200 active:scale-95 text-base font-semibold flex items-center justify-center gap-2 cursor-pointer ${
-              formData.language === 'id'
-                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
-                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
-            }`}
-          >
-            Bahasa Indonesia
-          </button>
-          <button
-            type="button"
-            onClick={() => updateField('language', 'en')}
-            className={`p-4 rounded-xl border text-center transition-all duration-200 active:scale-95 text-base font-semibold flex items-center justify-center gap-2 cursor-pointer ${
-              formData.language === 'en'
-                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
-                : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
-            }`}
-          >
-            English
-          </button>
         </div>
       </div>
     </div>

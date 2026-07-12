@@ -13,7 +13,7 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => 
   ];
 
   return (
-    <div className="flex items-center gap-4 select-none">
+    <div className="flex items-center gap-4 sm:gap-5 md:gap-6 select-none">
       {steps.map((_, idx) => {
         const isCompleted = idx < currentStep;
         const isActive = idx === currentStep;
@@ -21,7 +21,7 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => 
         return (
           <div
             key={idx}
-            className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-base transition-all duration-300 border-2 ${
+            className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-bold text-base sm:text-lg transition-all duration-300 border-2 ${
               isCompleted
                 ? 'bg-secondary border-secondary text-white shadow-sm'
                 : isActive
@@ -31,7 +31,7 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => 
           >
             {isCompleted ? (
               <svg
-                className="w-5 h-5"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="3.5"

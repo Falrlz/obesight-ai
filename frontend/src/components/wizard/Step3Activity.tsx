@@ -9,10 +9,10 @@ export const Step3Activity: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-slideIn">
+    <div className="space-y-7 sm:space-y-8 animate-slideIn">
       {/* CH2O - Konsumsi Air Mineral */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Berapa banyak air mineral yang Anda minum dalam sehari?
         </label>
         <div className="grid grid-cols-3 gap-3">
@@ -27,20 +27,20 @@ export const Step3Activity: React.FC = () => {
               onClick={() => updateField('CH2O', item.value)}
               className={`p-4 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center gap-1 cursor-pointer ${
                 formData.CH2O === item.value
-                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                   : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
-              <span className="text-sm font-bold">{item.label}</span>
-              <span className="text-xs text-text-secondary/70 font-medium">{item.desc}</span>
+              <span className="text-sm font-medium">{item.label}</span>
+              <span className="text-xs font-normal text-text-secondary/70">{item.desc}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* FAF - Aktivitas Fisik (Olahraga) */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Berapa hari Anda berolahraga atau melakukan aktivitas fisik dalam seminggu?
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -56,29 +56,29 @@ export const Step3Activity: React.FC = () => {
               onClick={() => updateField('FAF', item.value)}
               className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex flex-col items-center justify-center cursor-pointer ${
                 formData.FAF === item.value
-                  ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                  ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                   : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
               }`}
             >
-              <span className="text-sm font-bold">{item.label}</span>
-              <span className="text-xs text-text-secondary/75 mt-0.5 font-medium">{item.desc}</span>
+              <span className="text-sm font-medium">{item.label}</span>
+              <span className="text-xs font-normal text-text-secondary/70 mt-0.5">{item.desc}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* SCC - Pemantauan Kalori */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Apakah Anda terbiasa memantau atau menghitung jumlah asupan kalori harian Anda?
         </label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => updateField('SCC', 'yes')}
-            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-base font-semibold cursor-pointer ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.SCC === 'yes'
-                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
@@ -87,9 +87,9 @@ export const Step3Activity: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('SCC', 'no')}
-            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-base font-semibold cursor-pointer ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.SCC === 'no'
-                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
@@ -99,17 +99,17 @@ export const Step3Activity: React.FC = () => {
       </div>
 
       {/* SMOKE - Merokok */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">
           Apakah Anda memiliki kebiasaan merokok?
         </label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => updateField('SMOKE', 'yes')}
-            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-base font-semibold cursor-pointer ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.SMOKE === 'yes'
-                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
@@ -118,9 +118,9 @@ export const Step3Activity: React.FC = () => {
           <button
             type="button"
             onClick={() => updateField('SMOKE', 'no')}
-            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-base font-semibold cursor-pointer ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 text-sm font-medium cursor-pointer ${
               formData.SMOKE === 'no'
-                ? 'border-secondary bg-secondary/5 text-secondary ring-1 ring-secondary shadow-sm'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >

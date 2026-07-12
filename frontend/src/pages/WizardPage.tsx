@@ -31,8 +31,8 @@ const STEP_METADATA = [
     desc: 'Pertanyaan mengenai tingkat olahraga, hidrasi harian, serta kepedulian kalori Anda.'
   },
   {
-    title: 'Gaya Hidup & Setelan',
-    desc: 'Langkah akhir mengenai screen-time harian, transportasi, dan preferensi bahasa Anda.'
+    title: 'Gaya Hidup Harian',
+    desc: 'Langkah akhir mengenai screen-time harian, konsumsi alkohol, dan transportasi Anda.'
   }
 ];
 
@@ -201,7 +201,7 @@ export const WizardPage: React.FC = () => {
       {!loading && !error && (
         <div className="max-w-container-max 2xl:max-w-[1600px] w-full z-10 flex flex-col gap-8 px-4 md:px-8 lg:px-[80px] 2xl:px-0">
           {/* Header Layout: Outside the grid, spanning full width */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-6 border-b border-outline-variant/30 w-full">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-6 w-full">
             <div className="max-w-2xl space-y-1.5">
               <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-on-surface transition-all duration-300">
                 {STEP_METADATA[activeStep].title}

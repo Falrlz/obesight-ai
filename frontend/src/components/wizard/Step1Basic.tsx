@@ -49,10 +49,10 @@ export const Step1Basic: React.FC = () => {
   const isNameEmpty = formData.name.trim() === '';
 
   return (
-    <div className="space-y-6 animate-slideIn">
+    <div className="space-y-7 sm:space-y-8 animate-slideIn">
       {/* Name Input */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">Nama Panggilan</label>
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">Nama Panggilan</label>
         <input
           type="text"
           placeholder="Masukkan nama Anda..."
@@ -61,43 +61,43 @@ export const Step1Basic: React.FC = () => {
           className="w-full px-5 py-3.5 rounded-2xl bg-slate-50/50 border border-outline-variant focus:border-secondary focus:bg-white focus:outline-none transition-all duration-200 text-text-secondary text-lg"
         />
         {isNameEmpty && (
-          <p className="text-xs text-rose-500 font-medium">Nama wajib diisi</p>
+          <p className="text-sm font-medium text-rose-500">Nama wajib diisi</p>
         )}
       </div>
 
       {/* Gender Selection */}
-      <div className="space-y-2">
-        <label className="text-base font-semibold text-text-secondary block">Jenis Kelamin</label>
+      <div className="space-y-2.5 sm:space-y-3">
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">Jenis Kelamin</label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => handleGenderSelect('Male')}
-            className={`p-4.5 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex items-center justify-center cursor-pointer ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer ${
               formData.Gender === 'Male'
-                ? 'border-secondary bg-secondary/5 text-secondary shadow-md ring-1 ring-secondary'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-base font-bold">Laki-laki</span>
+            <span className="text-sm font-medium">Laki-laki</span>
           </button>
           <button
             type="button"
             onClick={() => handleGenderSelect('Female')}
-            className={`p-4.5 rounded-2xl border text-center transition-all duration-300 active:scale-95 flex items-center justify-center cursor-pointer ${
+            className={`p-3.5 rounded-xl border text-center transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer ${
               formData.Gender === 'Female'
-                ? 'border-secondary bg-secondary/5 text-secondary shadow-md ring-1 ring-secondary'
+                ? 'border-secondary bg-secondary/[0.03] text-secondary ring-1 ring-secondary shadow-sm'
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-base font-bold">Perempuan</span>
+            <span className="text-sm font-medium">Perempuan</span>
           </button>
         </div>
       </div>
 
       {/* Age Input */}
-      <div className="space-y-2 pt-2">
+      <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-base font-semibold text-text-secondary">Umur</label>
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">Umur</label>
           <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Age} Tahun
           </span>
@@ -113,9 +113,9 @@ export const Step1Basic: React.FC = () => {
       </div>
 
       {/* Height Slider */}
-      <div className="space-y-2 pt-2">
+      <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-base font-semibold text-text-secondary">Tinggi Badan</label>
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">Tinggi Badan</label>
           <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Height} cm
           </span>
@@ -131,9 +131,9 @@ export const Step1Basic: React.FC = () => {
       </div>
 
       {/* Weight Slider */}
-      <div className="space-y-2 pt-2">
+      <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-base font-semibold text-text-secondary">Berat Badan</label>
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">Berat Badan</label>
           <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
             {formData.Weight} kg
           </span>
