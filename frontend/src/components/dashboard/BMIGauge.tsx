@@ -5,106 +5,127 @@ interface BMIGaugeProps {
   category: string;
 }
 
+/**
+ * BMI visualised as a horizontal WHO-category scale. The four zones
+ * (Kurus / Normal / Berlebih / Obesitas) are always shown so the user can read
+ * their result in context; the zone they fall into is highlighted and a pointer
+ * marks the exact value.
+ */
+const ZONES = [
+  {
+    label: 'Kurus',
+    basis: 14, // 15 → 18.5 on a 15–40 scale
+    bar: 'bg-sky-500',
+    muted: 'bg-sky-500/20',
+    text: 'text-sky-600',
+    badge: 'bg-sky-50 text-sky-700 border-sky-200',
+  },
+  {
+    label: 'Normal',
+    basis: 26, // 18.5 → 25
+    bar: 'bg-secondary',
+    muted: 'bg-secondary/20',
+    text: 'text-secondary',
+    badge: 'bg-secondary/[0.08] text-secondary border-secondary/25',
+  },
+  {
+    label: 'Berlebih',
+    basis: 20, // 25 → 30
+    bar: 'bg-amber-500',
+    muted: 'bg-amber-500/20',
+    text: 'text-amber-600',
+    badge: 'bg-amber-50 text-amber-700 border-amber-200',
+  },
+  {
+    label: 'Obesitas',
+    basis: 40, // 30 → 40
+    bar: 'bg-rose-500',
+    muted: 'bg-rose-500/20',
+    text: 'text-rose-600',
+    badge: 'bg-rose-50 text-rose-700 border-rose-200',
+  },
+];
+
 export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category }) => {
-  // Clamp BMI between 15 and 40 for visualization
   const minBmi = 15;
   const maxBmi = 40;
+  const span = maxBmi - minBmi;
+
   const clampedBmi = Math.max(minBmi, Math.min(bmi, maxBmi));
-  const percentage = ((clampedBmi - minBmi) / (maxBmi - minBmi)) * 100;
+  const position = ((clampedBmi - minBmi) / span) * 100;
+  // Keep the pointer/pill comfortably inside the track at the extremes
+  const markerPos = Math.max(5, Math.min(95, position));
 
-  // SVG parameters for half-circle gauge
-  const radius = 80;
-  const strokeWidth = 14;
-  const circumference = Math.PI * radius; // 251.3
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
-
-  // Determine color theme based on category
-  const getColorScheme = (cat: string) => {
-    const lowercaseCat = cat.toLowerCase();
-    if (lowercaseCat.includes('kurang') || lowercaseCat.includes('insufficient') || lowercaseCat.includes('underweight')) {
-      return {
-        color: 'text-sky-500',
-        bg: 'bg-sky-50',
-        border: 'border-sky-200',
-        stroke: '#0EA5E9',
-      };
-    } else if (lowercaseCat.includes('normal') || lowercaseCat.includes('ideal')) {
-      return {
-        color: 'text-emerald-500',
-        bg: 'bg-emerald-50',
-        border: 'border-emerald-200',
-        stroke: '#10B981',
-      };
-    } else if (lowercaseCat.includes('lebih') || lowercaseCat.includes('overweight')) {
-      return {
-        color: 'text-amber-500',
-        bg: 'bg-amber-50',
-        border: 'border-amber-200',
-        stroke: '#F59E0B',
-      };
-    } else {
-      // Obesity
-      return {
-        color: 'text-rose-500',
-        bg: 'bg-rose-50',
-        border: 'border-rose-200',
-        stroke: '#F43F5E',
-      };
-    }
-  };
-
-  const theme = getColorScheme(category);
+  const activeIdx = bmi < 18.5 ? 0 : bmi < 25 ? 1 : bmi < 30 ? 2 : 3;
+  const active = ZONES[activeIdx];
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
-      <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Indeks Massa Tubuh (BMI)</h3>
-      
-      <div className="relative w-48 h-28 flex justify-center mt-4">
-        {/* SVG Arc Gauge */}
-        <svg className="w-48 h-48 transform -rotate-180" viewBox="0 0 180 180">
-          {/* Background Track */}
-          <circle
-            cx="90"
-            cy="90"
-            r={radius}
-            fill="none"
-            stroke="#F1F5F9"
-            strokeWidth={strokeWidth}
-            strokeDasharray={circumference}
-            strokeLinecap="round"
-            className="transition-all duration-500"
-          />
-          {/* Colored Value Arc */}
-          <circle
-            cx="90"
-            cy="90"
-            r={radius}
-            fill="none"
-            stroke={theme.stroke}
-            strokeWidth={strokeWidth}
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            strokeLinecap="round"
-            className="transition-all duration-1000 ease-out"
-            style={{
-              transitionDelay: '100ms'
-            }}
-          />
-        </svg>
-
-        {/* Absolute Centered BMI Info */}
-        <div className="absolute bottom-0 text-center flex flex-col items-center">
-          <span className="text-4xl font-extrabold text-slate-800 tracking-tight">{bmi.toFixed(1)}</span>
-          <span className={`text-xs font-bold px-3 py-1 rounded-full mt-2 border ${theme.bg} ${theme.color} ${theme.border}`}>
-            {category}
-          </span>
-        </div>
+    <div className="flex flex-col h-full p-6 sm:p-8 bg-white rounded-3xl border border-outline-variant">
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="text-xs font-semibold text-text-secondary/70 uppercase tracking-wider">
+          Indeks Massa Tubuh
+        </h3>
+        <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${active.badge}`}>
+          {category}
+        </span>
       </div>
 
-      {/* Under labels for scale */}
-      <div className="flex justify-between w-full max-w-[200px] text-[10px] text-slate-400 mt-2 font-medium">
-        <span>BMI 15 (Kurus)</span>
-        <span>BMI 40 (Obesitas)</span>
+      {/* Value */}
+      <div className="mt-6 flex items-baseline gap-2">
+        <span className="text-5xl font-semibold text-on-surface tracking-tight tabular-nums leading-none">
+          {bmi.toFixed(1)}
+        </span>
+        <span className="text-sm font-medium text-text-secondary/70">kg/m²</span>
+      </div>
+
+      {/* Scale */}
+      <div className="mt-auto pt-8">
+        {/* Pointer */}
+        <div className="relative h-9">
+          <div
+            className="absolute bottom-0 flex flex-col items-center transition-all duration-1000 ease-out"
+            style={{ left: `${markerPos}%`, transform: 'translateX(-50%)' }}
+          >
+            <span
+              className={`px-2 py-0.5 rounded-full bg-white border border-outline-variant shadow-sm text-xs font-semibold tabular-nums ${active.text}`}
+            >
+              {bmi.toFixed(1)}
+            </span>
+            <span className="w-2 h-2 rotate-45 bg-white border-b border-r border-outline-variant -mt-1" />
+          </div>
+        </div>
+
+        {/* Zone bar */}
+        <div className="flex gap-1">
+          {ZONES.map((z, i) => (
+            <div
+              key={z.label}
+              className={`h-3 rounded-full transition-colors duration-500 ${
+                i === activeIdx ? z.bar : z.muted
+              }`}
+              style={{ flexBasis: `${z.basis}%` }}
+            />
+          ))}
+        </div>
+
+        {/* Zone labels */}
+        <div className="flex gap-1 mt-2">
+          {ZONES.map((z, i) => (
+            <div key={z.label} className="text-center" style={{ flexBasis: `${z.basis}%` }}>
+              <span
+                className={`text-[10px] sm:text-xs ${
+                  i === activeIdx ? `${z.text} font-semibold` : 'text-text-secondary/60 font-medium'
+                }`}
+              >
+                {z.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-4 text-xs text-text-secondary/70 leading-relaxed">
+          Rentang berat badan sehat berada pada BMI <strong className="text-text-secondary">18,5–24,9</strong>.
+        </p>
       </div>
     </div>
   );
