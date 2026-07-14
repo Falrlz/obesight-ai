@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getModelInfo } from '../services/api';
 import type { ModelInfoResponse } from '../services/api';
 import ParticleField from '../components/landing/ParticleField';
+import { useFormContext } from '../context/FormContext';
 
 const STEPS = [
   {
@@ -58,13 +59,12 @@ const DATASET_CLASSES = [
 
 export const AboutPage: React.FC = () => {
   const navigate = useNavigate();
+  const { resetForm } = useFormContext();
   const [modelInfo, setModelInfo] = useState<ModelInfoResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0 });
-
     let active = true;
     (async () => {
       try {
@@ -286,7 +286,10 @@ export const AboutPage: React.FC = () => {
             </p>
           </div>
           <button
-            onClick={() => navigate('/wizard')}
+            onClick={() => {
+              resetForm();
+              navigate('/wizard');
+            }}
             className="shrink-0 px-6 py-3 rounded-full text-sm font-semibold text-on-primary bg-secondary hover:bg-secondary/95 active:scale-95 transition-all shadow-md cursor-pointer"
           >
             Mulai Skrining

@@ -141,7 +141,41 @@ export const WizardPage: React.FC = () => {
     }
   };
 
-  const isStep1Valid = formData.name.trim() !== '';
+  const isCurrentStepValid = (() => {
+    switch (activeStep) {
+      case 0:
+        return (
+          formData.name.trim() !== '' &&
+          formData.Gender !== undefined &&
+          formData.Age !== undefined &&
+          formData.Height !== undefined &&
+          formData.Weight !== undefined
+        );
+      case 1:
+        return (
+          formData.family_history !== undefined &&
+          formData.FAVC !== undefined &&
+          formData.FCVC !== undefined &&
+          formData.NCP !== undefined &&
+          formData.CAEC !== undefined
+        );
+      case 2:
+        return (
+          formData.CH2O !== undefined &&
+          formData.FAF !== undefined &&
+          formData.SCC !== undefined &&
+          formData.SMOKE !== undefined
+        );
+      case 3:
+        return (
+          formData.TUE !== undefined &&
+          formData.CALC !== undefined &&
+          formData.MTRANS !== undefined
+        );
+      default:
+        return false;
+    }
+  })();
 
   return (
     <div className="relative flex flex-col items-center justify-start pt-28 pb-16 md:pt-32 w-full min-h-[calc(100vh-200px)] overflow-hidden bg-background">
@@ -243,8 +277,8 @@ export const WizardPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleNext}
-                      disabled={activeStep === 0 && !isStep1Valid}
-                      className={`px-6 py-2.5 rounded-full text-sm font-bold text-white bg-secondary hover:bg-secondary/95 active:scale-95 transition-all shadow-md flex items-center gap-1.5 cursor-pointer ${activeStep === 0 && !isStep1Valid ? 'opacity-50 cursor-not-allowed' : ''
+                      disabled={!isCurrentStepValid}
+                      className={`px-6 py-2.5 rounded-full text-sm font-bold text-white bg-secondary hover:bg-secondary/95 active:scale-95 transition-all shadow-md flex items-center gap-1.5 cursor-pointer ${!isCurrentStepValid ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                     >
                       Lanjut
@@ -256,7 +290,9 @@ export const WizardPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleSubmit}
-                      className="px-8 py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-secondary to-teal-700 hover:from-secondary/95 hover:to-teal-800 active:scale-95 transition-all shadow-lg flex items-center gap-2 cursor-pointer"
+                      disabled={!isCurrentStepValid}
+                      className={`px-8 py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-secondary to-teal-700 hover:from-secondary/95 hover:to-teal-800 active:scale-95 transition-all shadow-lg flex items-center gap-2 cursor-pointer ${!isCurrentStepValid ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
                     >
                       Analisis Sekarang
                       <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

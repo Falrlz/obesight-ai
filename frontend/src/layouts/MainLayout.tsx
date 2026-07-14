@@ -19,9 +19,6 @@ export const MainLayout: React.FC = () => {
     navigate('/tentang');
   };
 
-  const isWizardActive = location.pathname === '/wizard';
-  const isAboutActive = location.pathname === '/tentang';
-
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-background font-body-md overflow-x-hidden antialiased selection:bg-secondary selection:text-on-primary print:bg-white print:text-black">
       {/* Styles to optimize print rendering */}
@@ -71,8 +68,6 @@ export const MainLayout: React.FC = () => {
         onNavigateHome={handleNavigateHome}
         onNavigateWizard={handleNavigateWizard}
         onNavigateAbout={handleNavigateAbout}
-        isWizardActive={isWizardActive}
-        isAboutActive={isAboutActive}
       />
 
       <main className="flex-grow">
