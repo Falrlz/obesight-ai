@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout';
 import LandingPage from '../pages/LandingPage';
 import WizardPage from '../pages/WizardPage';
 import ResultPage from '../pages/ResultPage';
+import AboutPage from '../pages/AboutPage';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const AppRoutes: React.FC = () => {
         <Route index element={<LandingPage />} />
         <Route path="wizard" element={<WizardPage />} />
         <Route path="result" element={<ResultPage />} />
+        <Route path="tentang" element={<AboutPage />} />
       </Route>
     </Routes>
   );

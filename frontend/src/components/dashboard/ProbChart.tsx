@@ -17,50 +17,59 @@ export const ProbChart: React.FC<ProbChartProps> = ({ probabilities, predictedCl
     Obesity_Type_III: 'Obesitas Tingkat III (Ekstrem)',
   };
 
-  // Convert map to list and format percentages
-  const data = Object.entries(probabilities).map(([key, val]) => {
-    return {
+  // Convert map to list, format percentages, and sort by likelihood (desc)
+  const data = Object.entries(probabilities)
+    .map(([key, val]) => ({
       key,
       label: labelMapping[key] || key,
-      value: val * 100, // Convert to percentage
+      value: val * 100,
       isPredicted: key === predictedClassLabel,
-    };
-  });
+    }))
+    .sort((a, b) => b.value - a.value);
 
   return (
-    <div className="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm w-full">
-      <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-        Analisis Distribusi Probabilitas AI
+    <div className="h-full p-6 sm:p-8 bg-white rounded-3xl border border-outline-variant">
+      <h3 className="text-xs font-semibold text-text-secondary/70 uppercase tracking-wider">
+        Distribusi Probabilitas AI
       </h3>
-      <p className="text-xs text-slate-500 mb-6">
-        Distribusi probabilitas menunjukkan tingkat kecocokan kondisi fisik Anda dengan masing-masing kategori klasifikasi berat badan berdasarkan model Machine Learning.
+      <p className="text-sm text-text-secondary/80 mt-2 leading-relaxed">
+        Seberapa dekat kondisi fisik Anda dengan tiap kategori berat badan menurut model machine learning.
       </p>
 
-      <div className="space-y-4">
-        {data.map((item) => {
-          return (
-            <div key={item.key} className="space-y-1.5">
-              <div className="flex justify-between items-center text-xs">
-                <span className={`font-semibold ${item.isPredicted ? 'text-teal-600' : 'text-slate-600'}`}>
-                  {item.label} {item.isPredicted && '✨ (Prediksi AI)'}
-                </span>
-                <span className={`font-bold ${item.isPredicted ? 'text-teal-600' : 'text-slate-500'}`}>
-                  {item.value.toFixed(1)}%
-                </span>
-              </div>
-              <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                    item.isPredicted
-                      ? 'bg-gradient-to-r from-teal-500 to-indigo-500 shadow-sm'
-                      : 'bg-slate-300'
-                  }`}
-                  style={{ width: `${item.value}%` }}
-                />
-              </div>
+      <div className="mt-6 space-y-3.5">
+        {data.map((item) => (
+          <div key={item.key} className="space-y-1.5">
+            <div className="flex justify-between items-center gap-3 text-sm">
+              <span
+                className={`font-medium truncate ${
+                  item.isPredicted ? 'text-secondary' : 'text-text-secondary'
+                }`}
+              >
+                {item.label}
+                {item.isPredicted && (
+                  <span className="ml-2 inline-flex items-center rounded-full bg-secondary/[0.08] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-secondary align-middle">
+                    Prediksi
+                  </span>
+                )}
+              </span>
+              <span
+                className={`font-semibold tabular-nums shrink-0 ${
+                  item.isPredicted ? 'text-secondary' : 'text-text-secondary/70'
+                }`}
+              >
+                {item.value.toFixed(1)}%
+              </span>
             </div>
-          );
-        })}
+            <div className="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all duration-1000 ease-out ${
+                  item.isPredicted ? 'bg-secondary' : 'bg-outline-variant'
+                }`}
+                style={{ width: `${item.value}%` }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
