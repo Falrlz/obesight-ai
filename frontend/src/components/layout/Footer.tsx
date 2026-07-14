@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface FooterProps {
   onNavigateHome?: () => void;
@@ -11,6 +12,32 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateWizard,
   onNavigateAbout,
 }) => {
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      onNavigateHome?.();
+    }
+  };
+
+  const handleWizardClick = () => {
+    if (location.pathname === '/wizard') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      onNavigateWizard?.();
+    }
+  };
+
+  const handleAboutClick = () => {
+    if (location.pathname === '/tentang') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      onNavigateAbout?.();
+    }
+  };
+
   return (
     <footer className="w-full flex flex-col justify-between bg-black pt-24 -mt-px relative z-30 print:hidden">
       <div className="max-w-none px-4 md:px-page-margin-desktop lg:px-[6vw] w-full">
@@ -29,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({
             <ul className="space-y-4 font-normal">
               <li>
                 <button
-                  onClick={onNavigateHome}
+                  onClick={handleHomeClick}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
                   Beranda
@@ -37,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <button
-                  onClick={onNavigateWizard}
+                  onClick={handleWizardClick}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
                   Skrining
@@ -45,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <button
-                  onClick={onNavigateAbout}
+                  onClick={handleAboutClick}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
                   Tentang

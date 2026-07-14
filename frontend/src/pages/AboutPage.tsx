@@ -5,21 +5,6 @@ import type { ModelInfoResponse } from '../services/api';
 import ParticleField from '../components/landing/ParticleField';
 import { useFormContext } from '../context/FormContext';
 
-const STEPS = [
-  {
-    title: 'Skrining Gaya Hidup',
-    desc: 'Kuesioner singkat 4 langkah memetakan profil fisik dan kebiasaan harian Anda.',
-  },
-  {
-    title: 'Prediksi Model AI',
-    desc: 'Model klasifikasi machine learning memproses data untuk memperkirakan tingkat risiko obesitas.',
-  },
-  {
-    title: 'Insight Personal',
-    desc: 'Rekomendasi terarah untuk memperbaiki pola makan, hidrasi, dan aktivitas Anda.',
-  },
-];
-
 const KAGGLE_URL = 'https://www.kaggle.com/datasets/suleymansulak/obesity-dataset';
 
 const DATASET_ATTRIBUTES = [

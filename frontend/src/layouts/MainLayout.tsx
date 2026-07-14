@@ -1,11 +1,10 @@
 import React from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 
 export const MainLayout: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleNavigateHome = () => {
     navigate('/');
