@@ -16,7 +16,7 @@ export const StepVisualizer: React.FC<StepVisualizerProps> = ({ activeStep }) =>
   if (!src) return null;
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8 min-h-[300px] lg:min-h-[400px] overflow-hidden select-none">
+    <div className="relative w-full h-full flex items-center justify-center p-0 min-h-[300px] lg:min-h-[400px] overflow-hidden select-none">
       {/* Rotating dashed rings */}
       <div className="absolute top-6 right-8 w-10 h-10 border border-dashed border-secondary/25 rounded-full animate-spin-slow" />
       <div className="absolute bottom-8 left-6 w-7 h-7 border border-dashed border-secondary/20 rounded-full animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '10s' }} />
@@ -24,10 +24,18 @@ export const StepVisualizer: React.FC<StepVisualizerProps> = ({ activeStep }) =>
       {/* Floating particles scattered across the full height so the card never feels empty */}
       <div className="absolute top-1/4 left-8 w-1.5 h-1.5 bg-secondary/40 rounded-full animate-pulse" />
       <div className="absolute bottom-1/4 right-10 w-2 h-2 bg-secondary/30 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-      <div className="absolute top-10 left-1/3 w-1 h-1 bg-secondary/50 rounded-full animate-pulse" style={{ animationDuration: '2.2s' }} />
-      <div className="absolute bottom-12 right-1/3 w-1 h-1 bg-secondary/40 rounded-full animate-ping" style={{ animationDuration: '4s' }} />
+      <div className="absolute top-10 left-1/3 w-1.5 h-1.5 bg-secondary/50 rounded-full animate-pulse" style={{ animationDuration: '2.2s' }} />
+      <div className="absolute bottom-12 right-1/3 w-1.5 h-1.5 bg-secondary/40 rounded-full animate-ping" style={{ animationDuration: '4s' }} />
       <div className="absolute top-1/3 right-6 w-1.5 h-1.5 bg-secondary/35 rounded-full animate-bounce" style={{ animationDuration: '3.5s' }} />
-      <div className="absolute bottom-1/3 left-10 w-1 h-1 bg-secondary/45 rounded-full animate-pulse" style={{ animationDuration: '2.8s' }} />
+      <div className="absolute bottom-1/3 left-10 w-1.5 h-1.5 bg-secondary/45 rounded-full animate-pulse" style={{ animationDuration: '2.8s' }} />
+      <div className="absolute top-1/2 left-4 w-1 h-1 bg-secondary/40 rounded-full animate-ping" style={{ animationDuration: '3.8s' }} />
+      <div className="absolute top-16 right-1/4 w-1 h-1 bg-secondary/45 rounded-full animate-pulse" style={{ animationDuration: '2.6s' }} />
+      <div className="absolute bottom-20 left-1/4 w-2 h-2 bg-secondary/25 rounded-full animate-bounce" style={{ animationDuration: '4.2s' }} />
+      <div className="absolute top-1/3 left-1/2 w-1 h-1 bg-secondary/40 rounded-full animate-pulse" style={{ animationDuration: '3.2s' }} />
+      <div className="absolute bottom-1/4 left-1/2 w-1.5 h-1.5 bg-secondary/30 rounded-full animate-ping" style={{ animationDuration: '4.6s' }} />
+      <div className="absolute top-1/4 right-1/3 w-1 h-1 bg-secondary/50 rounded-full animate-bounce" style={{ animationDuration: '3s' }} />
+      <div className="absolute bottom-16 right-8 w-1 h-1 bg-secondary/40 rounded-full animate-pulse" style={{ animationDuration: '2.4s' }} />
+      <div className="absolute top-24 left-16 w-1 h-1 bg-secondary/35 rounded-full animate-ping" style={{ animationDuration: '5s' }} />
 
       {/* Illustration */}
       <img
@@ -35,7 +43,7 @@ export const StepVisualizer: React.FC<StepVisualizerProps> = ({ activeStep }) =>
         src={src}
         alt=""
         aria-hidden="true"
-        className="relative w-full max-w-[300px] h-auto drop-shadow-[0_16px_32px_rgba(6,95,70,0.18)] animate-float animate-fade-in"
+        className="relative w-full max-w-full h-auto animate-float animate-fade-in"
       />
     </div>
   );
