@@ -145,9 +145,6 @@ export const WizardPage: React.FC = () => {
 
   return (
     <div className="relative flex flex-col items-center justify-start pt-28 pb-16 md:pt-32 w-full min-h-[calc(100vh-200px)] overflow-hidden bg-background">
-      {/* Ambient background blur blobs */}
-      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] rounded-full bg-secondary/5 blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-secondary/5 blur-[120px] pointer-events-none z-0" />
 
       {/* 1. LOADING SCREEN - Medical AI Scanner */}
       {loading && (
