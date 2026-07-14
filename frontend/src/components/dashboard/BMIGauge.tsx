@@ -3,6 +3,7 @@ import React from 'react';
 interface BMIGaugeProps {
   bmi: number;
   category: string;
+  general?: string;
 }
 
 /**
@@ -46,7 +47,7 @@ const ZONES = [
   },
 ];
 
-export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category }) => {
+export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category, general }) => {
   const minBmi = 15;
   const maxBmi = 40;
   const span = maxBmi - minBmi;
@@ -79,7 +80,7 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category }) => {
       </div>
 
       {/* Scale */}
-      <div className="mt-auto pt-8">
+      <div className="pt-8">
         {/* Pointer */}
         <div className="relative h-9">
           <div
@@ -100,9 +101,8 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category }) => {
           {ZONES.map((z, i) => (
             <div
               key={z.label}
-              className={`h-3 rounded-full transition-colors duration-500 ${
-                i === activeIdx ? z.bar : z.muted
-              }`}
+              className={`h-3 rounded-full transition-colors duration-500 ${i === activeIdx ? z.bar : z.muted
+                }`}
               style={{ flexBasis: `${z.basis}%` }}
             />
           ))}
@@ -113,9 +113,8 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category }) => {
           {ZONES.map((z, i) => (
             <div key={z.label} className="text-center" style={{ flexBasis: `${z.basis}%` }}>
               <span
-                className={`text-[10px] sm:text-xs ${
-                  i === activeIdx ? `${z.text} font-semibold` : 'text-text-secondary/60 font-medium'
-                }`}
+                className={`text-[10px] sm:text-xs ${i === activeIdx ? `${z.text} font-semibold` : 'text-text-secondary/60 font-medium'
+                  }`}
               >
                 {z.label}
               </span>
@@ -127,6 +126,18 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category }) => {
           Rentang berat badan sehat berada pada BMI <strong className="text-text-secondary">18,5–24,9</strong>.
         </p>
       </div>
+
+      {/* Saran Kesehatan Utama */}
+      {general && (
+        <div className="mt-6 pt-6 border-t border-outline-variant/60">
+          <h4 className="text-xs font-semibold text-secondary uppercase tracking-wider mb-2">
+            Saran Kesehatan Utama
+          </h4>
+          <p className="text-on-surface/85 text-xs sm:text-sm leading-relaxed">
+            {general}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

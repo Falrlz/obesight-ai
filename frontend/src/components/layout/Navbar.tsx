@@ -3,15 +3,17 @@ import React, { useEffect, useState } from 'react';
 interface NavbarProps {
   onNavigateHome: () => void;
   onNavigateWizard: () => void;
-  onOpenAbout: () => void;
+  onNavigateAbout: () => void;
   isWizardActive: boolean;
+  isAboutActive: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
   onNavigateWizard,
-  onOpenAbout,
+  onNavigateAbout,
   isWizardActive,
+  isAboutActive,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,9 +35,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const navLinks = [
-    { label: 'Beranda', mobileLabel: 'Beranda', onClick: onNavigateHome, isActive: !isWizardActive },
+    { label: 'Beranda', mobileLabel: 'Beranda', onClick: onNavigateHome, isActive: !isWizardActive && !isAboutActive },
     { label: 'Skrining', mobileLabel: 'Skrining Mandiri', onClick: onNavigateWizard, isActive: isWizardActive },
-    { label: 'Tentang', mobileLabel: 'Tentang AI', onClick: onOpenAbout, isActive: false },
+    { label: 'Tentang', mobileLabel: 'Tentang AI', onClick: onNavigateAbout, isActive: isAboutActive },
   ];
 
   const headerClass = `fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full py-4 transition-all duration-500 floating-nav ${isScrolled || isMobileMenuOpen ? 'navbar-scrolled' : 'bg-transparent'

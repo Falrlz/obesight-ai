@@ -136,7 +136,11 @@ export const ResultPage: React.FC = () => {
         {/* VISUALIZATION */}
         <section className="grid grid-cols-1 lg:grid-cols-5 gap-5 sm:gap-6">
           <div className="lg:col-span-2">
-            <BMIGauge bmi={result.bmi} category={result.prediction_label_id} />
+            <BMIGauge
+              bmi={result.bmi}
+              category={result.prediction_label_id}
+              general={result.recommendations.general}
+            />
           </div>
           <div className="lg:col-span-3">
             <ProbChart
@@ -149,7 +153,6 @@ export const ResultPage: React.FC = () => {
         {/* INSIGHTS & RECOMMENDATIONS */}
         <section>
           <InsightCards
-            general={result.recommendations.general}
             specific={result.recommendations.specific}
           />
         </section>

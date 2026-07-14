@@ -3,13 +3,13 @@ import React from 'react';
 interface FooterProps {
   onNavigateHome?: () => void;
   onNavigateWizard?: () => void;
-  onOpenAbout?: () => void;
+  onNavigateAbout?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigateHome,
   onNavigateWizard,
-  onOpenAbout,
+  onNavigateAbout,
 }) => {
   return (
     <footer className="w-full flex flex-col justify-between bg-black pt-24 -mt-px relative z-30 print:hidden">
@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <button
-                  onClick={onOpenAbout}
+                  onClick={onNavigateAbout}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
                   Tentang
