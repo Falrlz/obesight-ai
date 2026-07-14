@@ -27,6 +27,10 @@ const sliderSx = {
     backgroundColor: '#065f46',
   },
 };
+const HEIGHT_MIN = 120;
+const HEIGHT_MAX = 300;
+const WEIGHT_MIN = 30;
+const WEIGHT_MAX = 500;
 
 export const Step1Basic: React.FC = () => {
   const { formData, setFormData } = useFormContext();
@@ -36,7 +40,8 @@ export const Step1Basic: React.FC = () => {
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, name: e.target.value }));
+    const cleanValue = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    setFormData((prev) => ({ ...prev, name: cleanValue }));
   };
 
   const handleSliderChange = (field: 'Age' | 'Height' | 'Weight') => (
@@ -98,12 +103,12 @@ export const Step1Basic: React.FC = () => {
       <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
           <label className="text-base sm:text-lg font-semibold text-text-secondary">Umur</label>
-          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
-            {formData.Age} Tahun
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10 select-none">
+            {formData.Age !== undefined && formData.Age !== null ? `${formData.Age} Tahun` : '- Tahun'}
           </span>
         </div>
         <Slider
-          value={formData.Age}
+          value={typeof formData.Age === 'number' ? formData.Age : 25}
           min={1}
           max={100}
           onChange={handleSliderChange('Age')}
@@ -116,14 +121,15 @@ export const Step1Basic: React.FC = () => {
       <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
           <label className="text-base sm:text-lg font-semibold text-text-secondary">Tinggi Badan</label>
-          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
-            {formData.Height} cm
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10 select-none">
+            {formData.Height !== undefined && formData.Height !== null ? `${formData.Height} cm` : '- cm'}
           </span>
         </div>
         <Slider
-          value={formData.Height}
-          min={100}
-          max={220}
+          value={typeof formData.Height === 'number' ? formData.Height : 170}
+          min={HEIGHT_MIN}
+          max={HEIGHT_MAX}
+          step={0.1}
           onChange={handleSliderChange('Height')}
           sx={sliderSx}
           className="py-4"
@@ -134,14 +140,15 @@ export const Step1Basic: React.FC = () => {
       <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
           <label className="text-base sm:text-lg font-semibold text-text-secondary">Berat Badan</label>
-          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10">
-            {formData.Weight} kg
+          <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10 select-none">
+            {formData.Weight !== undefined && formData.Weight !== null ? `${formData.Weight} kg` : '- kg'}
           </span>
         </div>
         <Slider
-          value={formData.Weight}
-          min={30}
-          max={180}
+          value={typeof formData.Weight === 'number' ? formData.Weight : 70}
+          min={WEIGHT_MIN}
+          max={WEIGHT_MAX}
+          step={0.1}
           onChange={handleSliderChange('Weight')}
           sx={sliderSx}
           className="py-4"

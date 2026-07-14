@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import logo from '../../assets/obesight-icon.svg';
 
 interface NavbarProps {
   onNavigateHome: () => void;
   onNavigateWizard: () => void;
   onNavigateAbout: () => void;
-  isWizardActive: boolean;
-  isAboutActive: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
   onNavigateWizard,
   onNavigateAbout,
-  isWizardActive,
-  isAboutActive,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +33,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     action();
   };
 
+  const isHomeActive = location.pathname === '/';
+  const isWizardActive = location.pathname === '/wizard';
+  const isAboutActive = location.pathname === '/tentang';
+
   const navLinks = [
-    { label: 'Beranda', mobileLabel: 'Beranda', onClick: onNavigateHome, isActive: !isWizardActive && !isAboutActive },
+    { label: 'Beranda', mobileLabel: 'Beranda', onClick: onNavigateHome, isActive: isHomeActive },
     { label: 'Skrining', mobileLabel: 'Skrining Mandiri', onClick: onNavigateWizard, isActive: isWizardActive },
     { label: 'Tentang', mobileLabel: 'Tentang AI', onClick: onNavigateAbout, isActive: isAboutActive },
   ];
@@ -54,13 +57,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => handleMobileNav(onNavigateHome)}
           className="flex items-center gap-2.5 cursor-pointer transition-transform active:scale-95 z-50"
         >
-          {/* Ikon Timbangan Cerdas (Smart Scale) */}
-          <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="4" />
-            <rect x="9" y="6" width="6" height="3" rx="1" strokeWidth="1.5" />
-            <path d="M6 10v6a2 2 0 0 0 2 2h1" />
-            <path d="M18 10v6a2 2 0 0 1-2 2h-1" />
-          </svg>
+          {/* Brand Icon */}
+          <img src={logo} className="w-6 h-6 object-contain text-secondary" alt="" />
           <span className="text-xl font-bold tracking-tight text-on-surface">
             OBESIGHT
           </span>

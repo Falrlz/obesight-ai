@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ParticleField from './ParticleField';
+import logo from '../../assets/obesight-icon.svg';
 
 /**
  * Properties for the Hero component.
@@ -52,13 +53,8 @@ export const Hero: React.FC<HeroProps> = ({ onStartAnalysis }) => {
             isDone ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
           }`}
         >
-          {/* Ikon Timbangan Cerdas (Smart Scale) */}
-          <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="4" />
-            <rect x="9" y="6" width="6" height="3" rx="1" strokeWidth="1.5" />
-            <path d="M6 10v6a2 2 0 0 0 2 2h1" />
-            <path d="M18 10v6a2 2 0 0 1-2 2h-1" />
-          </svg>
+          {/* Brand Icon */}
+          <img src={logo} className="w-5 h-5 object-contain text-secondary" alt="" />
           
           {/* Teks Brand */}
           <span className="font-bold text-sm tracking-wider text-on-surface uppercase font-sans">
