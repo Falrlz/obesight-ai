@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,6 +135,30 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {link.label}
               </button>
             ))}
+
+            {/* Language Switcher */}
+            <div className="flex items-center bg-surface-container-high/60 border border-outline-variant/30 p-0.5 rounded-full select-none ml-2">
+              <button
+                onClick={() => i18n.changeLanguage('id')}
+                className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-all duration-300 cursor-pointer ${
+                  i18n.language === 'id'
+                    ? 'text-white bg-secondary shadow-sm'
+                    : 'text-on-surface-variant hover:text-secondary'
+                }`}
+              >
+                ID
+              </button>
+              <button
+                onClick={() => i18n.changeLanguage('en')}
+                className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-all duration-300 cursor-pointer ${
+                  i18n.language === 'en'
+                    ? 'text-white bg-secondary shadow-sm'
+                    : 'text-on-surface-variant hover:text-secondary'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button (Hamburger) */}
@@ -187,6 +211,33 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {link.isActive && <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />}
                 </button>
               ))}
+
+              {/* Mobile Language Switcher */}
+              <div className="border-t border-outline-variant/40 mt-2 pt-3 px-4 pb-2 flex items-center justify-between">
+                <span className="text-xs font-semibold text-text-secondary/70">{t('navbar.language', 'Bahasa')}</span>
+                <div className="flex items-center bg-surface-container-high/60 border border-outline-variant/30 p-0.5 rounded-full select-none">
+                  <button
+                    onClick={() => handleMobileNav(() => i18n.changeLanguage('id'))}
+                    className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 cursor-pointer ${
+                      i18n.language === 'id'
+                        ? 'text-white bg-secondary shadow-sm'
+                        : 'text-on-surface-variant hover:text-secondary'
+                    }`}
+                  >
+                    ID
+                  </button>
+                  <button
+                    onClick={() => handleMobileNav(() => i18n.changeLanguage('en'))}
+                    className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 cursor-pointer ${
+                      i18n.language === 'en'
+                        ? 'text-white bg-secondary shadow-sm'
+                        : 'text-on-surface-variant hover:text-secondary'
+                    }`}
+                  >
+                    EN
+                  </button>
+                </div>
+              </div>
             </nav>
           </div>
         )}

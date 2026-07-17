@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { FormState, PredictResponse } from '../types';
 
 interface FormContextType {
@@ -17,7 +18,7 @@ interface FormContextType {
   setResult: (result: PredictResponse | null) => void;
 }
 
-const defaultFormData: FormState = {
+const defaultFormData = (lang: 'id' | 'en'): FormState => ({
   name: '',
   Age: undefined as any,
   Gender: undefined as any,
@@ -35,23 +36,34 @@ const defaultFormData: FormState = {
   TUE: undefined as any,
   CALC: undefined as any,
   MTRANS: undefined as any,
-  language: 'id',
-};
+  language: lang,
+});
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [formData, setFormData] = useState<FormState>(defaultFormData);
+  const { i18n } = useTranslation();
+  const currentLang = (i18n.language === 'en' || i18n.language === 'id') ? i18n.language : 'id';
+  
+  const [formData, setFormData] = useState<FormState>(() => defaultFormData(currentLang));
   const [activeStep, setActiveStep] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<PredictResponse | null>(null);
 
+  // Sync language with i18n
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      language: currentLang,
+    }));
+  }, [currentLang]);
+
   const nextStep = () => setActiveStep((prev) => Math.min(prev + 1, 3));
   const prevStep = () => setActiveStep((prev) => Math.max(prev - 1, 0));
 
   const resetForm = () => {
-    setFormData(defaultFormData);
+    setFormData(defaultFormData(currentLang));
     setActiveStep(0);
     setResult(null);
     setError(null);

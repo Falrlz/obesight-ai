@@ -17,7 +17,8 @@
     "about": "Tentang",
     "screening_self": "Skrining Mandiri",
     "about_ai": "Tentang AI",
-    "toggle_language": "Pilih Bahasa"
+    "toggle_language": "Pilih Bahasa",
+    "language": "Bahasa"
   },
   "footer": {
     "description": "Obesight AI adalah alat skrining kesehatan berbasis kecerdasan buatan untuk mendeteksi risiko obesitas sejak dini dan memberikan rekomendasi gaya hidup sehat.",
@@ -230,15 +231,46 @@
     }
   },
   "result": {
-    "title": "Hasil Skrining Anda",
+    "title": "Hasil Analisis Kesehatan",
     "subtitle": "Analisis AI mendeteksi kategori risiko dan memberikan saran kesehatan khusus untuk Anda.",
-    "bmi_title": "Indeks Massa Tubuh (IMT)",
-    "category": "Kategori Risiko",
-    "prob_title": "Probabilitas Klasifikasi Model AI",
-    "prob_subtitle": "Persentase keyakinan model untuk setiap kategori risiko obesitas.",
-    "recommendations": "Rekomendasi & Saran Kesehatan",
-    "general_rec": "Saran Umum",
-    "specific_recs": "Saran Spesifik Gaya Hidup",
-    "repeat_button": "Lakukan Skrining Ulang"
+    "report_header": "Laporan Skrining",
+    "greeting": "Halo",
+    "greeting_body": ", berikut ringkasan evaluasi fisik dan rekomendasi personal Anda.",
+    "print_pdf": "Cetak PDF",
+    "repeat_button": "Skrining Ulang",
+    "ai_prediction": "Prediksi Utama Model AI",
+    "confidence_desc_part1": "Model mengklasifikasikan kondisi Anda dengan tingkat keyakinan",
+    "confidence_desc_part2": ". Gunakan rekomendasi di bawah sebagai langkah awal, bukan pengganti diagnosis medis.",
+    "bmi_title": "Indeks Massa Tubuh",
+    "bmi_label": "BMI",
+    "category_label": "Kategori",
+    "risk_level_label": "Tingkat Risiko",
+    "underweight_label": "Kurus",
+    "normal_label": "Normal",
+    "overweight_label": "Berlebih",
+    "obesity_label": "Obesitas",
+    "bmi_healthy_range": "Rentang berat badan sehat berada pada BMI 18,5–24,9.",
+    "general_rec": "Saran Kesehatan Utama",
+    "action_plan_title": "Rencana Tindakan",
+    "action_plan_desc": "Centang poin yang ingin Anda prioritaskan minggu ini.",
+    "no_specific_recs": "Tidak ada saran spesifik. Gaya hidup Anda saat ini sudah sangat baik!",
+    "update_results_title": "Ingin memperbarui hasil Anda?",
+    "update_results_desc": "Jalankan skrining ulang kapan saja setelah kebiasaan Anda berubah.",
+    "prediction_badge": "Prediksi",
+    "risk_underweight": "Perlu Perhatian",
+    "risk_normal": "Risiko Rendah",
+    "risk_overweight": "Risiko Sedang",
+    "risk_obesity": "Risiko Tinggi",
+    "prob_title": "Distribusi Probabilitas AI",
+    "prob_subtitle": "Seberapa dekat kondisi fisik Anda dengan tiap kategori berat badan menurut model machine learning.",
+    "classes": {
+      "Insufficient_Weight": "Kurus / Berat Kurang",
+      "Normal_Weight": "Berat Badan Normal",
+      "Overweight_Level_I": "Kelebihan Berat Badan Tingkat I",
+      "Overweight_Level_II": "Kelebihan Berat Badan Tingkat II",
+      "Obesity_Type_I": "Obesitas Tingkat I",
+      "Obesity_Type_II": "Obesitas Tingkat II",
+      "Obesity_Type_III": "Obesitas Tingkat III (Ekstrem)"
+    }
   }
 }

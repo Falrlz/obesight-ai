@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ProbChartProps {
   probabilities: Record<string, number>;
@@ -6,15 +7,16 @@ interface ProbChartProps {
 }
 
 export const ProbChart: React.FC<ProbChartProps> = ({ probabilities, predictedClassLabel }) => {
-  // Map keys to readable Indonesian labels
+  const { t } = useTranslation();
+  // Map keys to readable localized labels
   const labelMapping: Record<string, string> = {
-    Insufficient_Weight: 'Kurus / Berat Kurang',
-    Normal_Weight: 'Berat Badan Normal',
-    Overweight_Level_I: 'Berat Lebih Tingkat I',
-    Overweight_Level_II: 'Berat Lebih Tingkat II',
-    Obesity_Type_I: 'Obesitas Tingkat I',
-    Obesity_Type_II: 'Obesitas Tingkat II',
-    Obesity_Type_III: 'Obesitas Tingkat III (Ekstrem)',
+    Insufficient_Weight: t('result.classes.Insufficient_Weight', 'Kurus / Berat Kurang'),
+    Normal_Weight: t('result.classes.Normal_Weight', 'Berat Badan Normal'),
+    Overweight_Level_I: t('result.classes.Overweight_Level_I', 'Kelebihan Berat Badan Tingkat I'),
+    Overweight_Level_II: t('result.classes.Overweight_Level_II', 'Kelebihan Berat Badan Tingkat II'),
+    Obesity_Type_I: t('result.classes.Obesity_Type_I', 'Obesitas Tingkat I'),
+    Obesity_Type_II: t('result.classes.Obesity_Type_II', 'Obesitas Tingkat II'),
+    Obesity_Type_III: t('result.classes.Obesity_Type_III', 'Obesitas Tingkat III (Ekstrem)'),
   };
 
   // Convert map to list, format percentages, and sort by likelihood (desc)
@@ -30,10 +32,10 @@ export const ProbChart: React.FC<ProbChartProps> = ({ probabilities, predictedCl
   return (
     <div className="h-full p-6 sm:p-8 bg-white rounded-3xl border border-outline-variant">
       <h3 className="text-xs font-semibold text-text-secondary/70 uppercase tracking-wider">
-        Distribusi Probabilitas AI
+        {t('result.prob_title', 'Distribusi Probabilitas AI')}
       </h3>
       <p className="text-sm text-text-secondary/80 mt-2 leading-relaxed">
-        Seberapa dekat kondisi fisik Anda dengan tiap kategori berat badan menurut model machine learning.
+        {t('result.prob_subtitle', 'Seberapa dekat kondisi fisik Anda dengan tiap kategori berat badan menurut model machine learning.')}
       </p>
 
       <div className="mt-6 space-y-3.5">
@@ -48,7 +50,7 @@ export const ProbChart: React.FC<ProbChartProps> = ({ probabilities, predictedCl
                 {item.label}
                 {item.isPredicted && (
                   <span className="ml-2 inline-flex items-center rounded-full bg-secondary/[0.08] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-secondary align-middle">
-                    Prediksi
+                    {t('result.prediction_badge', 'Prediksi')}
                   </span>
                 )}
               </span>

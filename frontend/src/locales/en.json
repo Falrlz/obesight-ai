@@ -17,7 +17,8 @@
     "about": "About",
     "screening_self": "Self Screening",
     "about_ai": "About AI",
-    "toggle_language": "Select Language"
+    "toggle_language": "Select Language",
+    "language": "Language"
   },
   "footer": {
     "description": "Obesight AI is an artificial intelligence-based health screening tool to detect obesity risk early and provide healthy lifestyle recommendations.",
@@ -230,15 +231,46 @@
     }
   },
   "result": {
-    "title": "Your Screening Results",
+    "title": "Health Analysis Results",
     "subtitle": "AI analysis detects risk category and provides customized health recommendations for you.",
-    "bmi_title": "Body Mass Index (BMI)",
-    "category": "Risk Category",
-    "prob_title": "AI Model Classification Probability",
-    "prob_subtitle": "Percentage of model confidence for each obesity risk category.",
-    "recommendations": "Recommendations & Health Guidance",
-    "general_rec": "General Guidance",
-    "specific_recs": "Specific Lifestyle Guidance",
-    "repeat_button": "Repeat Screening"
+    "report_header": "Screening Report",
+    "greeting": "Hello",
+    "greeting_body": ", here is the summary of your physical evaluation and personalized recommendations.",
+    "print_pdf": "Print PDF",
+    "repeat_button": "Repeat Screening",
+    "ai_prediction": "AI Model Primary Prediction",
+    "confidence_desc_part1": "The model classifies your condition with a confidence level of",
+    "confidence_desc_part2": ". Use the recommendations below as an initial step, not a substitute for medical diagnosis.",
+    "bmi_title": "Body Mass Index",
+    "bmi_label": "BMI",
+    "category_label": "Category",
+    "risk_level_label": "Risk Level",
+    "underweight_label": "Underweight",
+    "normal_label": "Normal",
+    "overweight_label": "Overweight",
+    "obesity_label": "Obesity",
+    "bmi_healthy_range": "Healthy weight range is BMI 18.5–24.9.",
+    "general_rec": "Main Health Guidance",
+    "action_plan_title": "Action Plan",
+    "action_plan_desc": "Check the items you want to prioritize this week.",
+    "no_specific_recs": "No specific recommendations. Your current lifestyle habits are excellent!",
+    "update_results_title": "Want to update your results?",
+    "update_results_desc": "Re-run the screening anytime after your lifestyle habits change.",
+    "prediction_badge": "Prediction",
+    "risk_underweight": "Needs Attention",
+    "risk_normal": "Low Risk",
+    "risk_overweight": "Moderate Risk",
+    "risk_obesity": "High Risk",
+    "prob_title": "AI Probability Distribution",
+    "prob_subtitle": "How close your physical condition is to each weight category according to the machine learning model.",
+    "classes": {
+      "Insufficient_Weight": "Insufficient Weight",
+      "Normal_Weight": "Normal Weight",
+      "Overweight_Level_I": "Overweight Level I",
+      "Overweight_Level_II": "Overweight Level II",
+      "Obesity_Type_I": "Obesity Type I",
+      "Obesity_Type_II": "Obesity Type II",
+      "Obesity_Type_III": "Obesity Type III (Extreme)"
+    }
   }
 }
