@@ -32,7 +32,7 @@
     "hero": {
       "title": "Predict Your Obesity Risk Smartly",
       "subtitle": "Obesight analyzes your daily habits with a machine learning model to detect obesity risk. Get instant results and personalized nutritional recommendations.",
-      "cta_start": "Start Free Screening",
+      "cta_start": "Start Screening",
       "cta_learn": "Learn AI Model"
     },
     "mission": {
@@ -89,6 +89,7 @@
       "gender": "Gender",
       "age": "Age",
       "height": "Height",
+      "weight": "Weight",
       "family_history": "Family History of Obesity",
       "favc": "Frequent High Calorie Food Consumption",
       "fcvc": "Vegetable Consumption Frequency",
@@ -233,6 +234,7 @@
   "result": {
     "title": "Health Analysis Results",
     "subtitle": "AI analysis detects risk category and provides customized health recommendations for you.",
+    "confidence_label": "Confidence",
     "report_header": "Screening Report",
     "greeting": "Hello",
     "greeting_body": ", here is the summary of your physical evaluation and personalized recommendations.",

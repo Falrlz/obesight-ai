@@ -32,7 +32,7 @@
     "hero": {
       "title": "Prediksi Risiko Obesitas Anda Secara Cerdas",
       "subtitle": "Obesight menganalisis kebiasaan harian Anda dengan model machine learning untuk mendeteksi risiko obesitas. Dapatkan hasil instan dan rekomendasi gizi yang dipersonalisasi.",
-      "cta_start": "Mulai Skrining Gratis",
+      "cta_start": "Mulai Skrining",
       "cta_learn": "Pelajari Model AI"
     },
     "mission": {
@@ -89,6 +89,7 @@
       "gender": "Jenis Kelamin",
       "age": "Usia",
       "height": "Tinggi Badan",
+      "weight": "Berat Badan",
       "family_history": "Riwayat Obesitas Keluarga",
       "favc": "Konsumsi Makanan Kalori Tinggi",
       "fcvc": "Frekuensi Konsumsi Sayur",
@@ -233,6 +234,7 @@
   "result": {
     "title": "Hasil Analisis Kesehatan",
     "subtitle": "Analisis AI mendeteksi kategori risiko dan memberikan saran kesehatan khusus untuk Anda.",
+    "confidence_label": "Keyakinan",
     "report_header": "Laporan Skrining",
     "greeting": "Halo",
     "greeting_body": ", berikut ringkasan evaluasi fisik dan rekomendasi personal Anda.",
