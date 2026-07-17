@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ParticleField from './ParticleField';
 import logo from '../../assets/obesight-icon.svg';
 
@@ -18,10 +19,18 @@ interface HeroProps {
  * 3. Staggered fade-in & slide transitions for the brand badge, CTA button, and interactive particle field.
  */
 export const Hero: React.FC<HeroProps> = ({ onStartAnalysis }) => {
-  const fullText = "Ketahui risiko obesitas anda secara cerdas";
+  const { t } = useTranslation();
+  const fullText = t('landing.hero.title');
   const [typedText, setTypedText] = useState("");
   const [blinkCount, setBlinkCount] = useState(0);
   const [isDone, setIsDone] = useState(false);
+
+  // Reset typewriter animation if the language changes
+  useEffect(() => {
+    setTypedText("");
+    setBlinkCount(0);
+    setIsDone(false);
+  }, [fullText]);
 
   useEffect(() => {
     if (blinkCount < 3) {
@@ -37,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartAnalysis }) => {
     } else {
       setIsDone(true);
     }
-  }, [blinkCount, typedText]);
+  }, [blinkCount, typedText, fullText]);
 
   return (
     <section className="min-h-screen w-full flex flex-col items-center justify-center text-center px-4 md:px-page-margin-desktop bg-white relative overflow-hidden">
@@ -83,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartAnalysis }) => {
             onClick={onStartAnalysis}
             className="w-auto bg-secondary text-on-primary px-6 py-3 md:px-10 md:py-3 rounded-full font-medium text-base md:text-lg hover:bg-secondary/95 hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
           >
-            Mulai Skrining
+            {t('landing.hero.cta_start')}
           </button>
         </div>
       </div>

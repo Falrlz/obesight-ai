@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const Features: React.FC = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const titleGroupRef = useRef<HTMLDivElement>(null);
@@ -151,7 +153,7 @@ export const Features: React.FC = () => {
         {/* Title Group */}
         <div className="title-group" id="titleGroup" ref={titleGroupRef}>
           <h2 className="!font-medium">
-            <span className="reveal-text" ref={revealRef1}>Solusi Cerdas Untuk Anda</span>
+            <span className="reveal-text" ref={revealRef1}>{t('landing.features.title')}</span>
           </h2>
         </div>
 
@@ -174,9 +176,9 @@ export const Features: React.FC = () => {
                   <path d="m9 14 2 2 4-4" />
                 </svg>
               </div>
-              <h3>Skrining Gaya Hidup</h3>
+              <h3>{t('landing.features.card1_title')}</h3>
               <p>
-                Kuesioner cepat 4 langkah yang ramah pengguna untuk memetakan kebiasaan harian Anda secara akurat.
+                {t('landing.features.card1_desc')}
               </p>
             </div>
           </article>
@@ -210,9 +212,9 @@ export const Features: React.FC = () => {
                   <circle cx="12" cy="12" r="3" />
                 </svg>
               </div>
-              <h3>Prediksi Akurat AI</h3>
+              <h3>{t('landing.features.card2_title')}</h3>
               <p>
-                Menggunakan model klasifikasi LightGBM terlatih untuk mendeteksi tingkat risiko obesitas.
+                {t('landing.features.card2_desc')}
               </p>
             </div>
           </article>
@@ -234,9 +236,9 @@ export const Features: React.FC = () => {
                   <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z" />
                 </svg>
               </div>
-              <h3>Insight Tindakan Personal</h3>
+              <h3>{t('landing.features.card3_title')}</h3>
               <p>
-                Dapatkan rekomendasi yang dipersonalisasi untuk memperbaiki pola makan, hidrasi, dan aktivitas harian Anda secara terarah.
+                {t('landing.features.card3_desc')}
               </p>
             </div>
           </article>

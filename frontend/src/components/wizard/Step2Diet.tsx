@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../../context/FormContext';
 
 export const Step2Diet: React.FC = () => {
+  const { t } = useTranslation();
   const { formData, setFormData } = useFormContext();
 
   const updateField = (field: string, value: any) => {
@@ -13,7 +15,7 @@ export const Step2Diet: React.FC = () => {
       {/* Riwayat Obesitas Keluarga */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Apakah ada anggota keluarga sedarah yang memiliki riwayat obesitas?
+          {t('wizard.questions.family_history')}
         </label>
         <div className="grid grid-cols-2 gap-4">
           <button
@@ -25,7 +27,7 @@ export const Step2Diet: React.FC = () => {
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            Ya
+            {t('wizard.questions.family_history_yes')}
           </button>
           <button
             type="button"
@@ -36,7 +38,7 @@ export const Step2Diet: React.FC = () => {
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            Tidak
+            {t('wizard.questions.family_history_no')}
           </button>
         </div>
       </div>
@@ -44,7 +46,7 @@ export const Step2Diet: React.FC = () => {
       {/* FAVC - Makanan Berkalori Tinggi */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Apakah Anda sering mengonsumsi makanan berkalori tinggi? (gorengan, fast food, minuman manis)
+          {t('wizard.questions.favc')}
         </label>
         <div className="grid grid-cols-2 gap-4">
           <button
@@ -56,7 +58,7 @@ export const Step2Diet: React.FC = () => {
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            Ya, Sering
+            {t('wizard.questions.favc_yes')}
           </button>
           <button
             type="button"
@@ -67,7 +69,7 @@ export const Step2Diet: React.FC = () => {
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            Jarang / Tidak Pernah
+            {t('wizard.questions.favc_no')}
           </button>
         </div>
       </div>
@@ -75,13 +77,13 @@ export const Step2Diet: React.FC = () => {
       {/* FCVC - Frekuensi Sayuran */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Seberapa sering Anda mengonsumsi sayuran dalam makan utama Anda?
+          {t('wizard.questions.fcvc')}
         </label>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 1, label: 'Jarang' },
-            { value: 2, label: 'Kadang-kadang' },
-            { value: 3, label: 'Selalu' },
+            { value: 1, label: t('wizard.questions.fcvc_never') },
+            { value: 2, label: t('wizard.questions.fcvc_sometimes') },
+            { value: 3, label: t('wizard.questions.fcvc_always') },
           ].map((item) => (
             <button
               key={item.value}
@@ -102,7 +104,7 @@ export const Step2Diet: React.FC = () => {
       {/* NCP - Jumlah Makan Utama */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Berapa kali Anda makan makanan utama dalam sehari?
+          {t('wizard.questions.ncp')}
         </label>
         <div className="grid grid-cols-4 gap-2">
           {[1, 2, 3, 4].map((num) => (
@@ -125,14 +127,14 @@ export const Step2Diet: React.FC = () => {
       {/* CAEC - Ngemil */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Seberapa sering Anda makan camilan/makanan di antara jam makan utama?
+          {t('wizard.questions.caec')}
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {[
-            { value: 'no', label: 'Tidak Pernah' },
-            { value: 'Sometimes', label: 'Kadang-kadang' },
-            { value: 'Frequently', label: 'Sering' },
-            { value: 'Always', label: 'Setiap Saat' },
+            { value: 'no', label: t('wizard.questions.caec_no') },
+            { value: 'Sometimes', label: t('wizard.questions.caec_sometimes') },
+            { value: 'Frequently', label: t('wizard.questions.caec_frequently') },
+            { value: 'Always', label: t('wizard.questions.caec_always') },
           ].map((item) => (
             <button
               key={item.value}

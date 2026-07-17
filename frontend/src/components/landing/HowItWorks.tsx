@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -25,6 +26,7 @@ interface Step {
  *    steps slide in when scrolling down, and reverse (hide) when scrolling back up.
  */
 export const HowItWorks: React.FC = () => {
+  const { t } = useTranslation();
   const circle1Ref = useRef<HTMLDivElement>(null);
   const circle2Ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -89,20 +91,20 @@ export const HowItWorks: React.FC = () => {
   const steps: Step[] = [
     {
       number: 1,
-      title: 'Isi Kuesioner',
-      description: '1 menit untuk menjawab pertanyaan dasar mengenai gaya hidup dan profil fisik Anda.',
+      title: t('landing.how_it_works.step1_title'),
+      description: t('landing.how_it_works.step1_desc'),
       bgClass: 'bg-secondary text-on-primary',
     },
     {
       number: 2,
-      title: 'Analisis AI',
-      description: 'Kami memproses data Anda secara instan menggunakan model machine learning.',
+      title: t('landing.how_it_works.step2_title'),
+      description: t('landing.how_it_works.step2_desc'),
       bgClass: 'bg-secondary text-on-primary',
     },
     {
       number: 3,
-      title: 'Terima Hasil',
-      description: 'Dapatkan laporan risiko yang komprehensif dan saran tindakan yang dipersonalisasi segera.',
+      title: t('landing.how_it_works.step3_title'),
+      description: t('landing.how_it_works.step3_desc'),
       bgClass: 'bg-secondary text-on-primary',
     },
   ];
@@ -110,8 +112,8 @@ export const HowItWorks: React.FC = () => {
   return (
     <section id="how-it-works" className="min-h-0 py-[10vh] md:min-h-screen w-full flex flex-col justify-center md:pt-[34vh] md:pb-[24vh] px-4 md:px-page-margin-desktop relative z-30 overflow-hidden bg-black rounded-t-[28px] md:rounded-t-[44px]">
       <div className="max-w-container-max mx-auto relative z-10 w-full">
-        <h2 className="text-3xl md:text-5xl font-normal mb-[6vh] md:mb-[10vh] text-center text-white tracking-tight">
-          Mulai dengan 3 Langkah Mudah
+        <h2 className="text-3xl md:text-5xl font-normal mb-[6vh] md:mb-[10vh] text-center text-white tracking-tight animate-fade-in">
+          {t('landing.how_it_works.title')}
         </h2>
         <div className="relative">
           <div ref={containerRef} className="space-y-[2vh] 2xl:space-y-[12vh] relative">

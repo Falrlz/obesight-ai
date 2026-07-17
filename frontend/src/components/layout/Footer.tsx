@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface FooterProps {
   onNavigateHome?: () => void;
@@ -13,6 +14,7 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateAbout,
 }) => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const handleHomeClick = () => {
     if (location.pathname === '/') {
@@ -46,20 +48,20 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="flex flex-col gap-6 items-center md:items-start">
             <h5 className="font-headline-lg text-3xl font-bold text-white">OBESIGHT</h5>
             <p className="font-body-md text-zinc-400 max-w-xs text-center md:text-left leading-relaxed">
-              Solusi cerdas berbasis AI untuk memantau dan mengelola risiko obesitas Anda secara personal.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Navigation */}
           <div className="text-center md:text-left">
-            <h5 className="font-headline-lg text-3xl font-bold text-white mb-6">NAVIGASI</h5>
+            <h5 className="font-headline-lg text-3xl font-bold text-white mb-6 uppercase">{t('footer.navigation')}</h5>
             <ul className="space-y-4 font-normal">
               <li>
                 <button
                   onClick={handleHomeClick}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
-                  Beranda
+                  {t('navbar.home')}
                 </button>
               </li>
               <li>
@@ -67,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={handleWizardClick}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
-                  Skrining
+                  {t('navbar.screening')}
                 </button>
               </li>
               <li>
@@ -75,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={handleAboutClick}
                   className="font-body-md text-zinc-400 hover:text-secondary leading-relaxed transition-colors cursor-pointer"
                 >
-                  Tentang
+                  {t('navbar.about')}
                 </button>
               </li>
             </ul>
@@ -83,11 +85,11 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Medical Disclaimer */}
           <div className="text-center md:text-left md:col-span-2">
-            <h5 className="font-headline-lg text-3xl font-bold text-white mb-6 text-center md:text-left">
-              MEDICAL DISCLAIMER
+            <h5 className="font-headline-lg text-3xl font-bold text-white mb-6 text-center md:text-left uppercase">
+              {t('footer.disclaimer_title')}
             </h5>
-            <p className="font-body-md text-zinc-400 leading-relaxed text-left md:text-justify">
-              Hasil analisis, indeks massa tubuh (BMI), kategori risiko, serta rekomendasi kesehatan yang dihasilkan oleh OBESIGHT bersifat edukatif dan merupakan hasil skrining awal berbasis data perilaku serta statistik model pembelajaran mesin. Layanan ini bukan pengganti saran medis. Jangan mengabaikan atau menunda mendapatkan saran medis hanya karena membaca informasi dari aplikasi ini.
+            <p className="font-body-md text-zinc-400 leading-relaxed text-left md:text-justify animate-fade-in">
+              {t('footer.disclaimer_text')}
             </p>
           </div>
         </div>

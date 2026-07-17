@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../context/FormContext';
 import { predictObesity } from '../services/api';
 import StepIndicator from '../components/wizard/StepIndicator';
@@ -9,7 +10,7 @@ import Step3Activity from '../components/wizard/Step3Activity';
 import Step4Habits from '../components/wizard/Step4Habits';
 import { StepVisualizer } from '../components/wizard/StepVisualizer';
 
-const LOADING_STEPS = [
+const FALLBACK_LOADING_STEPS = [
   'Membangun koneksi ke ObeSight API...',
   'Menghitung Indeks Massa Tubuh (BMI)...',
   'Mengevaluasi variabel genetik & antropometri...',
@@ -17,7 +18,7 @@ const LOADING_STEPS = [
   'Menyusun rekomendasi kesehatan personal bilingual...',
 ];
 
-const STEP_METADATA = [
+const FALLBACK_STEP_METADATA = [
   {
     title: 'Data Dasar & Fisik',
     desc: 'Masukkan informasi profil dasar dan ukuran antropometri tubuh Anda.'
@@ -38,8 +39,12 @@ const STEP_METADATA = [
 
 export const WizardPage: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [loadingTextIdx, setLoadingTextIdx] = useState(0);
+
+  const loadingSteps = t('wizard.loading_steps', { returnObjects: true }) as string[] || FALLBACK_LOADING_STEPS;
+  const stepMetadata = t('wizard.step_metadata', { returnObjects: true }) as { title: string; desc: string }[] || FALLBACK_STEP_METADATA;
 
   const {
     formData,
@@ -89,13 +94,13 @@ export const WizardPage: React.FC = () => {
     if (loading) {
       setLoadingTextIdx(0);
       interval = setInterval(() => {
-        setLoadingTextIdx((prev) => (prev + 1) % LOADING_STEPS.length);
+        setLoadingTextIdx((prev) => (prev + 1) % loadingSteps.length);
       }, 1500);
     }
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [loading]);
+  }, [loading, loadingSteps.length]);
 
   const handleStartAnalysis = () => {
     resetForm();
@@ -119,7 +124,7 @@ export const WizardPage: React.FC = () => {
       setError(
         err.response?.data?.detail ||
         err.message ||
-        'Gagal terhubung dengan server API. Harap periksa apakah server backend sudah berjalan.'
+        t('wizard.api_connection_error')
       );
     } finally {
       setLoading(false);
@@ -193,9 +198,9 @@ export const WizardPage: React.FC = () => {
           </div>
 
           <div className="space-y-3 z-10">
-            <h3 className="text-xl font-bold tracking-tight text-on-surface">Menganalisis Profil Kesehatan</h3>
+            <h3 className="text-xl font-bold tracking-tight text-on-surface">{t('wizard.analyzing_profile')}</h3>
             <p className="text-sm text-text-secondary min-h-[48px] px-4 font-medium leading-relaxed transition-all duration-300">
-              {LOADING_STEPS[loadingTextIdx]}
+              {loadingSteps[loadingTextIdx]}
             </p>
           </div>
         </div>
@@ -206,7 +211,7 @@ export const WizardPage: React.FC = () => {
         <div className="max-w-md w-full p-8 rounded-3xl bg-white border border-rose-100 shadow-xl text-center space-y-6 z-10 my-auto">
           <div className="text-5xl">⚠️</div>
           <div className="space-y-2">
-            <h3 className="text-lg font-bold text-slate-800">Terjadi Kesalahan</h3>
+            <h3 className="text-lg font-bold text-slate-800">{t('common.error')}</h3>
             <p className="text-sm text-slate-500 leading-relaxed px-2 font-medium">
               {error}
             </p>
@@ -216,13 +221,13 @@ export const WizardPage: React.FC = () => {
               onClick={handleNavigateHome}
               className="px-5 py-2.5 rounded-full text-sm font-semibold border border-outline-variant text-text-secondary hover:bg-slate-50 active:scale-95 transition-all cursor-pointer"
             >
-              Kembali
+              {t('common.back')}
             </button>
             <button
               onClick={activeStep === 3 ? handleSubmit : handleStartAnalysis}
               className="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-secondary hover:bg-secondary/95 active:scale-95 transition-all shadow-md cursor-pointer"
             >
-              Coba Lagi
+              {t('wizard.retry')}
             </button>
           </div>
         </div>
@@ -233,12 +238,12 @@ export const WizardPage: React.FC = () => {
         <div className="max-w-container-max 2xl:max-w-[1600px] w-full z-10 flex flex-col gap-8 px-4 md:px-8 lg:px-[80px] 2xl:px-0">
           {/* Header Layout: Outside the grid, spanning full width */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-6 w-full">
-            <div className="max-w-2xl space-y-1.5">
+            <div className="max-w-2xl space-y-1.5 animate-fade-in">
               <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-on-surface transition-all duration-300">
-                {STEP_METADATA[activeStep].title}
+                {stepMetadata[activeStep]?.title}
               </h1>
               <p className="text-base text-text-secondary font-medium leading-relaxed transition-all duration-300">
-                {STEP_METADATA[activeStep].desc}
+                {stepMetadata[activeStep]?.desc}
               </p>
             </div>
             <div className="flex-shrink-0 w-full md:w-auto flex justify-start md:justify-end">
@@ -270,7 +275,7 @@ export const WizardPage: React.FC = () => {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
-                    Sebelumnya
+                    {t('common.back')}
                   </button>
 
                   {activeStep < 3 ? (
@@ -281,7 +286,7 @@ export const WizardPage: React.FC = () => {
                       className={`px-6 py-2.5 rounded-full text-sm font-bold text-white bg-secondary hover:bg-secondary/95 active:scale-95 transition-all shadow-md flex items-center gap-1.5 cursor-pointer ${!isCurrentStepValid ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                     >
-                      Lanjut
+                      {t('common.next')}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
@@ -294,7 +299,7 @@ export const WizardPage: React.FC = () => {
                       className={`px-8 py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-secondary to-teal-700 hover:from-secondary/95 hover:to-teal-800 active:scale-95 transition-all shadow-lg flex items-center gap-2 cursor-pointer ${!isCurrentStepValid ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                     >
-                      Analisis Sekarang
+                      {t('common.submit')}
                       <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
