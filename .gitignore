@@ -13,6 +13,7 @@ ENV/
 
 # Local Environment Configurations
 **/.env*
+!**/.env.example
 *.local
 
 # Logs
