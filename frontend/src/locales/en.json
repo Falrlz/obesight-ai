@@ -1,0 +1,180 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Predict Now",
+    "home": "Home",
+    "screening": "Screening",
+    "about": "About",
+    "start_screening": "Start Screening",
+    "about_ai": "About AI"
+  },
+  "navbar": {
+    "home": "Home",
+    "screening": "Screening",
+    "about": "About",
+    "screening_self": "Self Screening",
+    "about_ai": "About AI",
+    "toggle_language": "Select Language"
+  },
+  "footer": {
+    "description": "Obesight AI is an artificial intelligence-based health screening tool to detect obesity risk early and provide healthy lifestyle recommendations.",
+    "navigation": "Navigation",
+    "links": "Links",
+    "disclaimer_title": "Medical Disclaimer",
+    "disclaimer_text": "This tool is designed for educational and initial awareness purposes, not as a substitute for professional medical advice, diagnosis, or clinical treatment from a doctor.",
+    "copyright": "Copyright © 2026 Obesight AI. All Rights Reserved."
+  },
+  "landing": {
+    "hero": {
+      "title": "Predict Your Obesity Risk Smartly",
+      "subtitle": "Obesight analyzes your daily habits with a machine learning model to detect obesity risk. Get instant results and personalized nutritional recommendations.",
+      "cta_start": "Start Free Screening",
+      "cta_learn": "Learn AI Model"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "subtitle": "Empowering communities to understand their body health better through accessible, accurate, and scientifically data-driven early detection technology."
+    },
+    "features": {
+      "title": "Key Features",
+      "item_fast_title": "Fast & Free",
+      "item_fast_desc": "Filling out the form only takes 2 minutes with no hidden fees whatsoever.",
+      "item_ai_title": "AI-Powered",
+      "item_ai_desc": "Uses a machine learning model trained on a real health behavior dataset.",
+      "item_rec_title": "Personal Recommendations",
+      "item_rec_desc": "Get recommendations for fluid intake, vegetables, and physical activity tailored to your habits."
+    },
+    "how_it_works": {
+      "title": "How Obesight Works",
+      "step1_title": "1. Fill Daily Data",
+      "step1_desc": "Enter information about your age, weight, height, as well as your dietary habits and physical activity.",
+      "step2_title": "2. AI Analysis",
+      "step2_desc": "Our machine learning model processes your data to predict your obesity risk category.",
+      "step3_title": "3. Get Recommendations",
+      "step3_desc": "Receive prediction results along with relevant, personally tailored health guides."
+    }
+  },
+  "about": {
+    "title": "Artificial Intelligence Behind Obesight",
+    "subtitle": "Obesight uses a machine learning classification model to detect obesity risk levels based on daily behavior survey data, designed as a fast, informative, and easy-to-understand initial screening tool.",
+    "dataset": {
+      "title": "Dataset & Attributes",
+      "description": "The model is trained using a dataset containing eating habits and physical activity info of respondents. Attributes are grouped into three categories:",
+      "group_demographics": "Demographics & Anthropometrics",
+      "group_diet": "Diet & Eating Habits",
+      "group_lifestyle": "Activity & Lifestyle",
+      "total_data": "Total Training Data",
+      "class_distribution": "Data Class Distribution",
+      "visit_source": "Visit Data Source (Kaggle)"
+    },
+    "model_info": {
+      "title": "ML Model Information",
+      "name": "Model Name",
+      "framework": "Framework/Library",
+      "features": "Required Features",
+      "loading_metadata": "Loading model metadata...",
+      "failed_metadata": "Failed to load model metadata"
+    },
+    "attributes": {
+      "gender": "Gender",
+      "age": "Age",
+      "height": "Height",
+      "family_history": "Family History of Obesity",
+      "favc": "Frequent High Calorie Food Consumption",
+      "fcvc": "Vegetable Consumption Frequency",
+      "ncp": "Number of Main Meals Daily",
+      "caec": "Snacking Between Main Meals",
+      "smoke": "Smoking Habit",
+      "ch2o": "Daily Water Intake",
+      "scc": "Calorie Intake Monitoring",
+      "faf": "Physical Activity / Exercise",
+      "tue": "Technology Device Usage Time",
+      "calc": "Alcohol Consumption",
+      "mtrans": "Daily Transportation Mode"
+    }
+  },
+  "wizard": {
+    "title": "Obesity Screening Form",
+    "subtitle": "Fill in honestly for the most accurate analysis results. Your data is processed locally and instantly.",
+    "step_indicator": "Step {{current}} of {{total}}",
+    "steps": {
+      "personal": "Personal Data",
+      "diet": "Eating Habits",
+      "activity": "Lifestyle",
+      "habits": "Other Habits"
+    },
+    "questions": {
+      "name": "Full Name",
+      "name_placeholder": "Enter your name",
+      "age": "Age (Years)",
+      "gender": "Gender",
+      "gender_male": "Male",
+      "gender_female": "Female",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "family_history": "Does any family member have a history of obesity?",
+      "family_history_yes": "Yes",
+      "family_history_no": "No",
+      "favc": "Do you frequently consume high-calorie food (fast food, fried food)?",
+      "fcvc": "How often do you consume vegetables in your main meals?",
+      "fcvc_never": "Never",
+      "fcvc_sometimes": "Sometimes",
+      "fcvc_always": "Always",
+      "ncp": "How many main meals do you have daily?",
+      "ncp_1_2": "1 - 2 times a day",
+      "ncp_3": "3 times a day",
+      "ncp_4": "More than 3 times a day",
+      "caec": "Do you snack frequently between main meals?",
+      "caec_no": "Never",
+      "caec_sometimes": "Sometimes",
+      "caec_frequently": "Frequently",
+      "caec_always": "Always",
+      "smoke": "Do you smoke?",
+      "ch2o": "How much water do you drink daily?",
+      "ch2o_less_1l": "Less than 1 Liter",
+      "ch2o_1_2l": "1 - 2 Liters",
+      "ch2o_more_2l": "More than 2 Liters",
+      "scc": "Do you monitor the calorie intake of the food you consume daily?",
+      "faf": "How many days a week do you perform physical activity or exercise?",
+      "faf_never": "Never",
+      "faf_1_2": "1 - 2 days a week",
+      "faf_2_4": "2 - 4 days a week",
+      "faf_4_5": "More than 4 days a week",
+      "tue": "How many hours do you spend in front of a gadget/computer screen daily?",
+      "tue_0_2": "0 - 2 hours",
+      "tue_3_5": "3 - 5 hours",
+      "tue_more_5": "More than 5 hours",
+      "calc": "How often do you consume alcoholic beverages?",
+      "mtrans": "What is the primary mode of transportation you use for daily travel?",
+      "mtrans_car": "Private Car",
+      "mtrans_motor": "Motorcycle",
+      "mtrans_bike": "Bicycle",
+      "mtrans_public": "Public Transportation",
+      "mtrans_walking": "Walking"
+    },
+    "validation": {
+      "required": "This field is required",
+      "min_age": "Age must be at least 1 year old",
+      "max_age": "Age cannot exceed 120 years old",
+      "min_height": "Height must be at least 50 cm",
+      "max_height": "Height cannot exceed 250 cm",
+      "min_weight": "Weight must be at least 10 kg",
+      "max_weight": "Weight cannot exceed 300 kg"
+    }
+  },
+  "result": {
+    "title": "Your Screening Results",
+    "subtitle": "AI analysis detects risk category and provides customized health recommendations for you.",
+    "bmi_title": "Body Mass Index (BMI)",
+    "category": "Risk Category",
+    "prob_title": "AI Model Classification Probability",
+    "prob_subtitle": "Percentage of model confidence for each obesity risk category.",
+    "recommendations": "Recommendations & Health Guidance",
+    "general_rec": "General Guidance",
+    "specific_recs": "Specific Lifestyle Guidance",
+    "repeat_button": "Repeat Screening"
+  }
+}

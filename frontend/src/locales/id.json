@@ -1,0 +1,180 @@
+{
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "submit": "Prediksi Sekarang",
+    "home": "Beranda",
+    "screening": "Skrining",
+    "about": "Tentang",
+    "start_screening": "Mulai Skrining",
+    "about_ai": "Tentang AI"
+  },
+  "navbar": {
+    "home": "Beranda",
+    "screening": "Skrining",
+    "about": "Tentang",
+    "screening_self": "Skrining Mandiri",
+    "about_ai": "Tentang AI",
+    "toggle_language": "Pilih Bahasa"
+  },
+  "footer": {
+    "description": "Obesight AI adalah alat skrining kesehatan berbasis kecerdasan buatan untuk mendeteksi risiko obesitas sejak dini dan memberikan rekomendasi gaya hidup sehat.",
+    "navigation": "Navigasi",
+    "links": "Tautan",
+    "disclaimer_title": "Peringatan Medis",
+    "disclaimer_text": "Alat ini dirancang untuk tujuan edukasi dan kesadaran awal, bukan sebagai pengganti saran medis profesional, diagnosis, atau perawatan klinis dari dokter.",
+    "copyright": "Hak Cipta © 2026 Obesight AI. Hak Cipta Dilindungi."
+  },
+  "landing": {
+    "hero": {
+      "title": "Prediksi Risiko Obesitas Anda Secara Cerdas",
+      "subtitle": "Obesight menganalisis kebiasaan harian Anda dengan model machine learning untuk mendeteksi risiko obesitas. Dapatkan hasil instan dan rekomendasi gizi yang dipersonalisasi.",
+      "cta_start": "Mulai Skrining Gratis",
+      "cta_learn": "Pelajari Model AI"
+    },
+    "mission": {
+      "title": "Misi Kami",
+      "subtitle": "Memberdayakan masyarakat untuk memahami kesehatan tubuh mereka lebih baik melalui teknologi deteksi dini yang mudah diakses, akurat, dan berbasis data ilmiah."
+    },
+    "features": {
+      "title": "Fitur Utama",
+      "item_fast_title": "Cepat & Gratis",
+      "item_fast_desc": "Pengisian form hanya memakan waktu 2 menit tanpa biaya tersembunyi apa pun.",
+      "item_ai_title": "Berbasis AI",
+      "item_ai_desc": "Menggunakan model machine learning yang dilatih pada dataset perilaku kesehatan riil.",
+      "item_rec_title": "Rekomendasi Personal",
+      "item_rec_desc": "Dapatkan saran asupan cairan, sayur, dan aktivitas fisik yang disesuaikan dengan kebiasaan Anda."
+    },
+    "how_it_works": {
+      "title": "Cara Kerja Obesight",
+      "step1_title": "1. Isi Data Harian",
+      "step1_desc": "Masukkan informasi usia, berat, tinggi, serta kebiasaan pola makan dan aktivitas fisik Anda.",
+      "step2_title": "2. Analisis AI",
+      "step2_desc": "Model machine learning kami memproses data Anda untuk memprediksi kategori risiko obesitas.",
+      "step3_title": "3. Dapatkan Saran",
+      "step3_desc": "Terima hasil prediksi beserta panduan hidup sehat yang disesuaikan secara personal."
+    }
+  },
+  "about": {
+    "title": "Kecerdasan Buatan di Balik Obesight",
+    "subtitle": "Obesight menggunakan model klasifikasi machine learning untuk mendeteksi tingkat risiko obesitas berdasarkan data survei perilaku harian yang dirancang sebagai alat skrining awal yang cepat, informatif, dan mudah dipahami.",
+    "dataset": {
+      "title": "Dataset & Atribut",
+      "description": "Model dilatih menggunakan dataset yang berisi informasi perilaku makan dan aktivitas fisik responden. Atribut dikelompokkan menjadi tiga kategori:",
+      "group_demographics": "Demografi & Antropometri",
+      "group_diet": "Pola Makan",
+      "group_lifestyle": "Aktivitas & Gaya Hidup",
+      "total_data": "Total Data Latih",
+      "class_distribution": "Distribusi Kelas Data",
+      "visit_source": "Kunjungi Sumber Data (Kaggle)"
+    },
+    "model_info": {
+      "title": "Informasi Model ML",
+      "name": "Nama Model",
+      "framework": "Framework/Library",
+      "features": "Fitur yang Dibutuhkan",
+      "loading_metadata": "Memuat metadata model...",
+      "failed_metadata": "Gagal memuat metadata model"
+    },
+    "attributes": {
+      "gender": "Jenis Kelamin",
+      "age": "Usia",
+      "height": "Tinggi Badan",
+      "family_history": "Riwayat Obesitas Keluarga",
+      "favc": "Konsumsi Makanan Kalori Tinggi",
+      "fcvc": "Frekuensi Konsumsi Sayur",
+      "ncp": "Jumlah Makan Utama Harian",
+      "caec": "Camilan di Antara Waktu Makan",
+      "smoke": "Kebiasaan Merokok",
+      "ch2o": "Asupan Cairan Harian",
+      "scc": "Pemantauan Asupan Kalori",
+      "faf": "Aktivitas Fisik / Olahraga",
+      "tue": "Waktu Penggunaan Teknologi",
+      "calc": "Konsumsi Alkohol",
+      "mtrans": "Moda Transportasi Harian"
+    }
+  },
+  "wizard": {
+    "title": "Form Skrining Obesitas",
+    "subtitle": "Isi dengan jujur untuk hasil analisis yang paling akurat. Data Anda diproses secara lokal dan instan.",
+    "step_indicator": "Langkah {{current}} dari {{total}}",
+    "steps": {
+      "personal": "Data Diri",
+      "diet": "Pola Makan",
+      "activity": "Gaya Hidup",
+      "habits": "Kebiasaan Lain"
+    },
+    "questions": {
+      "name": "Nama Lengkap",
+      "name_placeholder": "Masukkan nama Anda",
+      "age": "Usia (Tahun)",
+      "gender": "Jenis Kelamin",
+      "gender_male": "Laki-laki",
+      "gender_female": "Perempuan",
+      "height": "Tinggi Badan (cm)",
+      "weight": "Berat Badan (kg)",
+      "family_history": "Apakah ada anggota keluarga yang memiliki riwayat obesitas?",
+      "family_history_yes": "Ya",
+      "family_history_no": "Tidak",
+      "favc": "Apakah Anda sering mengonsumsi makanan berkalori tinggi (fast food, gorengan)?",
+      "fcvc": "Seberapa sering Anda mengonsumsi sayuran dalam makanan utama?",
+      "fcvc_never": "Tidak pernah",
+      "fcvc_sometimes": "Kadang-kadang",
+      "fcvc_always": "Selalu",
+      "ncp": "Berapa kali Anda makan makanan utama dalam sehari?",
+      "ncp_1_2": "1 - 2 kali sehari",
+      "ncp_3": "3 kali sehari",
+      "ncp_4": "Lebih dari 3 kali sehari",
+      "caec": "Apakah Anda sering ngemil di antara waktu makan utama?",
+      "caec_no": "Tidak pernah",
+      "caec_sometimes": "Kadang-kadang",
+      "caec_frequently": "Sering",
+      "caec_always": "Selalu",
+      "smoke": "Apakah Anda merokok?",
+      "ch2o": "Berapa banyak air mineral yang Anda minum dalam sehari?",
+      "ch2o_less_1l": "Kurang dari 1 Liter",
+      "ch2o_1_2l": "1 - 2 Liter",
+      "ch2o_more_2l": "Lebih dari 2 Liter",
+      "scc": "Apakah Anda memantau asupan kalori makanan yang Anda konsumsi sehari-hari?",
+      "faf": "Berapa hari dalam seminggu Anda melakukan aktivitas fisik atau berolahraga?",
+      "faf_never": "Tidak pernah",
+      "faf_1_2": "1 - 2 hari seminggu",
+      "faf_2_4": "2 - 4 hari seminggu",
+      "faf_4_5": "Lebih dari 4 hari seminggu",
+      "tue": "Berapa jam Anda menghabiskan waktu di depan layar gadget/komputer dalam sehari?",
+      "tue_0_2": "0 - 2 jam",
+      "tue_3_5": "3 - 5 jam",
+      "tue_more_5": "Lebih dari 5 jam",
+      "calc": "Seberapa sering Anda mengonsumsi minuman beralkohol?",
+      "mtrans": "Apa moda transportasi utama yang Anda gunakan untuk bepergian sehari-hari?",
+      "mtrans_car": "Mobil Pribadi",
+      "mtrans_motor": "Sepeda Motor",
+      "mtrans_bike": "Sepeda",
+      "mtrans_public": "Transportasi Umum",
+      "mtrans_walking": "Jalan Kaki"
+    },
+    "validation": {
+      "required": "Kolom ini wajib diisi",
+      "min_age": "Usia minimal 1 tahun",
+      "max_age": "Usia maksimal 120 tahun",
+      "min_height": "Tinggi badan minimal 50 cm",
+      "max_height": "Tinggi badan maksimal 250 cm",
+      "min_weight": "Berat badan minimal 10 kg",
+      "max_weight": "Berat badan maksimal 300 kg"
+    }
+  },
+  "result": {
+    "title": "Hasil Skrining Anda",
+    "subtitle": "Analisis AI mendeteksi kategori risiko dan memberikan saran kesehatan khusus untuk Anda.",
+    "bmi_title": "Indeks Massa Tubuh (IMT)",
+    "category": "Kategori Risiko",
+    "prob_title": "Probabilitas Klasifikasi Model AI",
+    "prob_subtitle": "Persentase keyakinan model untuk setiap kategori risiko obesitas.",
+    "recommendations": "Rekomendasi & Saran Kesehatan",
+    "general_rec": "Saran Umum",
+    "specific_recs": "Saran Spesifik Gaya Hidup",
+    "repeat_button": "Lakukan Skrining Ulang"
+  }
+}

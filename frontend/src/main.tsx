@@ -6,6 +6,7 @@ import muiTheme from './theme/muiTheme';
 import { FormProvider } from './context/FormContext';
 import App from './App.tsx';
 import './index.css';
+import './i18n';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
