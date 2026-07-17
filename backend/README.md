@@ -1,114 +1,119 @@
 # 🩺 ObeSight Backend API (Obesity Prediction & Health Insights System)
 
-ObeSight Backend adalah layanan *stateless API* berbasis **FastAPI (Python)** yang bertindak sebagai mesin inferensi (*inference engine*) dan pemberi rekomendasi kesehatan (*insights engine*). Layanan ini memproses data kuesioner pengguna (17 variabel antropometri dan perilaku) dan mengeksekusi model Machine Learning (`best_model.pkl` hasil pelatihan menggunakan LightGBM/XGBoost) untuk mengklasifikasikan tingkat obesitas secara *real-time* sekaligus memformulasikan saran kesehatan personal dalam bahasa Indonesia atau bahasa Inggris.
+ObeSight Backend is a stateless API service built on **FastAPI (Python)** that serves as the inference engine and health insights engine. It processes user questionnaire data (17 anthropometric and behavioral variables) and executes the serialized Machine Learning pipeline (`best_model_pipeline.pkl` trained using LightGBM) in real-time to classify obesity levels and formulate personalized health recommendations in Indonesian or English.
 
 ---
 
-## 🚀 Fitur Utama
+## 🚀 Key Features
 
-- ⚡ **Performa Tinggi**: Dibangun menggunakan FastAPI dan Uvicorn (ASGI server) untuk latensi inferensi yang minimal.
-- 🧠 **Inference Engine**: Memuat model pembelajaran mesin terserialisasi (`joblib`) ke memori saat startup aplikasi untuk performa prediksi optimal.
-- 📋 **Insight & Recommendation Engine**: Memproses aturan-aturan berbasis perilaku (misalnya konsumsi air mineral, tingkat aktivitas fisik, waktu layar, dll.) untuk menghasilkan rekomendasi kesehatan khusus (spesifik dan umum) yang disesuaikan secara personal.
-- 🌐 **Dukungan Bilingual**: Mampu menghasilkan prediksi label terjemahan dan rekomendasi dalam 2 bahasa: **Bahasa Indonesia (`id`)** dan **Bahasa Inggris (`en`)**.
-- 🛠️ **Validasi Data Otomatis**: Memanfaatkan skema Pydantic v2 untuk memeriksa integritas data input sebelum diproses oleh model.
-- 📚 **Dokumentasi API Otomatis**: Menyediakan antarmuka Swagger UI (`/docs`) dan ReDoc (`/redoc`) bawaan.
+- ⚡ **High Performance**: Built using FastAPI and Uvicorn (ASGI server) for minimal latency.
+- 🧠 **Inference Engine**: Loads the serialized ML pipeline (`joblib`) into memory at application startup for optimal prediction performance.
+- 📋 **Insight & Recommendation Engine**: Evaluates rule-based behavioral inputs (e.g., water consumption, physical activity, screen time, etc.) to generate personalized health suggestions.
+- 🌐 **Bilingual Support**: Generates prediction labels and recommendations in two languages: **Indonesian (`id`)** and **English (`en`)**.
+- 🛠️ **Automated Data Validation**: Uses Pydantic v2 schemas to validate input data integrity before processing.
+- 📚 **Automated API Documentation**: Provides built-in Swagger UI (`/docs`) and ReDoc (`/redoc`) interactive endpoints.
 
 ---
 
-## 🛠️ Tech Stack & Dependensi
+## 🛠️ Tech Stack & Dependencies
 
-Layanan backend ini memerlukan pustaka-pustaka utama berikut (tercatat di [requirements.txt](file:///d:/project/obesight-backend/backend/requirements.txt)):
+The backend service relies on the following key libraries (listed in [requirements.txt](file:///d:/project/obesight-ai/backend/requirements.txt)):
 - **Framework**: FastAPI (v0.136.3), Uvicorn (v0.48.0)
-- **Data Science & ML**: Pandas (v2.3.3), NumPy (v2.4.6), Scikit-Learn (v1.8.0), LightGBM (v4.6.0), XGBoost (v3.2.0), Joblib (v1.5.3)
-- **Utilitas & Pengujian**: Python-dotenv, Pytest, HTTPX
+- **Data Science & ML**: Pandas (v2.3.3), NumPy (v2.4.6), Scikit-Learn (v1.8.0), LightGBM (v4.6.0), Joblib (v1.5.3)
+- **Utilities & Testing**: Python-dotenv, Pytest, HTTPX
 
 ---
 
-## 📂 Struktur Direktori
+## 📂 Directory Structure
 
 ```text
 backend/
 ├── app/
 │   ├── api/
-│   │   ├── endpoints.py     # Definisi router API (/predict, /health, /model-info)
-│   │   └── schemas.py       # Skema request & response Pydantic
+│   │   ├── endpoints.py     # API router definitions (/predict, /health, /model-info)
+│   │   └── schemas.py       # Pydantic request & response schemas
 │   ├── core/
-│   │   └── config.py        # Konfigurasi aplikasi & pemuatan variabel env
+│   │   └── config.py        # Application settings & environment configuration
 │   ├── services/
-│   │   ├── predictor.py     # Logika inferensi dan pemuatan model
-│   │   ├── preprocessor.py  # Pembersihan data & penghitungan BMI
-│   │   └── recommender.py   # Mesin aturan rekomendasi kesehatan bilingual
-│   └── main.py              # Titik masuk utama aplikasi (Inisialisasi FastAPI & Lifespan)
+│   │   ├── predictor.py     # Inference logic and model loading
+│   │   ├── preprocessor.py  # Data cleaning & BMI calculation
+│   │   └── recommender.py   # Bilingual rule-based health recommendation engine
+│   └── main.py              # Main application entry point & Lifespan initialization
 ├── tests/
-│   └── test_api.py          # Unit testing untuk validasi API dan rekomendasi
-├── .env                     # File konfigurasi lingkungan (environment variables)
-└── requirements.txt         # Daftar pustaka & dependensi Python
+│   └── test_api.py          # Integration & unit tests for API and recommendations
+├── .env                     # Local environment configuration file
+└── requirements.txt         # Python dependencies checklist
 ```
 
 ---
 
-## ⚙️ Persyaratan & Instalasi
+## ⚙️ Setup & Installation
 
-### 1. Prasyarat
-Pastikan Anda sudah menginstal **Python 3.10** atau versi yang lebih baru di sistem Anda.
+### 1. Prerequisites
+Make sure you have **Python 3.10** or newer installed on your system.
 
-### 2. Kloning dan Masuk ke Folder Backend
+### 2. Enter Backend Directory
 ```bash
-cd d:/project/obesight-backend/backend
+cd d:/project/obesight-ai/backend
 ```
 
-### 3. Buat dan Aktifkan Virtual Environment
-Di Windows (PowerShell/CMD):
+### 3. Create and Activate Virtual Environment
+On Windows (PowerShell/CMD):
 ```powershell
-# Membuat virtual environment
+# Create virtual environment
 python -m venv .venv
 
-# Mengaktifkan di PowerShell
+# Activate in PowerShell
 .venv\Scripts\Activate.ps1
 
-# Mengaktifkan di CMD
+# Activate in CMD
 .venv\Scripts\activate.bat
 ```
+On macOS/Linux:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-### 4. Instal Dependensi
+### 4. Install Dependencies
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 5. Konfigurasi Lingkungan (`.env`)
-Buat file bernama `.env` di direktori root backend (`backend/`) jika belum ada, lalu sesuaikan isinya:
+### 5. Environment Configuration (`.env`)
+Create a file named `.env` in the backend root directory (`backend/`) and configure variables:
 ```env
 APP_NAME="ObeSight API"
 DEBUG=true
 HOST=127.0.0.1
 PORT=8000
-MODEL_PATH="../ml/models/best_model.pkl"
+MODEL_PATH="../ml/models/best_model_pipeline.pkl"
 ALLOWED_ORIGINS=["http://localhost:3000", "http://localhost:5173"]
 ```
 
 ---
 
-## 🏃 Cara Menjalankan Server Pengembangan
+## 🏃 Running Development Server
 
-Jalankan Uvicorn dalam mode *hot-reload* untuk mendeteksi perubahan kode secara otomatis:
+Run Uvicorn in hot-reload mode to automatically pick up code changes:
 
 ```bash
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Setelah berhasil dijalankan, Anda dapat mengakses:
+Once started successfully, you can access:
 - 🔌 **API Base URL**: `http://127.0.0.1:8000/`
-- 📖 **Dokumentasi Swagger UI**: `http://127.0.0.1:8000/docs`
-- 📘 **Dokumentasi ReDoc**: `http://127.0.0.1:8000/redoc`
+- 📖 **Swagger UI Documentation**: `http://127.0.0.1:8000/docs`
+- 📘 **ReDoc Documentation**: `http://127.0.0.1:8000/redoc`
 
 ---
 
-## 🧪 Menjalankan Unit Testing
+## 🧪 Running Unit Tests
 
-Pengujian otomatis ditulis menggunakan `pytest` untuk memverifikasi validitas format input, status kesehatan, kalkulasi BMI, serta logika rekomendasi bilingual.
+Automated unit tests are written with `pytest` to verify input formatting, system health, BMI calculation, and bilingual recommendation generation logic.
 
-Untuk menjalankan semua tes, jalankan perintah berikut di dalam direktori `backend/`:
+To run all tests, execute the following command inside the `backend/` folder:
 
 ```bash
 pytest -v
@@ -116,10 +121,10 @@ pytest -v
 
 ---
 
-## 📡 Kontrak Antarmuka API (API Endpoints)
+## 📡 API Endpoints Specifications
 
-### 1. `POST /api/v1/predict` (Endpoint Prediksi & Saran)
-Digunakan untuk mengirim data survei pengguna dan mendapatkan tingkat obesitas yang diprediksi serta saran kesehatan.
+### 1. `POST /api/v1/predict` (Prediction & Recommendation Endpoint)
+Submits user survey answers and retrieves the predicted obesity category alongside specific health guidance.
 
 - **Request Body (JSON)**:
 ```json
@@ -144,7 +149,7 @@ Digunakan untuk mengirim data survei pengguna dan mendapatkan tingkat obesitas y
   "language": "id"
 }
 ```
-*Catatan: Nilai `Height` diisi dalam centimeter (cm) untuk kenyamanan pengguna, backend akan mengonversinya secara internal ke meter (m).*
+*Note: `Height` is provided in centimeters (cm) for user convenience, and the backend converts it to meters (m) internally.*
 
 - **Response Body (JSON)**:
 ```json
@@ -178,7 +183,7 @@ Digunakan untuk mengirim data survei pengguna dan mendapatkan tingkat obesitas y
 ```
 
 ### 2. `GET /api/v1/health` (Health Check)
-Memverifikasi status operasional backend dan memastikan model ML berhasil dimuat ke dalam memori.
+Verifies the server's operational status and model availability.
 
 - **Response (JSON)**:
 ```json
@@ -188,8 +193,8 @@ Memverifikasi status operasional backend dan memastikan model ML berhasil dimuat
 }
 ```
 
-### 3. `GET /api/v1/model-info` (Metadata Model)
-Mengembalikan informasi metadata tentang nama model, kerangka kerja (framework), serta fitur-fitur yang wajib dikirimkan dalam request body.
+### 3. `GET /api/v1/model-info` (Model Metadata)
+Returns metadata about the active ML model classifier.
 
 - **Response (JSON)**:
 ```json
@@ -205,10 +210,10 @@ Mengembalikan informasi metadata tentang nama model, kerangka kerja (framework),
 
 ---
 
-## 🧠 Logika Pemrosesan Inferensi
+## 🧠 Inference Process Pipeline
 
-1. **Konversi Satuan**: Nilai tinggi badan dari pengguna (`cm`) dikonversi ke meter (`Height / 100`).
-2. **Kalkulasi BMI**: Menghitung indeks massa tubuh dengan rumus: $\text{BMI} = \frac{\text{Berat (kg)}}{\text{Tinggi (m)}^2}$.
-3. **Penyusunan Fitur**: Nilai-nilai di atas dimasukkan ke dalam baris data `pandas.DataFrame` dengan kolom terurut yang sesuai persis dengan kebutuhan input pipeline model ML.
-4. **Prediksi Model**: Menjalankan `.predict_proba()` dari objek Pipeline model terserialisasi untuk mendapatkan peluang kelas.
-5. **Generasi Rekomendasi**: Menilai input perilaku per individu untuk merangkai daftar rekomendasi spesifik (misalnya, mengingatkan hidrasi jika `CH2O` rendah, menganjurkan olahraga jika `FAF` rendah).
+1. **Unit Conversion**: The user's height (`cm`) is converted into meters (`Height / 100`).
+2. **BMI Calculation**: Calculates Body Mass Index via: $\text{BMI} = \frac{\text{Weight (kg)}}{\text{Height (m)}^2}$.
+3. **Dataframe Assembly**: Prepares inputs inside a sorted `pandas.DataFrame` structured to match the model's feature order.
+4. **ML Prediction**: Triggers `.predict_proba()` on the serialized scikit-learn Pipeline object to get weight class probabilities.
+5. **Guidance Assembly**: Generates rule-based recommendations tailored to individual habits (e.g., prompting hydration if `CH2O` is low).
