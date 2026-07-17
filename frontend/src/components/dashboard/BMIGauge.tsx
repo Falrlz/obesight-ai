@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface BMIGaugeProps {
   bmi: number;
@@ -48,6 +49,7 @@ const ZONES = [
 ];
 
 export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category, general }) => {
+  const { t } = useTranslation();
   const minBmi = 15;
   const maxBmi = 40;
   const span = maxBmi - minBmi;
@@ -60,11 +62,18 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category, general }) =>
   const activeIdx = bmi < 18.5 ? 0 : bmi < 25 ? 1 : bmi < 30 ? 2 : 3;
   const active = ZONES[activeIdx];
 
+  const zoneLabels = [
+    t('result.underweight_label', 'Kurus'),
+    t('result.normal_label', 'Normal'),
+    t('result.overweight_label', 'Berlebih'),
+    t('result.obesity_label', 'Obesitas'),
+  ];
+
   return (
     <div className="flex flex-col h-full p-6 sm:p-8 bg-white rounded-3xl border border-outline-variant">
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-xs font-semibold text-text-secondary/70 uppercase tracking-wider">
-          Indeks Massa Tubuh
+          {t('result.bmi_title', 'Indeks Massa Tubuh')}
         </h3>
         <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${active.badge}`}>
           {category}
@@ -100,7 +109,7 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category, general }) =>
         <div className="flex gap-1">
           {ZONES.map((z, i) => (
             <div
-              key={z.label}
+              key={i}
               className={`h-3 rounded-full transition-colors duration-500 ${i === activeIdx ? z.bar : z.muted
                 }`}
               style={{ flexBasis: `${z.basis}%` }}
@@ -111,19 +120,19 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category, general }) =>
         {/* Zone labels */}
         <div className="flex gap-1 mt-2">
           {ZONES.map((z, i) => (
-            <div key={z.label} className="text-center" style={{ flexBasis: `${z.basis}%` }}>
+            <div key={i} className="text-center" style={{ flexBasis: `${z.basis}%` }}>
               <span
                 className={`text-[10px] sm:text-xs ${i === activeIdx ? `${z.text} font-semibold` : 'text-text-secondary/60 font-medium'
                   }`}
               >
-                {z.label}
+                {zoneLabels[i]}
               </span>
             </div>
           ))}
         </div>
 
         <p className="mt-4 text-xs text-text-secondary/70 leading-relaxed">
-          Rentang berat badan sehat berada pada BMI <strong className="text-text-secondary">18,5–24,9</strong>.
+          {t('result.bmi_healthy_range', 'Rentang berat badan sehat berada pada BMI 18,5–24,9.')}
         </p>
       </div>
 
@@ -131,7 +140,7 @@ export const BMIGauge: React.FC<BMIGaugeProps> = ({ bmi, category, general }) =>
       {general && (
         <div className="mt-6 pt-6 border-t border-outline-variant/60">
           <h4 className="text-xs font-semibold text-secondary uppercase tracking-wider mb-2">
-            Saran Kesehatan Utama
+            {t('result.general_rec', 'Saran Kesehatan Utama')}
           </h4>
           <p className="text-on-surface/85 text-xs sm:text-sm leading-relaxed">
             {general}

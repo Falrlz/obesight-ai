@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../../context/FormContext';
 import { Slider } from '@mui/material';
 
@@ -33,6 +34,7 @@ const WEIGHT_MIN = 30;
 const WEIGHT_MAX = 500;
 
 export const Step1Basic: React.FC = () => {
+  const { t } = useTranslation();
   const { formData, setFormData } = useFormContext();
 
   const handleGenderSelect = (gender: 'Male' | 'Female') => {
@@ -57,22 +59,22 @@ export const Step1Basic: React.FC = () => {
     <div className="space-y-7 sm:space-y-8 animate-slideIn">
       {/* Name Input */}
       <div className="space-y-2.5 sm:space-y-3">
-        <label className="text-base sm:text-lg font-semibold text-text-secondary block">Nama Panggilan</label>
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">{t('wizard.questions.name')}</label>
         <input
           type="text"
-          placeholder="Masukkan nama Anda..."
+          placeholder={t('wizard.questions.name_placeholder')}
           value={formData.name}
           onChange={handleNameChange}
           className="w-full px-5 py-3.5 rounded-2xl bg-slate-50/50 border border-outline-variant focus:border-secondary focus:bg-white focus:outline-none transition-all duration-200 text-text-secondary text-lg"
         />
         {isNameEmpty && (
-          <p className="text-sm font-medium text-rose-500">Nama wajib diisi</p>
+          <p className="text-sm font-medium text-rose-500">{t('wizard.validation.required')}</p>
         )}
       </div>
 
       {/* Gender Selection */}
       <div className="space-y-2.5 sm:space-y-3">
-        <label className="text-base sm:text-lg font-semibold text-text-secondary block">Jenis Kelamin</label>
+        <label className="text-base sm:text-lg font-semibold text-text-secondary block">{t('wizard.questions.gender')}</label>
         <div className="grid grid-cols-2 gap-4">
           <button
             type="button"
@@ -83,7 +85,7 @@ export const Step1Basic: React.FC = () => {
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-sm font-medium">Laki-laki</span>
+            <span className="text-sm font-medium">{t('wizard.questions.gender_male')}</span>
           </button>
           <button
             type="button"
@@ -94,7 +96,7 @@ export const Step1Basic: React.FC = () => {
                 : 'border-outline-variant bg-white text-text-secondary hover:border-slate-300'
             }`}
           >
-            <span className="text-sm font-medium">Perempuan</span>
+            <span className="text-sm font-medium">{t('wizard.questions.gender_female')}</span>
           </button>
         </div>
       </div>
@@ -102,9 +104,9 @@ export const Step1Basic: React.FC = () => {
       {/* Age Input */}
       <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-base sm:text-lg font-semibold text-text-secondary">Umur</label>
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">{t('about.attributes.age')}</label>
           <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10 select-none">
-            {formData.Age !== undefined && formData.Age !== null ? `${formData.Age} Tahun` : '- Tahun'}
+            {formData.Age !== undefined && formData.Age !== null ? `${formData.Age} ${t('wizard.years')}` : `- ${t('wizard.years')}`}
           </span>
         </div>
         <Slider
@@ -120,7 +122,7 @@ export const Step1Basic: React.FC = () => {
       {/* Height Slider */}
       <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-base sm:text-lg font-semibold text-text-secondary">Tinggi Badan</label>
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">{t('about.attributes.height')}</label>
           <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10 select-none">
             {formData.Height !== undefined && formData.Height !== null ? `${formData.Height} cm` : '- cm'}
           </span>
@@ -139,7 +141,7 @@ export const Step1Basic: React.FC = () => {
       {/* Weight Slider */}
       <div className="space-y-2.5 sm:space-y-3 pt-3 sm:pt-4">
         <div className="flex justify-between items-center">
-          <label className="text-base sm:text-lg font-semibold text-text-secondary">Berat Badan</label>
+          <label className="text-base sm:text-lg font-semibold text-text-secondary">{t('about.attributes.weight')}</label>
           <span className="text-base font-bold text-text-secondary px-3.5 py-1 rounded-full bg-secondary/10 select-none">
             {formData.Weight !== undefined && formData.Weight !== null ? `${formData.Weight} kg` : '- kg'}
           </span>

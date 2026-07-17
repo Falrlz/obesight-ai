@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFormContext } from '../../context/FormContext';
 
 export const Step4Habits: React.FC = () => {
+  const { t } = useTranslation();
   const { formData, setFormData } = useFormContext();
 
   const updateField = (field: string, value: any) => {
@@ -13,13 +15,13 @@ export const Step4Habits: React.FC = () => {
       {/* TUE - Waktu Layar/Gadget */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Berapa jam Anda menghabiskan waktu di depan layar (gadget, komputer, TV) setiap hari?
+          {t('wizard.questions.tue')}
         </label>
         <div className="grid grid-cols-3 gap-3">
           {[
-            { value: 0, label: '0 - 2 Jam', desc: 'Rendah' },
-            { value: 1, label: '3 - 5 Jam', desc: 'Sedang' },
-            { value: 2, label: 'Lebih dari 5 Jam', desc: 'Tinggi' },
+            { value: 0, label: t('wizard.questions.tue_0_2'), desc: t('wizard.questions.low') },
+            { value: 1, label: t('wizard.questions.tue_3_5'), desc: t('wizard.questions.moderate') },
+            { value: 2, label: t('wizard.questions.tue_more_5'), desc: t('wizard.questions.high') },
           ].map((item) => (
             <button
               key={item.value}
@@ -41,14 +43,14 @@ export const Step4Habits: React.FC = () => {
       {/* CALC - Kebiasaan Alkohol */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Seberapa sering Anda mengonsumsi minuman beralkohol?
+          {t('wizard.questions.calc')}
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {[
-            { value: 'no', label: 'Tidak Pernah' },
-            { value: 'Sometimes', label: 'Kadang-kadang' },
-            { value: 'Frequently', label: 'Sering' },
-            { value: 'Always', label: 'Setiap Hari' },
+            { value: 'no', label: t('wizard.questions.caec_no') },
+            { value: 'Sometimes', label: t('wizard.questions.caec_sometimes') },
+            { value: 'Frequently', label: t('wizard.questions.caec_frequently') },
+            { value: 'Always', label: t('wizard.questions.calc_always') },
           ].map((item) => (
             <button
               key={item.value}
@@ -69,15 +71,15 @@ export const Step4Habits: React.FC = () => {
       {/* MTRANS - Alat Transportasi */}
       <div className="space-y-2.5 sm:space-y-3">
         <label className="text-base sm:text-lg font-semibold text-text-secondary block">
-          Apa transportasi utama yang Anda gunakan untuk beraktivitas sehari-hari?
+          {t('wizard.questions.mtrans')}
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {[
-            { value: 'Walking', label: 'Jalan Kaki' },
-            { value: 'Bike', label: 'Sepeda' },
-            { value: 'Public_Transportation', label: 'Transportasi Umum' },
-            { value: 'Motorbike', label: 'Sepeda Motor' },
-            { value: 'Automobile', label: 'Mobil Pribadi' },
+            { value: 'Walking', label: t('wizard.questions.mtrans_walking') },
+            { value: 'Bike', label: t('wizard.questions.mtrans_bike') },
+            { value: 'Public_Transportation', label: t('wizard.questions.mtrans_public') },
+            { value: 'Motorbike', label: t('wizard.questions.mtrans_motor') },
+            { value: 'Automobile', label: t('wizard.questions.mtrans_car') },
           ].map((item) => (
             <button
               key={item.value}

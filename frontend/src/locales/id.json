@@ -1,0 +1,278 @@
+{
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "submit": "Prediksi Sekarang",
+    "home": "Beranda",
+    "screening": "Skrining",
+    "about": "Tentang",
+    "start_screening": "Mulai Skrining",
+    "about_ai": "Tentang AI"
+  },
+  "navbar": {
+    "home": "Beranda",
+    "screening": "Skrining",
+    "about": "Tentang",
+    "screening_self": "Skrining Mandiri",
+    "about_ai": "Tentang AI",
+    "toggle_language": "Pilih Bahasa",
+    "language": "Bahasa"
+  },
+  "footer": {
+    "description": "Obesight AI adalah alat skrining kesehatan berbasis kecerdasan buatan untuk mendeteksi risiko obesitas sejak dini dan memberikan rekomendasi gaya hidup sehat.",
+    "navigation": "Navigasi",
+    "links": "Tautan",
+    "disclaimer_title": "Peringatan Medis",
+    "disclaimer_text": "Alat ini dirancang untuk tujuan edukasi dan kesadaran awal, bukan sebagai pengganti saran medis profesional, diagnosis, atau perawatan klinis dari dokter.",
+    "copyright": "Hak Cipta © 2026 Obesight AI. Hak Cipta Dilindungi."
+  },
+  "landing": {
+    "hero": {
+      "title": "Prediksi Risiko Obesitas Anda Secara Cerdas",
+      "subtitle": "Obesight menganalisis kebiasaan harian Anda dengan model machine learning untuk mendeteksi risiko obesitas. Dapatkan hasil instan dan rekomendasi gizi yang dipersonalisasi.",
+      "cta_start": "Mulai Skrining",
+      "cta_learn": "Pelajari Model AI"
+    },
+    "mission": {
+      "text": "Obesight menganalisis profil fisik, pola makan, tingkat hidrasi, dan aktivitas harian Anda secara terintegrasi melalui 17 faktor kesehatan untuk mendeteksi risiko obesitas serta menyusun rencana aksi gaya hidup yang dipersonalisasi."
+    },
+    "features": {
+      "title": "Solusi Cerdas Untuk Anda",
+      "card1_title": "Skrining Gaya Hidup",
+      "card1_desc": "Kuesioner cepat 4 langkah yang ramah pengguna untuk memetakan kebiasaan harian Anda secara akurat.",
+      "card2_title": "Prediksi Akurat AI",
+      "card2_desc": "Menggunakan model klasifikasi LightGBM terlatih untuk mendeteksi tingkat risiko obesitas.",
+      "card3_title": "Insight Tindakan Personal",
+      "card3_desc": "Dapatkan rekomendasi yang dipersonalisasi untuk memperbaiki pola makan, hidrasi, dan aktivitas harian Anda secara terarah."
+    },
+    "how_it_works": {
+      "title": "Mulai dengan 3 Langkah Mudah",
+      "step1_title": "Isi Kuesioner",
+      "step1_desc": "1 menit untuk menjawab pertanyaan dasar mengenai gaya hidup dan profil fisik Anda.",
+      "step2_title": "Analisis AI",
+      "step2_desc": "Kami memproses data Anda secara instan menggunakan model machine learning.",
+      "step3_title": "Terima Hasil",
+      "step3_desc": "Dapatkan laporan risiko yang komprehensif dan saran tindakan yang dipersonalisasi segera."
+    }
+  },
+  "about": {
+    "title": "Kecerdasan Buatan di Balik Obesight",
+    "subtitle": "Obesight menggunakan model klasifikasi machine learning untuk mendeteksi tingkat risiko obesitas berdasarkan data survei perilaku harian yang dirancang sebagai alat skrining awal yang cepat, informatif, dan mudah dipahami.",
+    "dataset": {
+      "title": "Dataset Pelatihan",
+      "subtitle": "Sumber data yang melatih model prediksi",
+      "description": "Model dilatih menggunakan Obesity Dataset. Kumpulan data survei yang memetakan faktor demografi, pola makan, dan gaya hidup terhadap tingkat obesitas seseorang.",
+      "group_demographics": "Demografi & Antropometri",
+      "group_diet": "Pola Makan",
+      "group_lifestyle": "Aktivitas & Gaya Hidup",
+      "total_data": "Total Data Latih",
+      "class_distribution": "Distribusi Kategori",
+      "visit_source": "Lihat di Kaggle",
+      "respondents": "Responden",
+      "attributes": "Atribut",
+      "categories": "Kategori"
+    },
+    "model_info": {
+      "title": "Metadata Model",
+      "subtitle": "Detail teknis model prediksi yang digunakan",
+      "name": "Nama Model",
+      "framework": "Framework/Library",
+      "features": "Fitur yang Diperhitungkan",
+      "loading_metadata": "Memuat metadata model...",
+      "failed_metadata": "Gagal mengambil metadata model dari server. Coba muat ulang halaman.",
+      "algorithm": "Algoritma Model",
+      "pipeline": "Framework Pipeline"
+    },
+    "attributes": {
+      "gender": "Jenis Kelamin",
+      "age": "Usia",
+      "height": "Tinggi Badan",
+      "weight": "Berat Badan",
+      "family_history": "Riwayat Obesitas Keluarga",
+      "favc": "Konsumsi Makanan Kalori Tinggi",
+      "fcvc": "Frekuensi Konsumsi Sayur",
+      "ncp": "Jumlah Makan Utama Harian",
+      "caec": "Camilan di Antara Waktu Makan",
+      "smoke": "Kebiasaan Merokok",
+      "ch2o": "Asupan Cairan Harian",
+      "scc": "Pemantauan Asupan Kalori",
+      "faf": "Aktivitas Fisik / Olahraga",
+      "tue": "Waktu Penggunaan Teknologi",
+      "calc": "Konsumsi Alkohol",
+      "mtrans": "Moda Transportasi Harian"
+    },
+    "classes": {
+      "normal": "Normal",
+      "overweight": "Berat Berlebih",
+      "obese": "Obesitas",
+      "underweight": "Kurus"
+    },
+    "cta": {
+      "title": "Siap mengetahui risiko Anda?",
+      "subtitle": "Selesaikan skrining singkat dan dapatkan insight kesehatan personal Anda."
+    }
+  },
+  "wizard": {
+    "title": "Form Skrining Obesitas",
+    "subtitle": "Isi dengan jujur untuk hasil analisis yang paling akurat. Data Anda diproses secara lokal dan instan.",
+    "years": "Tahun",
+    "analyzing_profile": "Menganalisis Profil Kesehatan",
+    "retry": "Coba Lagi",
+    "api_connection_error": "Gagal terhubung dengan server API. Harap periksa apakah server backend sudah berjalan.",
+    "loading_steps": [
+      "Membangun koneksi ke ObeSight API...",
+      "Menghitung Indeks Massa Tubuh (BMI)...",
+      "Mengevaluasi variabel genetik & antropometri...",
+      "Mengeksekusi model kecerdasan buatan (LightGBM/XGBoost)...",
+      "Menyusun rekomendasi kesehatan personal bilingual..."
+    ],
+    "step_metadata": [
+      {
+        "title": "Data Dasar & Fisik",
+        "desc": "Masukkan informasi profil dasar dan ukuran antropometri tubuh Anda."
+      },
+      {
+        "title": "Pola Makan & Genetik",
+        "desc": "Pertanyaan mengenai riwayat keluarga dan perilaku konsumsi makanan harian Anda."
+      },
+      {
+        "title": "Kebiasaan Hidrasi & Aktivitas",
+        "desc": "Pertanyaan mengenai tingkat olahraga, hidrasi harian, serta kepedulian kalori Anda."
+      },
+      {
+        "title": "Gaya Hidup Harian",
+        "desc": "Langkah akhir mengenai screen-time harian, konsumsi alkohol, dan transportasi Anda."
+      }
+    ],
+    "step_indicator": "Langkah {{current}} dari {{total}}",
+    "steps": {
+      "personal": "Data Diri",
+      "diet": "Pola Makan",
+      "activity": "Gaya Hidup",
+      "habits": "Kebiasaan Lain"
+    },
+    "questions": {
+      "name": "Nama Lengkap",
+      "name_placeholder": "Masukkan nama Anda",
+      "age": "Usia (Tahun)",
+      "gender": "Jenis Kelamin",
+      "gender_male": "Laki-laki",
+      "gender_female": "Perempuan",
+      "height": "Tinggi Badan (cm)",
+      "weight": "Berat Badan (kg)",
+      "family_history": "Apakah ada anggota keluarga yang memiliki riwayat obesitas?",
+      "family_history_yes": "Ya",
+      "family_history_no": "Tidak",
+      "favc": "Apakah Anda sering mengonsumsi makanan berkalori tinggi (fast food, gorengan)?",
+      "favc_yes": "Ya, Sering",
+      "favc_no": "Jarang / Tidak Pernah",
+      "fcvc": "Seberapa sering Anda mengonsumsi sayuran dalam makanan utama?",
+      "fcvc_never": "Tidak pernah",
+      "fcvc_sometimes": "Kadang-kadang",
+      "fcvc_always": "Selalu",
+      "ncp": "Berapa kali Anda makan makanan utama dalam sehari?",
+      "ncp_1_2": "1 - 2 kali sehari",
+      "ncp_3": "3 kali sehari",
+      "ncp_4": "Lebih dari 3 kali sehari",
+      "caec": "Apakah Anda sering ngemil di antara waktu makan utama?",
+      "caec_no": "Tidak pernah",
+      "caec_sometimes": "Kadang-kadang",
+      "caec_frequently": "Sering",
+      "caec_always": "Selalu",
+      "smoke": "Apakah Anda merokok?",
+      "ch2o": "Berapa banyak air mineral yang Anda minum dalam sehari?",
+      "ch2o_1": "1 - 2 Liter",
+      "ch2o_1_desc": "(Sekitar 4-8 Gelas)",
+      "ch2o_2": "2 Liter",
+      "ch2o_2_desc": "(Sekitar 8 Gelas)",
+      "ch2o_3": "Lebih dari 2 Liter",
+      "ch2o_3_desc": "(> 8 Gelas)",
+      "ch2o_less_1l": "Kurang dari 1 Liter",
+      "ch2o_1_2l": "1 - 2 Liter",
+      "ch2o_more_2l": "Lebih dari 2 Liter",
+      "scc": "Apakah Anda memantau asupan kalori makanan yang Anda konsumsi sehari-hari?",
+      "scc_yes": "Ya, Saya Catat",
+      "scc_no": "Tidak Pernah",
+      "faf": "Berapa hari Anda berolahraga atau melakukan aktivitas fisik dalam seminggu?",
+      "faf_never_label": "Tidak Pernah",
+      "faf_rarely_label": "Jarang",
+      "faf_moderate_label": "Sedang",
+      "faf_active_label": "Aktif",
+      "days": "hari",
+      "faf_never": "Tidak pernah",
+      "faf_1_2": "1 - 2 hari seminggu",
+      "faf_2_4": "2 - 4 hari seminggu",
+      "faf_4_5": "Lebih dari 4 hari seminggu",
+      "tue": "Berapa jam Anda menghabiskan waktu di depan layar (gadget, komputer, TV) setiap hari?",
+      "tue_0_2": "0 - 2 Jam",
+      "tue_3_5": "3 - 5 Jam",
+      "tue_more_5": "Lebih dari 5 Jam",
+      "low": "Rendah",
+      "moderate": "Sedang",
+      "high": "Tinggi",
+      "calc": "Seberapa sering Anda mengonsumsi minuman beralkohol?",
+      "calc_always": "Setiap Hari",
+      "mtrans": "Apa moda transportasi utama yang Anda gunakan untuk bepergian sehari-hari?",
+      "mtrans_car": "Mobil Pribadi",
+      "mtrans_motor": "Sepeda Motor",
+      "mtrans_bike": "Sepeda",
+      "mtrans_public": "Transportasi Umum",
+      "mtrans_walking": "Jalan Kaki"
+    },
+    "validation": {
+      "required": "Kolom ini wajib diisi",
+      "min_age": "Usia minimal 1 tahun",
+      "max_age": "Usia maksimal 120 tahun",
+      "min_height": "Tinggi badan minimal 50 cm",
+      "max_height": "Tinggi badan maksimal 250 cm",
+      "min_weight": "Berat badan minimal 10 kg",
+      "max_weight": "Berat badan maksimal 300 kg"
+    }
+  },
+  "result": {
+    "title": "Hasil Analisis Kesehatan",
+    "subtitle": "Analisis AI mendeteksi kategori risiko dan memberikan saran kesehatan khusus untuk Anda.",
+    "confidence_label": "Keyakinan",
+    "report_header": "Laporan Skrining",
+    "greeting": "Halo",
+    "greeting_body": ", berikut ringkasan evaluasi fisik dan rekomendasi personal Anda.",
+    "print_pdf": "Cetak PDF",
+    "repeat_button": "Skrining Ulang",
+    "ai_prediction": "Prediksi Utama Model AI",
+    "confidence_desc_part1": "Model mengklasifikasikan kondisi Anda dengan tingkat keyakinan",
+    "confidence_desc_part2": ". Gunakan rekomendasi di bawah sebagai langkah awal, bukan pengganti diagnosis medis.",
+    "bmi_title": "Indeks Massa Tubuh",
+    "bmi_label": "BMI",
+    "category_label": "Kategori",
+    "risk_level_label": "Tingkat Risiko",
+    "underweight_label": "Kurus",
+    "normal_label": "Normal",
+    "overweight_label": "Berlebih",
+    "obesity_label": "Obesitas",
+    "bmi_healthy_range": "Rentang berat badan sehat berada pada BMI 18,5–24,9.",
+    "general_rec": "Saran Kesehatan Utama",
+    "action_plan_title": "Rencana Tindakan",
+    "action_plan_desc": "Centang poin yang ingin Anda prioritaskan minggu ini.",
+    "no_specific_recs": "Tidak ada saran spesifik. Gaya hidup Anda saat ini sudah sangat baik!",
+    "update_results_title": "Ingin memperbarui hasil Anda?",
+    "update_results_desc": "Jalankan skrining ulang kapan saja setelah kebiasaan Anda berubah.",
+    "prediction_badge": "Prediksi",
+    "risk_underweight": "Perlu Perhatian",
+    "risk_normal": "Risiko Rendah",
+    "risk_overweight": "Risiko Sedang",
+    "risk_obesity": "Risiko Tinggi",
+    "prob_title": "Distribusi Probabilitas AI",
+    "prob_subtitle": "Seberapa dekat kondisi fisik Anda dengan tiap kategori berat badan menurut model machine learning.",
+    "classes": {
+      "Insufficient_Weight": "Kurus / Berat Kurang",
+      "Normal_Weight": "Berat Badan Normal",
+      "Overweight_Level_I": "Kelebihan Berat Badan Tingkat I",
+      "Overweight_Level_II": "Kelebihan Berat Badan Tingkat II",
+      "Obesity_Type_I": "Obesitas Tingkat I",
+      "Obesity_Type_II": "Obesitas Tingkat II",
+      "Obesity_Type_III": "Obesitas Tingkat III (Ekstrem)"
+    }
+  }
+}

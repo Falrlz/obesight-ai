@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface InsightCardsProps {
   general?: string;
@@ -6,6 +7,7 @@ interface InsightCardsProps {
 }
 
 export const InsightCards: React.FC<InsightCardsProps> = ({ general, specific }) => {
+  const { t } = useTranslation();
   // Local state to track which recommendations have been checked by the user
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
 
@@ -31,7 +33,7 @@ export const InsightCards: React.FC<InsightCardsProps> = ({ general, specific })
             </svg>
           </div>
           <h3 className="text-xs font-semibold text-secondary uppercase tracking-wider mt-5">
-            Saran Kesehatan Utama
+            {t('result.general_rec', 'Saran Kesehatan Utama')}
           </h3>
           <p className="text-on-surface/85 text-sm sm:text-base leading-relaxed mt-2">
             {general}
@@ -44,10 +46,10 @@ export const InsightCards: React.FC<InsightCardsProps> = ({ general, specific })
         <div className="flex items-start justify-between gap-4">
           <div>
             <h3 className="text-xs font-semibold text-text-secondary/70 uppercase tracking-wider">
-              Rencana Tindakan
+              {t('result.action_plan_title', 'Rencana Tindakan')}
             </h3>
             <p className="text-sm text-text-secondary/80 mt-2 leading-relaxed">
-              Centang poin yang ingin Anda prioritaskan minggu ini.
+              {t('result.action_plan_desc', 'Centang poin yang ingin Anda prioritaskan minggu ini.')}
             </p>
           </div>
           {specific.length > 0 && (
@@ -59,7 +61,7 @@ export const InsightCards: React.FC<InsightCardsProps> = ({ general, specific })
 
         {specific.length === 0 ? (
           <div className="text-center py-10 text-sm text-text-secondary/70">
-            Tidak ada saran spesifik. Gaya hidup Anda saat ini sudah sangat baik!
+            {t('result.no_specific_recs', 'Tidak ada saran spesifik. Gaya hidup Anda saat ini sudah sangat baik!')}
           </div>
         ) : (
           <div className="mt-6 space-y-2.5">

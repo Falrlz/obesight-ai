@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import logo from '../../assets/obesight-icon.svg';
 
 interface NavbarProps {
@@ -7,6 +8,50 @@ interface NavbarProps {
   onNavigateWizard: () => void;
   onNavigateAbout: () => void;
 }
+
+const LANGUAGES = [
+  { code: 'id', label: 'ID' },
+  { code: 'en', label: 'EN' },
+] as const;
+
+interface LanguageSwitcherProps {
+  currentLang: string;
+  onSelect: (lang: string) => void;
+  className?: string;
+}
+
+/** Segmented language toggle — shared by the desktop bar and the mobile menu so both stay identical. */
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ currentLang, onSelect, className = '' }) => {
+  const active = currentLang.startsWith('en') ? 'en' : 'id';
+
+  return (
+    <div
+      role="group"
+      aria-label="Language"
+      className={`inline-flex items-center gap-0.5 p-0.5 rounded-full bg-surface-container-high/60 border border-outline-variant/40 select-none ${className}`}
+    >
+      {LANGUAGES.map(({ code, label }) => {
+        const isActive = active === code;
+        return (
+          <button
+            key={code}
+            type="button"
+            lang={code}
+            onClick={() => onSelect(code)}
+            aria-pressed={isActive}
+            className={`px-2.5 py-1 text-[11px] font-bold tracking-wide rounded-full transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/40 ${
+              isActive
+                ? 'text-white bg-secondary shadow-sm'
+                : 'text-on-surface-variant hover:text-secondary'
+            }`}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
@@ -16,6 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,9 +107,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isAboutActive = location.pathname === '/tentang';
 
   const navLinks = [
-    { label: 'Beranda', mobileLabel: 'Beranda', onClick: onNavigateHome, isActive: isHomeActive },
-    { label: 'Skrining', mobileLabel: 'Skrining Mandiri', onClick: onNavigateWizard, isActive: isWizardActive },
-    { label: 'Tentang', mobileLabel: 'Tentang AI', onClick: onNavigateAbout, isActive: isAboutActive },
+    { label: t('navbar.home'), mobileLabel: t('navbar.home'), onClick: onNavigateHome, isActive: isHomeActive },
+    { label: t('navbar.screening'), mobileLabel: t('navbar.screening_self'), onClick: onNavigateWizard, isActive: isWizardActive },
+    { label: t('navbar.about'), mobileLabel: t('navbar.about_ai'), onClick: onNavigateAbout, isActive: isAboutActive },
   ];
 
   const handleLinkClick = (link: (typeof navLinks)[number]) => {
@@ -133,6 +179,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {link.label}
               </button>
             ))}
+
+            {/* Language Switcher */}
+            <LanguageSwitcher
+              currentLang={i18n.language}
+              onSelect={(lang) => i18n.changeLanguage(lang)}
+              className="ml-2"
+            />
           </div>
 
           {/* Mobile Menu Button (Hamburger) */}
@@ -143,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 ? 'bg-secondary/[0.08] text-secondary'
                 : 'text-on-surface hover:bg-surface-container-low hover:text-secondary'
             }`}
-            aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
+            aria-label={isMobileMenuOpen ? t('navbar.close_menu', 'Tutup menu') : t('navbar.open_menu', 'Buka menu')}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >
@@ -185,6 +238,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {link.isActive && <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />}
                 </button>
               ))}
+
+              {/* Mobile Language Switcher */}
+              <div className="border-t border-outline-variant/40 mt-2 pt-3 px-4 pb-2 flex items-center justify-between">
+                <span className="text-xs font-semibold text-text-secondary/70">{t('navbar.language', 'Bahasa')}</span>
+                <LanguageSwitcher
+                  currentLang={i18n.language}
+                  onSelect={(lang) => handleMobileNav(() => i18n.changeLanguage(lang))}
+                />
+              </div>
             </nav>
           </div>
         )}

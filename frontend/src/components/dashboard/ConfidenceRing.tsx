@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ConfidenceRingProps {
   /** Confidence value in the 0–100 range. */
@@ -13,6 +14,7 @@ interface ConfidenceRingProps {
  * the API response (the probability of the predicted class).
  */
 export const ConfidenceRing: React.FC<ConfidenceRingProps> = ({ value, stroke = '#065f46' }) => {
+  const { t } = useTranslation();
   const clamped = Math.max(0, Math.min(value, 100));
   const radius = 42;
   const circumference = 2 * Math.PI * radius;
@@ -49,7 +51,7 @@ export const ConfidenceRing: React.FC<ConfidenceRingProps> = ({ value, stroke = 
           <span className="text-base font-medium text-text-secondary">%</span>
         </span>
         <span className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/70">
-          Keyakinan
+          {t('result.confidence_label', 'Keyakinan')}
         </span>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getModelInfo } from '../services/api';
 import type { ModelInfoResponse } from '../services/api';
 import ParticleField from '../components/landing/ParticleField';
@@ -9,42 +10,48 @@ const KAGGLE_URL = 'https://www.kaggle.com/datasets/suleymansulak/obesity-datase
 
 const DATASET_ATTRIBUTES = [
   {
-    group: 'Demografi & Antropometri',
-    items: ['Jenis kelamin', 'Usia', 'Tinggi badan', 'Riwayat obesitas keluarga'],
-  },
-  {
-    group: 'Pola Makan',
+    group: 'about.dataset.group_demographics',
     items: [
-      'Konsumsi makanan cepat saji',
-      'Frekuensi konsumsi sayur',
-      'Jumlah makan utama harian',
-      'Camilan di antara waktu makan',
-      'Asupan cairan harian',
-      'Pemantauan asupan kalori',
+      'about.attributes.gender',
+      'about.attributes.age',
+      'about.attributes.height',
+      'about.attributes.family_history',
     ],
   },
   {
-    group: 'Aktivitas & Gaya Hidup',
+    group: 'about.dataset.group_diet',
     items: [
-      'Kebiasaan merokok',
-      'Aktivitas fisik / olahraga',
-      'Waktu penggunaan teknologi',
-      'Moda transportasi harian',
+      'about.attributes.favc',
+      'about.attributes.fcvc',
+      'about.attributes.ncp',
+      'about.attributes.caec',
+      'about.attributes.ch2o',
+      'about.attributes.scc',
+    ],
+  },
+  {
+    group: 'about.dataset.group_lifestyle',
+    items: [
+      'about.attributes.smoke',
+      'about.attributes.faf',
+      'about.attributes.tue',
+      'about.attributes.mtrans',
     ],
   },
 ];
 
 const DATASET_TOTAL = 1610;
 const DATASET_CLASSES = [
-  { label: 'Normal', count: 658 },
-  { label: 'Berat Berlebih', count: 592 },
-  { label: 'Obesitas', count: 287 },
-  { label: 'Kurus', count: 73 },
+  { label: 'about.classes.normal', count: 658 },
+  { label: 'about.classes.overweight', count: 592 },
+  { label: 'about.classes.obese', count: 287 },
+  { label: 'about.classes.underweight', count: 73 },
 ];
 
 export const AboutPage: React.FC = () => {
   const navigate = useNavigate();
   const { resetForm } = useFormContext();
+  const { t, i18n } = useTranslation();
   const [modelInfo, setModelInfo] = useState<ModelInfoResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -82,12 +89,10 @@ export const AboutPage: React.FC = () => {
           {/* Header Content */}
           <div className="relative z-10 space-y-3 max-w-2xl">
             <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-on-surface leading-tight">
-              Kecerdasan Buatan di Balik Obesight
+              {t('about.title')}
             </h1>
-            <p className="text-sm sm:text-base text-text-secondary font-medium leading-relaxed">
-              Obesight menggunakan model klasifikasi machine learning untuk mendeteksi tingkat risiko
-              obesitas berdasarkan data survei perilaku harian yang dirancang sebagai alat skrining awal
-              yang cepat, informatif, dan mudah dipahami.
+            <p className="text-sm sm:text-base text-text-secondary font-medium leading-relaxed animate-fade-in">
+              {t('about.subtitle')}
             </p>
           </div>
         </header>
@@ -115,8 +120,8 @@ export const AboutPage: React.FC = () => {
               </svg>
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-on-surface tracking-tight">Metadata Model</h2>
-              <p className="text-xs text-text-secondary/70">Detail teknis model prediksi yang digunakan</p>
+              <h2 className="text-lg font-semibold text-on-surface tracking-tight">{t('about.model_info.title')}</h2>
+              <p className="text-xs text-text-secondary/70">{t('about.model_info.subtitle')}</p>
             </div>
           </div>
 
@@ -124,28 +129,28 @@ export const AboutPage: React.FC = () => {
             {loading ? (
               <div className="flex items-center justify-center gap-3 py-8 text-secondary font-medium text-sm">
                 <span className="w-5 h-5 border-2 border-secondary/25 border-t-secondary rounded-full animate-spin" />
-                Memuat metadata model...
+                {t('about.model_info.loading_metadata')}
               </div>
             ) : error || !modelInfo ? (
               <div className="rounded-2xl bg-rose-50 border border-rose-200 px-4 py-6 text-center text-sm font-medium text-rose-600">
-                Gagal mengambil metadata model dari server. Coba muat ulang halaman.
+                {t('about.model_info.failed_metadata')}
               </div>
             ) : (
               <div className="space-y-6">
                 <div className="grid grid-cols-2 rounded-2xl border border-outline-variant divide-x divide-outline-variant overflow-hidden">
                   <div className="p-4 text-center">
                     <p className="text-xl sm:text-2xl font-semibold text-on-surface">{modelInfo.model_name}</p>
-                    <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">Algoritma Model</p>
+                    <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">{t('about.model_info.algorithm')}</p>
                   </div>
                   <div className="p-4 text-center">
                     <p className="text-xl sm:text-2xl font-semibold text-on-surface">{modelInfo.framework}</p>
-                    <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">Framework Pipeline</p>
+                    <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">{t('about.model_info.pipeline')}</p>
                   </div>
                 </div>
 
                 <div>
                   <span className="text-[11px] font-semibold text-text-secondary/60 uppercase tracking-wider">
-                    Fitur yang Diperhitungkan ({modelInfo.features_required.length})
+                    {t('about.model_info.features')} ({modelInfo.features_required.length})
                   </span>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {modelInfo.features_required.map((feat) => (
@@ -153,7 +158,7 @@ export const AboutPage: React.FC = () => {
                         key={feat}
                         className="px-2.5 py-1 rounded-lg bg-secondary/[0.06] border border-secondary/15 text-xs font-medium text-secondary"
                       >
-                        {feat}
+                        {t(`about.attributes.${feat.toLowerCase()}`, feat)}
                       </span>
                     ))}
                   </div>
@@ -175,8 +180,8 @@ export const AboutPage: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-on-surface tracking-tight">Dataset Pelatihan</h2>
-                <p className="text-xs text-text-secondary/70">Sumber data yang melatih model prediksi</p>
+                <h2 className="text-lg font-semibold text-on-surface tracking-tight">{t('about.dataset.title')}</h2>
+                <p className="text-xs text-text-secondary/70">{t('about.dataset.subtitle')}</p>
               </div>
             </div>
             <a
@@ -185,7 +190,7 @@ export const AboutPage: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold border border-outline-variant text-text-secondary hover:bg-surface-container-low/70 active:scale-95 transition-all"
             >
-              Lihat di Kaggle
+              {t('about.dataset.visit_source')}
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M15 3h6v6" />
                 <path d="M10 14 21 3" />
@@ -194,24 +199,23 @@ export const AboutPage: React.FC = () => {
             </a>
           </div>
 
-          <p className="mt-5 text-sm text-text-secondary leading-relaxed max-w-2xl">
-            Model dilatih menggunakan <strong className="text-on-surface font-semibold">Obesity Dataset</strong>. Kumpulan data survei yang memetakan faktor demografi, pola makan, dan gaya
-            hidup terhadap tingkat obesitas seseorang.
+          <p className="mt-5 text-sm text-text-secondary leading-relaxed max-w-2xl animate-fade-in">
+            {t('about.dataset.description')}
           </p>
 
           {/* Quick stats */}
           <div className="mt-6 grid grid-cols-3 rounded-2xl border border-outline-variant divide-x divide-outline-variant overflow-hidden">
             <div className="p-4 text-center">
               <p className="text-xl sm:text-2xl font-semibold text-on-surface tabular-nums">1.610</p>
-              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">Responden</p>
+              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">{t('about.dataset.respondents')}</p>
             </div>
             <div className="p-4 text-center">
               <p className="text-xl sm:text-2xl font-semibold text-on-surface tabular-nums">14</p>
-              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">Atribut</p>
+              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">{t('about.dataset.attributes')}</p>
             </div>
             <div className="p-4 text-center">
               <p className="text-xl sm:text-2xl font-semibold text-on-surface tabular-nums">4</p>
-              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">Kategori</p>
+              <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">{t('about.dataset.categories')}</p>
             </div>
           </div>
 
@@ -220,13 +224,13 @@ export const AboutPage: React.FC = () => {
             {DATASET_ATTRIBUTES.map((group) => (
               <div key={group.group}>
                 <h3 className="text-[11px] font-semibold uppercase tracking-wider text-secondary">
-                  {group.group}
+                  {t(group.group)}
                 </h3>
                 <ul className="mt-3 space-y-2">
                   {group.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-text-secondary leading-snug">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary/40 shrink-0" />
-                      {item}
+                      {t(item)}
                     </li>
                   ))}
                 </ul>
@@ -237,7 +241,7 @@ export const AboutPage: React.FC = () => {
           {/* Class distribution */}
           <div className="mt-8 pt-6 border-t border-outline-variant/60">
             <h3 className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary/60">
-              Distribusi Kategori
+              {t('about.dataset.class_distribution')}
             </h3>
             <div className="mt-4 space-y-3">
               {DATASET_CLASSES.map((c) => {
@@ -245,9 +249,9 @@ export const AboutPage: React.FC = () => {
                 return (
                   <div key={c.label} className="space-y-1.5">
                     <div className="flex justify-between items-center text-sm">
-                      <span className="font-medium text-text-secondary">{c.label}</span>
+                      <span className="font-medium text-text-secondary">{t(c.label)}</span>
                       <span className="font-semibold text-text-secondary/70 tabular-nums">
-                        {c.count.toLocaleString('id-ID')} · {pct.toFixed(0)}%
+                        {c.count.toLocaleString(i18n.language === 'id' ? 'id-ID' : 'en-US')} · {pct.toFixed(0)}%
                       </span>
                     </div>
                     <div className="w-full h-2 bg-surface-container rounded-full overflow-hidden">
@@ -264,10 +268,10 @@ export const AboutPage: React.FC = () => {
         <section className="rounded-3xl bg-secondary/[0.04] border border-secondary/15 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
           <div className="space-y-1">
             <h3 className="text-lg font-semibold text-on-surface tracking-tight">
-              Siap mengetahui risiko Anda?
+              {t('about.cta.title')}
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Selesaikan skrining singkat dan dapatkan insight kesehatan personal Anda.
+              {t('about.cta.subtitle')}
             </p>
           </div>
           <button
@@ -277,7 +281,7 @@ export const AboutPage: React.FC = () => {
             }}
             className="shrink-0 px-6 py-3 rounded-full text-sm font-semibold text-on-primary bg-secondary hover:bg-secondary/95 active:scale-95 transition-all shadow-md cursor-pointer"
           >
-            Mulai Skrining
+            {t('common.start_screening')}
           </button>
         </section>
       </div>

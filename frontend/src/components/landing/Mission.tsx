@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Mission Component for the Landing Page.
@@ -10,7 +11,8 @@ import React, { useEffect, useRef, useState } from 'react';
  * - Permanent cursor: The typewriter blinking cursor stays visible at the end of the text indefinitely.
  */
 export const Mission: React.FC = () => {
-  const fullText = "Obesight menganalisis profil fisik, pola makan, tingkat hidrasi, dan aktivitas harian Anda secara terintegrasi melalui 17 faktor kesehatan untuk mendeteksi risiko obesitas serta menyusun rencana aksi gaya hidup yang dipersonalisasi.";
+  const { t } = useTranslation();
+  const fullText = t('landing.mission.text');
   const [typedText, setTypedText] = useState("");
   const [isInView, setIsInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,6 +37,13 @@ export const Mission: React.FC = () => {
     };
   }, []);
 
+  // Reset typewriter animation if the language changes
+  useEffect(() => {
+    if (isInView) {
+      setTypedText("");
+    }
+  }, [fullText, isInView]);
+
   useEffect(() => {
     if (isInView && typedText.length < fullText.length) {
       const timeout = setTimeout(() => {
@@ -42,7 +51,7 @@ export const Mission: React.FC = () => {
       }, 20); // 20ms typing speed (slightly faster for longer text)
       return () => clearTimeout(timeout);
     }
-  }, [isInView, typedText]);
+  }, [isInView, typedText, fullText]);
 
   return (
     <section
