@@ -43,7 +43,7 @@
       "card1_title": "Lifestyle Screening",
       "card1_desc": "A user-friendly 4-step quick questionnaire to map your daily habits accurately.",
       "card2_title": "Accurate AI Prediction",
-      "card2_desc": "Uses a trained LightGBM classification model to detect obesity risk level.",
+      "card2_desc": "Uses a trained Random Forest classification model to detect obesity risk level.",
       "card3_title": "Personal Action Insights",
       "card3_desc": "Get personalized recommendations to improve your diet, hydration, and daily activities in a targeted manner."
     },
@@ -122,10 +122,10 @@
     "retry": "Try Again",
     "api_connection_error": "Failed to connect to API server. Please check if the backend server is running.",
     "loading_steps": [
-      "Establishing connection to ObeSight API...",
+      "Establishing connection to Obesight AI API...",
       "Calculating Body Mass Index (BMI)...",
       "Evaluating genetic & anthropometric variables...",
-      "Executing artificial intelligence model (LightGBM/XGBoost)...",
+      "Executing artificial intelligence model (Random Forest)...",
       "Compiling bilingual personalized health recommendations..."
     ],
     "step_metadata": [

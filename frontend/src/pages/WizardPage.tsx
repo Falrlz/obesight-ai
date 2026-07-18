@@ -11,10 +11,10 @@ import Step4Habits from '../components/wizard/Step4Habits';
 import { StepVisualizer } from '../components/wizard/StepVisualizer';
 
 const FALLBACK_LOADING_STEPS = [
-  'Membangun koneksi ke ObeSight API...',
+  'Membangun koneksi ke Obesight AI API...',
   'Menghitung Indeks Massa Tubuh (BMI)...',
   'Mengevaluasi variabel genetik & antropometri...',
-  'Mengeksekusi model kecerdasan buatan (LightGBM/XGBoost)...',
+  'Mengeksekusi model kecerdasan buatan (Random Forest)...',
   'Menyusun rekomendasi kesehatan personal bilingual...',
 ];
 
