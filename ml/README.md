@@ -4,7 +4,7 @@ This sub-project hosts the complete end-to-end Machine Learning pipeline designe
 
 ---
 
-## 📂 Directory Structure
+## Directory Structure
 
 ```text
 ml/
@@ -29,7 +29,7 @@ ml/
 
 ---
 
-## 📊 Dataset Specifications
+## Dataset Specifications
 
 The machine learning model is trained on the **Obesity Dataset** (compiled via online surveys containing 1,610 samples), capturing anthropometric measurements and daily lifestyle/behavioral habits.
 
@@ -68,7 +68,7 @@ The model processes **16 input features** categorized as follows:
 
 ---
 
-## 🔄 Project Workflow & Pipelines
+## Project Workflow & Pipelines
 
 The ML lifecycle is split into separate execution pipelines to support modular deployment:
 
@@ -109,9 +109,69 @@ The pipeline identifies the best-performing baseline candidate and optimizes its
 * **Tuning Space Configuration**: Defined in `src/config/config.py` (e.g. estimators, max depth, subsamples, learning rates, etc.).
 * **Winning Model Selection**: If the tuned parameters yield a higher test accuracy score than the default baseline, the tuned model is selected for production.
 
+## Model Evaluation & Performance Analysis
+
+Multiple model pipelines were trained and logged using the MLflow experiment backend. The metrics and plots below represent the cross-validation and test set evaluations compiled from the local runs stored in `mlruns/`.
+
+### 1. Model Selection Benchmark
+
+Below is the evaluation summary of the baseline candidates and the tuned winning model:
+
+| Model Candidate | Test Accuracy | F1-Score | Precision | Recall |
+| :--- | :---: | :---: | :---: | :---: |
+| **Tuned Random Forest (Best)** | **99.28%** | **99.28%** | **99.30%** | **99.28%** |
+| Baseline Random Forest | 99.04% | 99.04% | 99.06% | 99.04% |
+| Baseline LightGBM | 98.56% | 98.56% | 98.60% | 98.56% |
+| Baseline XGBoost | 98.33% | 98.32% | 98.36% | 98.33% |
+| Baseline SVM | 94.50% | 94.49% | 94.53% | 94.50% |
+| Baseline KNN | 86.12% | 85.28% | 86.63% | 86.12% |
+
+The **Tuned Random Forest** model outperformed the gradient boosting candidates (LightGBM and XGBoost) and was serialized to `models/best_model.pkl` for production inference.
+
+### 2. Winning Model Classification Report & Confusion Matrix
+
+Evaluated on an independent test subset (418 samples):
+
+| Weight & Obesity Category | Precision | Recall | F1-Score | Support |
+| :--- | :---: | :---: | :---: | :---: |
+| `Insufficient_Weight` | 1.00 | 1.00 | 1.00 | 53 |
+| `Normal_Weight` | 0.97 | 1.00 | 0.98 | 57 |
+| `Overweight_Level_I` | 1.00 | 0.96 | 0.98 | 55 |
+| `Overweight_Level_II` | 1.00 | 1.00 | 1.00 | 58 |
+| `Obesity_Type_I` | 1.00 | 1.00 | 1.00 | 70 |
+| `Obesity_Type_II` | 0.98 | 0.98 | 0.98 | 60 |
+| `Obesity_Type_III` | 0.98 | 0.98 | 0.98 | 65 |
+| **Macro Average** | **0.99** | **0.99** | **0.99** | **418** |
+
+Only **4 out of 418** instances in the test set were misclassified, reflecting strong generalization bounds:
+- **Overweight Level I** (2 samples): Misclassified as *Normal Weight*.
+- **Obesity Type II** (1 sample): Misclassified as *Obesity Type III*.
+- **Obesity Type III** (1 sample): Misclassified as *Obesity Type II*.
+
+### 3. Evaluation Curves (Copied from MLflow artifacts)
+
+The following plots were generated during the training phase and logged directly as MLflow run artifacts:
+
+#### A. Confusion Matrix
+The confusion matrix heatmap shows the classification breakdown:
+![Confusion Matrix](assets/confusion_matrix.png)
+
+#### B. ROC Curve
+The ROC curve evaluates class-specific true positive rates vs. false positive rates:
+![ROC Curve](assets/roc_curve_plot.png)
+
+#### C. Precision-Recall Curve
+The Precision-Recall curve shows the trade-off between precision and recall across classes:
+![Precision-Recall Curve](assets/precision_recall_curve_plot.png)
+
+#### D. Calibration Curve
+The calibration curve measures the alignment between predicted probabilities and actual frequencies:
+![Calibration Curve](assets/calibration_curve_plot.png)
+
 ---
 
-## 🛠️ Setup & Installation
+
+## Setup & Installation
 
 ### 1. Initialize Virtual Environment
 Make sure you are in the `ml/` sub-project directory:
@@ -133,7 +193,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Running the Pipelines
+## Running the Pipelines
 
 You can run individual pipelines or trigger the entire workflow end-to-end:
 
@@ -158,7 +218,7 @@ Loads the preprocessed data, runs training benchmarks, tunes hyperparameters, an
 
 ---
 
-## 📊 MLflow Experiment Tracking
+## MLflow Experiment Tracking
 
 Every model training run, baseline comparison, and Optuna tuning trial is recorded locally in a SQLite-backed database (`mlruns/mlruns.db`).
 
@@ -172,7 +232,7 @@ Open your browser and navigate to: **[http://127.0.0.1:5000](http://127.0.0.1:50
 
 ---
 
-## 🧪 Running Unit Tests
+## Running Unit Tests
 
 Automated unit tests ensure pipeline stability and prevent regressions in calculations (e.g., BMI formula, data splits):
 ```bash

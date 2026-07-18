@@ -127,7 +127,10 @@ obesight-ai/
 - **Joblib** & **Scikit-Learn** → ML pipeline serialization and inference
 
 ### Machine Learning
-- **LightGBM** → Gradient boosting framework
+- **Scikit-Learn** → Machine learning pipelines, scaling, and classification algorithms (**K-Nearest Neighbors (KNN)**, **Support Vector Machine (SVM)**, **Random Forest (RF)**)
+- **LightGBM (LGBM)** & **XGBoost (XGB)** → Gradient boosting frameworks compared in baseline training
+- **Optuna** → Hyperparameter optimization framework
+- **MLflow** → Experiment tracking, run comparison, and artifact logging
 - **Pandas** & **NumPy** → Data manipulation & engineering
 - **Seaborn** & **Matplotlib** → Data visualization during EDA
 
