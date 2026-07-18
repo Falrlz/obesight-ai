@@ -30,7 +30,7 @@ def test_model_info(client):
     response = client.get("/api/v1/model-info")
     assert response.status_code == 200
     data = response.json()
-    assert data["model_name"] == "LightGBM Classifier"
+    assert data["model_name"] == "Random Forest Classifier"
     assert data["framework"] == "scikit-learn Pipeline"
     assert "BMI" in data["features_required"]
     assert "MTRANS" in data["features_required"]

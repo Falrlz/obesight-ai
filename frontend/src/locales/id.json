@@ -43,7 +43,7 @@
       "card1_title": "Skrining Gaya Hidup",
       "card1_desc": "Kuesioner cepat 4 langkah yang ramah pengguna untuk memetakan kebiasaan harian Anda secara akurat.",
       "card2_title": "Prediksi Akurat AI",
-      "card2_desc": "Menggunakan model klasifikasi LightGBM terlatih untuk mendeteksi tingkat risiko obesitas.",
+      "card2_desc": "Menggunakan model klasifikasi Random Forest terlatih untuk mendeteksi tingkat risiko obesitas.",
       "card3_title": "Insight Tindakan Personal",
       "card3_desc": "Dapatkan rekomendasi yang dipersonalisasi untuk memperbaiki pola makan, hidrasi, dan aktivitas harian Anda secara terarah."
     },
@@ -122,10 +122,10 @@
     "retry": "Coba Lagi",
     "api_connection_error": "Gagal terhubung dengan server API. Harap periksa apakah server backend sudah berjalan.",
     "loading_steps": [
-      "Membangun koneksi ke ObeSight API...",
+      "Membangun koneksi ke Obesight AI API...",
       "Menghitung Indeks Massa Tubuh (BMI)...",
       "Mengevaluasi variabel genetik & antropometri...",
-      "Mengeksekusi model kecerdasan buatan (LightGBM/XGBoost)...",
+      "Mengeksekusi model kecerdasan buatan (Random Forest)...",
       "Menyusun rekomendasi kesehatan personal bilingual..."
     ],
     "step_metadata": [

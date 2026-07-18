@@ -10,7 +10,7 @@ dotenv_path = BASE_DIR / ".env"
 # Load environment variables from .env
 load_dotenv(dotenv_path=dotenv_path)
 
-APP_NAME = os.getenv("APP_NAME", "ObeSight API")
+APP_NAME = os.getenv("APP_NAME", "Obesight AI")
 DEBUG = os.getenv("DEBUG", "true").lower() == "true"
 HOST = os.getenv("HOST", "127.0.0.1")
 PORT = int(os.getenv("PORT", "8000"))

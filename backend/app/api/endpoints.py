@@ -46,7 +46,7 @@ def health_check(request: Request):
 )
 def get_model_info():
     return ModelInfoResponse(
-        model_name="LightGBM Classifier",
+        model_name="Random Forest Classifier",
         framework="scikit-learn Pipeline",
         features_required=[
             "Age", "Height", "Weight", "BMI", "FCVC", "NCP", "CH2O", 

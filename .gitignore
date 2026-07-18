@@ -12,9 +12,14 @@ ENV/
 .ipynb_checkpoints/
 
 # Local Environment Configurations
-**/.env*
+**/.env
+**/.env.development
+**/.env.production
+**/.env.local
+**/.env.*.local
 !**/.env.example
 *.local
+
 
 # Logs
 logs/

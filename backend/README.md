@@ -1,21 +1,21 @@
-# 🩺 ObeSight Backend API (Obesity Prediction & Health Insights System)
+# Obesight AI - Backend API
 
-ObeSight Backend is a stateless API service built on **FastAPI (Python)** that serves as the inference engine and health insights engine. It processes user questionnaire data (17 anthropometric and behavioral variables) and executes the serialized Machine Learning pipeline (`best_model_pipeline.pkl` trained using LightGBM) in real-time to classify obesity levels and formulate personalized health recommendations in Indonesian or English.
-
----
-
-## 🚀 Key Features
-
-- ⚡ **High Performance**: Built using FastAPI and Uvicorn (ASGI server) for minimal latency.
-- 🧠 **Inference Engine**: Loads the serialized ML pipeline (`joblib`) into memory at application startup for optimal prediction performance.
-- 📋 **Insight & Recommendation Engine**: Evaluates rule-based behavioral inputs (e.g., water consumption, physical activity, screen time, etc.) to generate personalized health suggestions.
-- 🌐 **Bilingual Support**: Generates prediction labels and recommendations in two languages: **Indonesian (`id`)** and **English (`en`)**.
-- 🛠️ **Automated Data Validation**: Uses Pydantic v2 schemas to validate input data integrity before processing.
-- 📚 **Automated API Documentation**: Provides built-in Swagger UI (`/docs`) and ReDoc (`/redoc`) interactive endpoints.
+Obesight Backend is a stateless API service built on **FastAPI (Python)** that serves as the inference engine and health insights engine. It processes user questionnaire data (17 anthropometric and behavioral variables) and executes the serialized Machine Learning pipeline (`best_model.pkl` trained using LightGBM) in real-time to classify obesity levels and formulate personalized health recommendations in Indonesian or English.
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+## Key Features
+
+- **High Performance**: Built using FastAPI and Uvicorn (ASGI server) for minimal latency.
+- **Inference Engine**: Loads the serialized ML pipeline (`joblib`) into memory at application startup for optimal prediction performance.
+- **Insight & Recommendation Engine**: Evaluates rule-based behavioral inputs (e.g., water consumption, physical activity, screen time, etc.) to generate personalized health suggestions.
+- **Bilingual Support**: Generates prediction labels and recommendations in two languages: **Indonesian (`id`)** and **English (`en`)**.
+- **Automated Data Validation**: Uses Pydantic v2 schemas to validate input data integrity before processing.
+- **Automated API Documentation**: Provides built-in Swagger UI (`/docs`) and ReDoc (`/redoc`) interactive endpoints.
+
+---
+
+## Tech Stack & Dependencies
 
 The backend service relies on the following key libraries (listed in [requirements.txt](file:///d:/project/obesight-ai/backend/requirements.txt)):
 - **Framework**: FastAPI (v0.136.3), Uvicorn (v0.48.0)
@@ -24,7 +24,7 @@ The backend service relies on the following key libraries (listed in [requiremen
 
 ---
 
-## 📂 Directory Structure
+## Directory Structure
 
 ```text
 backend/
@@ -47,7 +47,7 @@ backend/
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### 1. Prerequisites
 Make sure you have **Python 3.10** or newer installed on your system.
@@ -84,17 +84,17 @@ pip install -r requirements.txt
 ### 5. Environment Configuration (`.env`)
 Create a file named `.env` in the backend root directory (`backend/`) and configure variables:
 ```env
-APP_NAME="ObeSight API"
+APP_NAME="Obesight AI"
 DEBUG=true
 HOST=127.0.0.1
 PORT=8000
-MODEL_PATH="../ml/models/best_model_pipeline.pkl"
+MODEL_PATH="../ml/models/best_model.pkl"
 ALLOWED_ORIGINS=["http://localhost:3000", "http://localhost:5173"]
 ```
 
 ---
 
-## 🏃 Running Development Server
+## Running Development Server
 
 Run Uvicorn in hot-reload mode to automatically pick up code changes:
 
@@ -103,13 +103,13 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 Once started successfully, you can access:
-- 🔌 **API Base URL**: `http://127.0.0.1:8000/`
-- 📖 **Swagger UI Documentation**: `http://127.0.0.1:8000/docs`
-- 📘 **ReDoc Documentation**: `http://127.0.0.1:8000/redoc`
+- **API Base URL**: `http://127.0.0.1:8000/`
+- **Swagger UI Documentation**: `http://127.0.0.1:8000/docs`
+- **ReDoc Documentation**: `http://127.0.0.1:8000/redoc`
 
 ---
 
-## 🧪 Running Unit Tests
+## Running Unit Tests
 
 Automated unit tests are written with `pytest` to verify input formatting, system health, BMI calculation, and bilingual recommendation generation logic.
 
@@ -121,7 +121,7 @@ pytest -v
 
 ---
 
-## 📡 API Endpoints Specifications
+## API Endpoints Specifications
 
 ### 1. `POST /api/v1/predict` (Prediction & Recommendation Endpoint)
 Submits user survey answers and retrieves the predicted obesity category alongside specific health guidance.
@@ -210,7 +210,7 @@ Returns metadata about the active ML model classifier.
 
 ---
 
-## 🧠 Inference Process Pipeline
+## Inference Process Pipeline
 
 1. **Unit Conversion**: The user's height (`cm`) is converted into meters (`Height / 100`).
 2. **BMI Calculation**: Calculates Body Mass Index via: $\text{BMI} = \frac{\text{Weight (kg)}}{\text{Height (m)}^2}$.
